@@ -1,0 +1,567 @@
+package com.hunter.dialog;
+
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.app.Dialog;
+import android.content.Context;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.StringRes;
+import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+
+/**
+ * @author Hunter Huang
+ *         自定义Dialog
+ *         usage： new SimpleDialog(getContent()).setTitleName("标题").setPositiveButton("完成", null).show();
+ */
+public class SimpleDialog extends Dialog {
+
+    private Context mContext;
+    private View mDialogView;
+    private TextView mBtnNegative, mBtnPositive;
+    private FrameLayout mFlContent;
+    private TextView mTvTitle;
+    private boolean isSetNewView = false;
+
+    public SimpleDialog(Context context) {
+        super(context, R.style.DialogFullscreen);
+        init(context);
+    }
+
+    public SimpleDialog(Context context, int themeResId) {
+        super(context, themeResId);
+        init(context);
+    }
+
+    protected SimpleDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+        super(context, cancelable, cancelListener);
+        init(context);
+    }
+
+    /**
+     * 初始化
+     *
+     * @param context 上下文
+     */
+    private void init(Context context) {
+        mContext = context;
+
+        mDialogView = View.inflate(mContext, R.layout.dialog_simple_layout, null);
+        mFlContent = (FrameLayout) mDialogView.findViewById(R.id.fl_content);
+        mTvTitle = (TextView) mDialogView.findViewById(R.id.tv_title);
+        mBtnNegative = (TextView) mDialogView.findViewById(R.id.btn_cancel);
+        mBtnPositive = (TextView) mDialogView.findViewById(R.id.btn_enter);
+
+        setContentView(mDialogView);
+        setCanceledOnTouchOutside(false);
+        getWindow().setGravity(Gravity.CENTER);
+        int matchParent = LinearLayout.LayoutParams.MATCH_PARENT;
+        int wrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
+        getWindow().setLayout(matchParent, wrapContent);
+
+        mTvTitle.setVisibility(View.GONE);
+        mFlContent.setVisibility(View.GONE);
+        mBtnNegative.setVisibility(View.GONE);
+        mBtnPositive.setVisibility(View.GONE);
+
+        ((ViewGroup) mBtnNegative.getParent()).setVisibility(View.GONE);
+    }
+
+    /**
+     * 获取 Layout
+     *
+     * @return Layout
+     */
+    public View getLayout() {
+        return mDialogView;
+    }
+
+    /**
+     * 设置视图
+     *
+     * @param view 视图
+     * @return this
+     */
+    public SimpleDialog setView(View view) {
+        if (view != null) {
+            mFlContent.setVisibility(View.VISIBLE);
+            mFlContent.addView(view);
+        }
+        return this;
+    }
+
+    /**
+     * 设置视图
+     *
+     * @param layoutResID 视图文件资源id
+     * @return this
+     */
+    public SimpleDialog setView(@LayoutRes int layoutResID) {
+        View view = View.inflate(mContext, layoutResID, null);
+        if (view != null) {
+            mFlContent.setVisibility(View.VISIBLE);
+            mFlContent.addView(view);
+        }
+        return this;
+    }
+
+    /**
+     * 重新设置布局
+     *
+     * @param view 布局文件
+     * @return this
+     */
+    public SimpleDialog setLayout(View view) {
+        if (view != null) {
+            isSetNewView = true;
+            mDialogView = view;
+            setContentView(view);
+        }
+        return this;
+    }
+
+    /**
+     * 重新设置布局
+     *
+     * @param layoutResID 布局文件资源id
+     * @return this
+     */
+    public SimpleDialog setLayout(@LayoutRes int layoutResID) {
+        View view = View.inflate(mContext, layoutResID, null);
+        if (view != null) {
+            isSetNewView = true;
+            mDialogView = view;
+            setContentView(view);
+        }
+        return this;
+    }
+
+    /**
+     * 设置LayoutParams
+     *
+     * @param width  宽
+     * @param height 高
+     * @return this
+     */
+    public SimpleDialog setLayoutParams(int width, int height) {
+        getWindow().setLayout(width, height);
+        return this;
+    }
+
+    /**
+     * 设置Dialog标题
+     *
+     * @param stringResID
+     */
+    public SimpleDialog setTitleName(@StringRes int stringResID) {
+        setTitleName(mContext.getResources().getString(stringResID));
+        return this;
+    }
+
+    /**
+     * 设置Dialog标题
+     *
+     * @param title 标题
+     * @return this
+     */
+    public SimpleDialog setTitleName(CharSequence title) {
+        if (!TextUtils.isEmpty(title)) {
+            mTvTitle.setVisibility(View.VISIBLE);
+            mTvTitle.setText(title);
+        }
+        return this;
+    }
+
+    /**
+     * 获取Dialog标题
+     *
+     * @return CharSequence
+     */
+    public TextView getTitleName() {
+        return mTvTitle;
+    }
+
+    /**
+     * 设置Dialog标题字体大小
+     *
+     * @param size 标题字体大小
+     * @return this
+     */
+    public SimpleDialog setTitleSize(float size) {
+        mTvTitle.setTextSize(size);
+        return this;
+    }
+
+    /**
+     * 设置Dialog标题字体Gravity
+     *
+     * @param gravity 标题字体Gravity
+     * @return this
+     */
+    public SimpleDialog setTitleGravity(int gravity) {
+        mTvTitle.setGravity(gravity);
+        return this;
+    }
+
+    /**
+     * 批量设置点击事件监听
+     *
+     * @param listener listener
+     * @param ids      id数组
+     * @return this
+     */
+    public SimpleDialog setOnClickListener(View.OnClickListener listener, int... ids) {
+
+        if (!isEmpty(ids) && listener != null) {
+            for (int id : ids) {
+                mDialogView.findViewById(id).setOnClickListener(listener);
+            }
+        }
+        return this;
+    }
+
+    /**
+     * 否定的按钮点击事件
+     *
+     * @return this
+     */
+    public SimpleDialog setNegativeButton() {
+
+        return setNegativeButton(null, null);
+    }
+
+    /**
+     * 否定的按钮点击事件
+     *
+     * @param listener listener
+     * @return this
+     */
+    public SimpleDialog setNegativeButton(View.OnClickListener listener) {
+
+        return setNegativeButton(null, listener);
+    }
+
+    /**
+     * 否定的按钮点击事件
+     *
+     * @param stringRes button name
+     * @param listener  listener
+     * @return this
+     */
+    public SimpleDialog setNegativeButton(@StringRes int stringRes, View.OnClickListener listener) {
+
+        return setNegativeButton(mContext.getResources().getString(stringRes), listener);
+    }
+
+    /**
+     * 否定的按钮点击事件
+     *
+     * @param str      button name
+     * @param listener listener
+     * @return this
+     */
+    public SimpleDialog setNegativeButton(CharSequence str, View.OnClickListener listener) {
+        if (isSetNewView) {//已经不存在这个按钮
+            throw new RuntimeException("Already there is no this button!");
+        }
+        if (!TextUtils.isEmpty(str)) {
+            mBtnNegative.setText(str);
+        }
+
+        ((ViewGroup) mBtnNegative.getParent()).setVisibility(View.VISIBLE);
+        mBtnNegative.setVisibility(View.VISIBLE);
+        mBtnNegative.setOnClickListener(new MyOnClickListener(listener));
+        return this;
+    }
+
+    public TextView getNegativeButton() {
+        return mBtnNegative;
+    }
+
+    public TextView getPositiveButton() {
+        return mBtnPositive;
+    }
+
+    /**
+     * 肯定的积极的按钮点击事件
+     *
+     * @return this
+     */
+    public SimpleDialog setPositiveButton() {
+
+        return setPositiveButton(null, null);
+    }
+
+    /**
+     * 肯定的积极的按钮点击事件
+     *
+     * @param listener listener
+     * @return this
+     */
+    public SimpleDialog setPositiveButton(View.OnClickListener listener) {
+
+        return setPositiveButton(null, listener);
+    }
+
+    /**
+     * 肯定的积极的按钮点击事件
+     *
+     * @param stringRes button name
+     * @param listener  listener
+     * @return this
+     */
+    public SimpleDialog setPositiveButton(@StringRes int stringRes, View.OnClickListener listener) {
+        return setPositiveButton(stringRes, listener, false);
+    }
+
+    /**
+     * 肯定的积极的按钮点击事件
+     *
+     * @param str      button name
+     * @param listener listener
+     * @return this
+     */
+    public SimpleDialog setPositiveButton(CharSequence str, View.OnClickListener listener) {
+        return setPositiveButton(str, listener, false);
+    }
+
+    /**
+     * 肯定的积极的按钮点击事件
+     *
+     * @param stringRes     button name
+     * @param listener      listener
+     * @param isNativeClick 原生的点击事件，不处理Dialog的关闭
+     * @return this
+     */
+    public SimpleDialog setPositiveButton(@StringRes int stringRes, View.OnClickListener listener, boolean isNativeClick) {
+        return setPositiveButton(mContext.getResources().getString(stringRes), listener, isNativeClick);
+    }
+
+    /**
+     * 肯定的积极的按钮点击事件
+     *
+     * @param str           button name
+     * @param listener      listener
+     * @param isNativeClick 原生的点击事件，不处理Dialog的关闭
+     * @return this
+     */
+    public SimpleDialog setPositiveButton(CharSequence str, View.OnClickListener listener, boolean isNativeClick) {
+        if (isSetNewView) {//已经不存在这个按钮
+            throw new RuntimeException("Already there is no this button!");
+        }
+        if (!TextUtils.isEmpty(str)) {
+            mBtnPositive.setText(str);
+        }
+        ((ViewGroup) mBtnPositive.getParent()).setVisibility(View.VISIBLE);
+        mBtnPositive.setVisibility(View.VISIBLE);
+        if (isNativeClick) {//原生的点击事件，不处理Dialog的关闭
+            if (listener != null) {
+                mBtnPositive.setOnClickListener(listener);
+            }
+        } else {
+            mBtnPositive.setOnClickListener(new MyOnClickListener(listener));
+        }
+        return this;
+    }
+
+
+    /**
+     * 设置动画，默认提示动画
+     *
+     * @return this
+     */
+    public SimpleDialog setAnimatorSet() {
+        setAnimatorSet(AnimType.PROMPT);
+        return this;
+    }
+
+    /**
+     * 设置动画
+     *
+     * @param type WARNING,PROMPT
+     * @return this
+     */
+    public SimpleDialog setAnimatorSet(AnimType type) {
+        switch (type) {
+            case WARNING://警告
+                AnimatorSetUtil.startWarningAnimatorSet(getLayout());
+                break;
+            case PROMPT://提示
+                AnimatorSetUtil.startPromptAnimatorSet(getLayout());
+                break;
+        }
+        return this;
+    }
+
+    /**
+     * 设置点击外部可以关闭对话框窗口
+     *
+     * @return this
+     */
+    public SimpleDialog setCanceledOnTouchOutside() {
+        super.setCanceledOnTouchOutside(true);
+        return this;
+    }
+
+    /**
+     * 设置Gravity
+     *
+     * @param gravity Gravity
+     * @return this
+     */
+    public SimpleDialog setGravity(int gravity) {
+        getWindow().setGravity(gravity);
+        return this;
+    }
+
+    /**
+     * 设置对话框窗口动画
+     *
+     * @param animations 动画资源
+     * @return this
+     */
+    public SimpleDialog setAnimations(int animations) {
+        getWindow().setWindowAnimations(animations);
+        return this;
+    }
+
+    /**
+     * 加载数据的对话框关闭回调接口
+     *
+     * @param listener   回调接口
+     * @param noOverride 为了不重写父类的方法
+     * @return this
+     */
+    public SimpleDialog setOnDismissListener(OnDismissListener listener, int noOverride) {
+        if (listener != null) {
+            setOnDismissListener(listener);
+        }
+        return this;
+    }
+
+    @Override
+    public void show() {
+
+        boolean isTitle = mTvTitle.getVisibility() != View.VISIBLE;
+        boolean isFlContent = mFlContent.getVisibility() != View.VISIBLE;
+        boolean isNegative = mBtnNegative.getVisibility() != View.VISIBLE;
+        boolean isPositive = mBtnPositive.getVisibility() != View.VISIBLE;
+        if (isTitle && isFlContent && isNegative && isPositive && !isSetNewView) {//没有可显示的东西，不弹出对话框并抛出Exception
+            throw new RuntimeException("No title and available button!");
+        }
+        try {
+            super.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * 点击事件监听器
+     */
+    class MyOnClickListener implements View.OnClickListener {
+        View.OnClickListener listener;
+
+        public MyOnClickListener(View.OnClickListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        public void onClick(View view) {
+            SimpleDialog.this.dismiss();
+            if (listener != null) {
+                listener.onClick(view);
+            }
+        }
+    }
+
+    /**
+     * 动画类型
+     */
+    public enum AnimType {
+        WARNING, //警告
+        PROMPT,//提示
+    }
+
+    /**
+     * 动画集合工具类
+     */
+    private static class AnimatorSetUtil {
+
+        /**
+         * 开启一个警告抖动的动画
+         *
+         * @param view 需要开启动画的View
+         */
+        private static void startWarningAnimatorSet(View view) {
+            if (view == null) {
+                return;
+            }
+            float max = 3;
+            float normal = 0;
+            float min = -3;
+            float maxScale = 1.0f;
+            float normalScale = 0.98f;
+            float minScale = 0.95f;
+            AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet.playTogether(
+                    ObjectAnimator.ofFloat(view, "alpha", normal, 1, 1, 1, 1, 1),
+                    ObjectAnimator.ofFloat(view, "scaleX", normalScale, minScale, minScale, maxScale,
+                            maxScale, maxScale, maxScale, maxScale, maxScale, normalScale),
+                    ObjectAnimator.ofFloat(view, "scaleY", normalScale, minScale, minScale, maxScale,
+                            maxScale, maxScale, maxScale, maxScale, maxScale, normalScale),
+                    ObjectAnimator.ofFloat(view, "rotation", normal, min, min, max, min, max, min,
+                            max, min, normal)
+            );
+            animatorSet.setDuration(700);
+            animatorSet.start();
+        }
+
+        /**
+         * 开启一个提示的动画
+         *
+         * @param view 需要开启动画的View
+         */
+        private static void startPromptAnimatorSet(View view) {
+            if (view == null) {
+                return;
+            }
+            float max = 1.0f;
+            float normal = 0.98f;
+            float min = 0.95f;
+            AnimatorSet animatorSet = new AnimatorSet();
+            animatorSet.playTogether(
+                    ObjectAnimator.ofFloat(view, "alpha", 0, 0.5f, 1, 1, 1, 1),
+                    ObjectAnimator.ofFloat(view, "scaleX", 0, max, max, min, min, normal),
+                    ObjectAnimator.ofFloat(view, "scaleY", 0, max, max, min, min, normal)
+            );
+            animatorSet.setDuration(700);
+            animatorSet.start();
+        }
+    }
+
+    /**
+     * 判断是否为空
+     *
+     * @param obj 判断的数组对象
+     * @return true为空，false为非空
+     */
+    public static boolean isEmpty(int[] obj) {
+        boolean isEmpty = true;
+        if (obj != null) {
+            if (obj.length > 0) {
+                isEmpty = false;
+            } else {
+                isEmpty = true;
+            }
+        }
+        return isEmpty;
+    }
+}

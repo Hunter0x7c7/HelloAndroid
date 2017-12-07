@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="0.1dp" />
+
+        <View
+            android:id="@+id/line_between"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/darker_gray" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-1dp">
+
+        <include
+            android:id="@+id/ll_level"
+            layout="@layout/item_postil_level" />
+
+        <TextView
+            android:id="@+id/tv_postil_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ll_level"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/ll_level"
+            android:text="2017-02-27 10:35:56"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_level"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="35dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_postil_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发现一个新项目"
+                android:textColor="@color/colorItemText" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="4dp"
+                android:paddingBottom="12dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

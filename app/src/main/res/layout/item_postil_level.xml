@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <com.hunter.helloandroid.view.CircleView xmlns:zh="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ov_tab"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        zh:circleColor="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/tv_level_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/ov_tab"
+        android:text="黄小明"
+        android:textColor="@color/colorItemText" />
+</RelativeLayout>
