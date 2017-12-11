@@ -23,28 +23,23 @@ import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.gongwen.marqueen.MarqueeFactory;
 import com.hunter.dialog.SimpleDialog;
 import com.hunter.helloandroid.R;
+import com.hunter.helloandroid.module.add_view_anim.AddViewAnimActivity;
 import com.hunter.helloandroid.module.beam_mvp.ui.BeamMvpLoginActivity;
 import com.hunter.helloandroid.module.matrix.MatrixActivity;
+import com.hunter.helloandroid.module.nest_item.NestItemActivity;
 import com.hunter.helloandroid.module.phont_number.PhontActivity;
 import com.hunter.helloandroid.module.rocket.RocketActivity;
+import com.hunter.helloandroid.module.rx_android.CheeseActivity;
 import com.hunter.helloandroid.module.sort.ContactActivity;
+import com.hunter.helloandroid.module.swipe_refresh.SwipeRefreshActivity;
 import com.hunter.helloandroid.util.PermissionUtil;
 import com.hunter.helloandroid.util.ToastUtil;
-import com.hunter.helloandroid.view.LodingCircleView;
-import com.hunter.helloandroid.view.MarqueeView;
-import com.hunter.helloandroid.view.ScrollTextView;
-import com.hunter.helloandroid.view.TimerShaftView;
 import com.hunter.helloandroid.viewgroup.CustomGroupActivity;
-import com.hunter.helloandroid.widget.ZHSwipeRefreshLayout;
 import com.squareup.timessquare.CalendarPickerView;
 
 import org.xutils.common.util.DensityUtil;
@@ -56,102 +51,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener
-        , ZHSwipeRefreshLayout.OnRefreshListener, TimerShaftView.OnTimeChangeListener {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener  {
 
-    private ZHSwipeRefreshLayout srlRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        WebView webview = (WebView) findViewById(R.id.wv_web);
-//        webview.loadUrl("http://124.160.184.108/live/5/45/3bfabc1fe16a4282b50ea095928c1f60.m3u8");
-        webview.loadUrl("file:///android_asset/m3u8.html");
-
         findViewById(R.id.btn_on_touch).setOnTouchListener(this);
-
-//        ZHSnackbar.make(webview, "TEST", ZHSnackbar.LENGTH_SHORT, 0).show();
-
-        srlRefreshLayout = (ZHSwipeRefreshLayout) findViewById(R.id.srl_refresh_layout);
-        srlRefreshLayout.setOnRefreshListener(this);
-        //设置卷内的颜色
-        srlRefreshLayout.setColorSchemeResources(
-                android.R.color.holo_orange_light,
-                android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_red_light);
-
-
-        MarqueeView verticalSwitchTextView1 = (MarqueeView) findViewById(R.id.vertical_switch_textview1);
-        List<String> info = new ArrayList<>();
-        info.add("1.能够适应多行长文本的Android TextView的例子能够适应多行长文本的Android TextView的例子本的Android TextView的例子能oid TextView的例子能够适应多行长文本的Android TextView的例子本的Android TextView的例子能够适应多行长");
-        info.add("2.\"科比，！本的Android TextView的例子能够适应多行长");
-        info.add("3. GitHub帐号：zhangyuanchong本的Android TextView的例子能够适应多行长");
-        info.add("4.\"理解的也很简单，本的Android TextView的例子能够适应多行长");
-        info.add("5. 破解密钥本的Android TextView的例子能够适应多行长");
-        info.add("6. 实现了两种方式本的Android TextView的例子能够适应多行长本的Android TextView的例子能够适应多行长");
-//        verticalSwitchTextView1.startWithList(info);
-        verticalSwitchTextView1.setOnItemClickListener(new MarqueeView.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position, TextView textView) {
-                position = position + 1;
-                ToastUtil.showPrompt("点击了" + position);
-            }
-        });
-
-
-        com.gongwen.marqueen.MarqueeView marqueeView2 = (com.gongwen.marqueen.MarqueeView) findViewById(R.id.marqueeView2);
-        MarqueeFactory marqueeFactory = new NoticeMF(this);
-        marqueeFactory.setData(info);
-
-        marqueeView2.setMarqueeFactory(marqueeFactory);
-
-
-        final ScrollTextView marqueeView3 = (ScrollTextView) findViewById(R.id.marqueeView3);
-//        marqueeView3.setText("3. GitHub帐号：3. GitHub帐号：zhangyuanchong本的Android TextView的例子能够适应多行长");
-
-
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, info);
-        marqueeView3.setAdapter(adapter);
-        marqueeView3.beginScroll();
-
-
-        final LodingCircleView lcv_loding = (LodingCircleView) findViewById(R.id.lcv_loding);
-        SeekBar sb_seek = (SeekBar) findViewById(R.id.sb_seek);
-        sb_seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                lcv_loding.setProgerss(progress, true);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        initTimerShaftView();
     }
 
-    public void initTimerShaftView() {
-
-        TimerShaftView timerShaftView = (TimerShaftView) findViewById(R.id.tsv_timershaft);
-        timerShaftView.setOnTimeChangeListener(this);
-    }
-
-    @Override
-    public void onTimeChange(TimerShaftView view, String time) {
-        //Toast.makeText(this, time, Toast.LENGTH_SHORT).show();
-        System.out.println("...........time:" + time  );
+    public void onClickView(View view) {
+        startActivity(new Intent(this, ViewActivity.class));
     }
 
     public void onClickRocket(View view) {
         startActivity(new Intent(this, RocketActivity.class));
+    }
+
+    public void onClickRxAndroid(View view) {
+        startActivity(new Intent(this, CheeseActivity.class));
     }
 
     public void onClickBeamMvp(View view) {
@@ -161,24 +81,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void onClickViewGroup(View view) {
         startActivity(new Intent(this, AddViewAnimActivity.class));
     }
+    public void onClickSwipeRefresh(View view) {
+        startActivity(new Intent(this, SwipeRefreshActivity.class));
+    }
 
     public void onClickNested(View view) {
         startActivity(new Intent(this, NestItemActivity.class));
-    }
-
-    public class NoticeMF extends MarqueeFactory<TextView, String> {
-        private Context mContext;
-
-        public NoticeMF(Context mContext) {
-            super(mContext);
-            this.mContext = mContext;
-        }
-
-        @Override
-        public TextView generateMarqueeItemView(String data) {
-
-            return new TextView(mContext);
-        }
     }
 
     public void onClickTimesSquare(View v) {
@@ -542,17 +450,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         }
         return true;
     }
-
-    @Override
-    public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                srlRefreshLayout.setRefreshing(false);
-            }
-        }, 5000);
-    }
-
 
     //获得返回的结果
     @Override

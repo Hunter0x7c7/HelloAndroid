@@ -1,7 +1,6 @@
 package com.hunter.widget;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -10,6 +9,8 @@ import android.os.Build;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.hunter.widget.gif.R;
 
 import java.io.InputStream;
 
@@ -51,13 +52,6 @@ public class GifView extends View {
         init(context, attrs, defStyle);
     }
 
-    @TargetApi(21)
-    public GifView(Context context, AttributeSet attrs, int defStyle, int defStyleRes) {
-        super(context, attrs, defStyle, defStyleRes);
-        init(context, attrs, defStyle);
-    }
-
-
     private void init(Context context, AttributeSet attrs, int defStyle) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             setLayerType(View.LAYER_TYPE_SOFTWARE, null);
@@ -75,8 +69,6 @@ public class GifView extends View {
 
     /**
      * 设置gif图资源
-     *
-     * @param movieResId
      */
     public void setMovieResource(int movieResId) {
         this.mMovieResourceId = movieResId;
@@ -101,8 +93,6 @@ public class GifView extends View {
 
     /**
      * 设置暂停
-     *
-     * @param paused
      */
     public void setPaused(boolean paused) {
         this.mPaused = paused;
@@ -115,8 +105,6 @@ public class GifView extends View {
 
     /**
      * 判断gif图是否停止了
-     *
-     * @return
      */
     public boolean isPaused() {
         return this.mPaused;
@@ -203,7 +191,6 @@ public class GifView extends View {
         invalidateView();
     }
 
-    @SuppressLint("NewApi")
     @Override
     protected void onVisibilityChanged(View changedView, int visibility) {
         super.onVisibilityChanged(changedView, visibility);

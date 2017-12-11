@@ -33,9 +33,8 @@ import com.hunter.helloandroid.R;
 public class CircleView extends View {
 
     private Paint mPaint;
-    private
-    @ColorInt
-    int color = 0XFF000000;
+    private int mColor = Color.GRAY;
+    private int mWidth, mHeight;
 
     public CircleView(Context context) {
         super(context);
@@ -57,13 +56,21 @@ public class CircleView extends View {
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleView);
             if (typedArray != null) {
-                color = typedArray.getColor(R.styleable.CircleView_circleColor, color);
+                mColor = typedArray.getColor(R.styleable.CircleView_circleColor, mColor);
                 typedArray.recycle();
             }
         }
         mPaint = new Paint();
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setAntiAlias(false); //设置画笔为无锯齿
+        mPaint.setAntiAlias(true); //设置画笔为无锯齿
+        mPaint.setColor(mColor);
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        mWidth = getWidth();
+        mHeight = getHeight();
     }
 
     @Override
@@ -76,17 +83,16 @@ public class CircleView extends View {
         super.onDraw(canvas);
 
         canvas.drawColor(Color.TRANSPARENT);
-        int radius = Math.min(getWidth(), getHeight()) / 2;
-        mPaint.setColor(color);
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, radius, mPaint);
+        canvas.drawCircle(mWidth / 2, mHeight / 2,  Math.min(mWidth, mHeight) / 2, mPaint);
     }
 
     public int getColor() {
-        return color;
+        return mColor;
     }
 
     public void setColor(@ColorInt int color) {
-        this.color = color;
+        this.mColor = color;
+        mPaint.setColor(mColor);
         invalidate();
     }
 }

@@ -35,6 +35,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hunter.widget.snackbar.R;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -207,7 +209,8 @@ public class ZHSnackbar {
      *                 #LENGTH_LONG}
      */
     public static ZHSnackbar make(@NonNull View view, @NonNull CharSequence text,
-                                  @ZHSnackbar.Duration int duration, int gravity) {
+                                   int duration, int gravity) {
+//                                  @ZHSnackbar.Duration int duration, int gravity) {
         ZHSnackbar snackbar = new ZHSnackbar(findSuitableParent(view), gravity);
         snackbar.setText(text);
         snackbar.setDuration(duration);

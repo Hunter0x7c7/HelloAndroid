@@ -34,12 +34,15 @@ dependencies {
     compile project(':FlowLayout')
     compile 'com.squareup:android-times-square:1.6.5@aar'
     //    compile 'com.wdullaer:materialdatetimepicker:3.2.2'
-    //    compile(name: 'GifView', ext: 'aar')
+
     //    compile(name: 'Snackbar', ext: 'aar')
+    compile project(':Snackbar')
+
+    compile(name: 'GifView', ext: 'aar')
+//    compile project(':GifView')
     //使用aar文件
     compile project(path: ':SimpleDialog')
 //    compile project(':PhotoViewLibrary')
-    compile project(':Snackbar')
     compile project(':CoordinateView')
     compile 'com.gongwen:marqueelibrary:1.0.4'
     compile 'com.google.code.gson:gson:2.8.0'
@@ -47,6 +50,9 @@ dependencies {
 //    compile project(':PermissionGen')
 //    compile project(':ZHImageView')
 //    compile(name: 'ZHImageView', ext: 'aar')
+
+    compile project(':Snackbar')
+//    compile(name: 'Snackbar', ext: 'aar')
 
 //    Beam——MVP快速开发框架 https://github.com/Jude95/Beam
     compile 'com.jude:beam:3.0.1'

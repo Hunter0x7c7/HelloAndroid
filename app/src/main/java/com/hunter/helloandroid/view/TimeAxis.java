@@ -29,6 +29,7 @@ import java.util.Locale;
 
 /**
  * 可滑动时间轴（时间刻度尺）
+ * 不好看
  */
 public class TimeAxis extends View {
     private static final float INTERVAL_LENGTH = 0.08f;// 一小格的长度，单位dp

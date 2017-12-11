@@ -50,7 +50,7 @@ public class LoginModel extends AbsModel {
     }
 
     //以下全都是面向上层的接口。这里全都是回调形式的异步返回。
-    public void userLogin(final String userName, final String password, final LoginPresenter.StatusCallback callback) {
+    public void userLogin(final String userName, final String password, final LoginPresenter.StatusCallback<String> callback) {
         //这里是向网络请求数据，并接受返回数据，解析返回上层。这里我在Callback里完成数据解析。让代码更简洁。
 //        RequestManager.getInstance().post(API.URL.ModifyName, new RequestMap("password", password), callback);
 
@@ -135,7 +135,6 @@ public class LoginModel extends AbsModel {
 
 
     }
-
 
 
     public interface RequestSerives {

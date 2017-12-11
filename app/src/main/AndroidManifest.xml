@@ -8,16 +8,17 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
     <!--创建悬浮窗口-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <application
         android:name=".base.BaseApplication"
-        tools:replace="android:name"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:name">
         <activity
             android:name=".module.MainActivity"
             android:screenOrientation="portrait">
@@ -45,16 +46,25 @@
             android:name=".viewgroup.CustomGroupActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".module.NestItemActivity"
+            android:name=".module.nest_item.NestItemActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".module.AddViewAnimActivity"
+            android:name=".module.add_view_anim.AddViewAnimActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".module.beam_mvp.ui.BeamMvpLoginActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".module.rocket.RocketActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.rx_android.CheeseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.ViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.swipe_refresh.SwipeRefreshActivity"
             android:screenOrientation="portrait" />
 
     </application>

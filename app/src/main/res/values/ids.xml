@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- SpeechPanel-->
+    <!-- v_mic:麦克风id-->
+    <item name="v_mic" type="id"/>
+    <!-- cb_speech:白色背景+开关状态id-->
+    <item name="cb_speech" type="id"/>
+</resources>

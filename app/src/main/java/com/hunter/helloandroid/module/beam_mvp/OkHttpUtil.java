@@ -1,7 +1,6 @@
 package com.hunter.helloandroid.module.beam_mvp;
 
 import com.google.gson.Gson;
-import com.hunter.helloandroid.module.beam_mvp.model.LoginModel11;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -54,16 +53,7 @@ public class OkHttpUtil {
                 for (int i = 0; i < headers.size(); i++) {
                     System.out.println(".....response3.Headers:" + headers.name(i) + ": " + headers.value(i));
                 }
-
-                try {
-                    LoginModel11.TerminalBean terminalBean = new Gson().fromJson(restlt, LoginModel11.TerminalBean.class);
-                    System.out.println(".........response3:" + restlt);
-                    System.out.println(".........terminalBean:" + new Gson().toJson(terminalBean));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
+                System.out.println(".........response3:" + restlt);}
 
         };
 
@@ -123,8 +113,6 @@ public class OkHttpUtil {
 
                 try {
                     System.out.println(".........response3:" + restlt);
-//                    LoginModel11.TerminalBean terminalBean = new Gson().fromJson(restlt, LoginModel11.TerminalBean.class);
-//                    System.out.println(".........terminalBean:" + new Gson().toJson(terminalBean));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

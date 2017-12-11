@@ -1,4 +1,4 @@
-package com.hunter.helloandroid.module;
+package com.hunter.helloandroid.module.nest_item;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

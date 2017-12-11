@@ -151,14 +151,14 @@ public class PtzView extends View {
                 if (mCurrentX < mRadius) {
                     mCurrentX = mRadius;
                 }
-                if (mCurrentX > mCenterX + mRadius) {
-                    mCurrentX = mCenterX + mRadius;
+                if (mCurrentX > mCenterX + mRadius*2) {
+                    mCurrentX = mCenterX + mRadius*2;
                 }
                 if (mCurrentY < mRadius) {
                     mCurrentY = mRadius;
                 }
-                if (mCurrentY > mCenterY + mRadius) {
-                    mCurrentY = mCenterY + mRadius;
+                if (mCurrentY > mCenterY  + mRadius*2) {
+                    mCurrentY = mCenterY  + mRadius*2;
                 }
                 invalidate();
 

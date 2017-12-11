@@ -1,4 +1,4 @@
-package com.hunter.helloandroid.module;
+package com.hunter.helloandroid.module.add_view_anim;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

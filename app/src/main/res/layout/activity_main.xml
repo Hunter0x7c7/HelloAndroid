@@ -1,241 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <com.hunter.helloandroid.view.TimeAxis
-        android:id="@+id/ts_timeaxis"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginTop="10dp" />
-
-    <com.hunter.helloandroid.view.TimerShaftView
-        android:id="@+id/tsv_timershaft"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginTop="10dp" />
-
-    <com.hunter.helloandroid.view.PtzView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickRocket"
-        android:text="onClickRocket"
-        android:textAllCaps="false" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickBeamMvp"
-        android:text="onClickBeamMvp"
-        android:textAllCaps="false" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickViewGroup"
-        android:text="ViewGroup中添加子View时附带动画效果"
-        android:textAllCaps="false" />
-
-    <Button
-        android:id="@+id/btn_on_touch"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="3dp"
-        android:text="btn_on_touch 普通"
-        android:textAllCaps="false"
-        android:textColor="#DDFFFFFF"
-        android:theme="@style/Theme.AppCompat.Light" />
-
-    <Button
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickNested"
-        android:text="Nested 嵌套RecyclerView"
-        android:textAllCaps="false"
-        android:textColor="#DDFFFFFF"
-        android:theme="@style/Theme.AppCompat.Light" />
-
-    <RelativeLayout
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/bg_huayu" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/btn_tran_gray_selector" />
-    </RelativeLayout>
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.hunter.helloandroid.view.LodingCircleView
-            android:id="@+id/lcv_loding"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:gravity="center" />
-
-        <SeekBar
-            android:id="@+id/sb_seek"
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="View"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickRxAndroid"
+            android:text="RxAndroid-CheeseFinder"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickRocket"
+            android:text="Rocket"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickBeamMvp"
+            android:text="BeamMvp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickSwipeRefresh"
+            android:text="SwipeRefresh"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickViewGroup"
+            android:text="ViewGroup中添加子View时附带动画效果"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_on_touch"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="3dp"
+            android:text="btn_on_touch 普通"
+            android:textAllCaps="false"
+            android:textColor="#DDFFFFFF"
+            android:theme="@style/Theme.AppCompat.Light" />
+
+        <Button
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickNested"
+            android:text="Nested 嵌套RecyclerView"
+            android:textAllCaps="false"
+            android:textColor="#DDFFFFFF"
+            android:theme="@style/Theme.AppCompat.Light" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClickContacts2"
             android:text="打开联系人列表" />
-    </LinearLayout>
 
-    <com.hunter.helloandroid.widget.ZHSwipeRefreshLayout
-        android:id="@+id/srl_refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ScrollView
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:onClick="onClickTimesSquare"
+            android:text="日期选择器android-times-square" />
 
-            <LinearLayout
-                android:id="@+id/activity_main"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+        <Button
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGetPhoneNumber"
+            android:text="Phone Number"
+            android:textAllCaps="false"
+            android:textColor="#DDFFFFFF" />
 
+        <Button
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickContacts"
+            android:text="通讯录 小的"
+            android:textColor="#DDFFFFFF" />
 
-                <com.hunter.helloandroid.view.MarqueeView
-                    android:id="@+id/vertical_switch_textview1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="@android:color/white"
-                    android:ellipsize="end"
-                    android:maxEms="10"
-                    android:maxLength="10"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="14sp"
-                    app:mvAnimDuration="1000"
-                    app:mvInterval="3000"
-                    app:mvTextColor="@android:color/black"
-                    app:mvTextSize="14sp"
-                    tools:text="弘生活APP改版了" />
+        <Button
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickMatrix"
+            android:text="xxx项目全景浏览" />
 
-                <com.gongwen.marqueen.MarqueeView
-                    android:id="@+id/marqueeView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="#88dddddd"
-                    app:marqueeAnimDuration="2000"
-                    app:marqueeAnimIn="@anim/dialog_enter"
-                    app:marqueeAnimOut="@anim/dialog_exit"
-                    app:marqueeInterval="2500" />
+        <Button
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickCustomGroup"
+            android:text="自定义ViewGroup"
+            android:textAllCaps="false" />
 
-                <com.hunter.helloandroid.view.ScrollTextView
-                    android:id="@+id/marqueeView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="#22dddddd" />
-
-                <TextView
-                    android:id="@+id/tv_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hello Android!" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickTimesSquare"
-                    android:text="日期选择器android-times-square" />
-
-                <Button
-                    style="@style/Widget.AppCompat.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickGetPhoneNumber"
-                    android:text="Phone Number"
-                    android:textAllCaps="false"
-                    android:textColor="#DDFFFFFF" />
-
-                <Button
-                    style="@style/Widget.AppCompat.Button.Small"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickContacts"
-                    android:text="通讯录 小的"
-                    android:textColor="#DDFFFFFF" />
-
-                <Button
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@android:drawable/arrow_down_float"
-                    android:text="透明的背景Matrix"
-                    android:textAllCaps="false"
-                    android:theme="@style/Theme.AppCompat.Light" />
-
-                <Button
-                    style="@style/Widget.AppCompat.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickMatrix"
-                    android:text="xxx项目全景浏览" />
-
-                <Button
-                    style="@style/Widget.AppCompat.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickCustomGroup"
-                    android:text="自定义ViewGroup"
-                    android:textAllCaps="false" />
-
-                <com.hunter.helloandroid.view.StrokeTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name" />
-
-                <com.hunter.helloandroid.view.StrokeTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="string/app_name" />
-
-                <WebView
-                    android:id="@+id/wv_web"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <!--<com.hunter.widget.GifView xmlns:android_gif="http://schemas.android.com/apk/res-auto"-->
-                <!--android:layout_width="300dp"-->
-                <!--android:layout_height="182dp"-->
-                <!--android_gif:gif="@raw/timg" />-->
-
-                <include layout="@layout/item_flowlayout" />
-
-
-            </LinearLayout>
-        </ScrollView>
-    </com.hunter.helloandroid.widget.ZHSwipeRefreshLayout>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

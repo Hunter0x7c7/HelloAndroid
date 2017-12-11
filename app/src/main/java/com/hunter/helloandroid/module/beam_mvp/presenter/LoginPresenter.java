@@ -3,7 +3,7 @@ package com.hunter.helloandroid.module.beam_mvp.presenter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.hunter.helloandroid.module.beam_mvp.model.LoginModel11;
+import com.hunter.helloandroid.module.beam_mvp.model.LoginModel;
 import com.hunter.helloandroid.module.beam_mvp.ui.BeamMvpLoginActivity;
 import com.jude.beam.bijection.Presenter;
 
@@ -15,7 +15,7 @@ public class LoginPresenter extends Presenter<BeamMvpLoginActivity> {
     protected void onCreate(@NonNull BeamMvpLoginActivity view, Bundle savedState) {
         super.onCreate(view, savedState);
         mActivity = getView();
-        LoginModel11.getInstance().onAppCreate(mActivity);
+        LoginModel.getInstance().onAppCreate(mActivity);
     }
 
 
@@ -23,7 +23,7 @@ public class LoginPresenter extends Presenter<BeamMvpLoginActivity> {
     public void login(String userName, String password) {
         mActivity.showProgress("登录中");
 
-        StatusCallback statusCallback = new StatusCallback() {
+        StatusCallback<String> statusCallback = new StatusCallback<String>() {
 
             @Override
             public void result(final int status, String info) {
@@ -48,13 +48,13 @@ public class LoginPresenter extends Presenter<BeamMvpLoginActivity> {
 
             }
         };
-        LoginModel11.getInstance().userLogin(userName, password, statusCallback);
+        LoginModel.getInstance().userLogin(userName, password, statusCallback);
     }
 
-    public interface StatusCallback {
-        void success(String info);
+    public interface StatusCallback<T> {
+        void success(T info);
 
-        void result(int status, String info);
+        void result(int status, T info);
     }
 
 }

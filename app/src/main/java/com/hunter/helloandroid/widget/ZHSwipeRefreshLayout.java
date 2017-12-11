@@ -16,6 +16,7 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -25,20 +26,18 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;
 import android.widget.AbsListView;
 
+/**
+ * 支持修改圆圈高度（defaultCircleTarget）的SwipeRefreshLayout
+ */
 public class ZHSwipeRefreshLayout extends ViewGroup implements NestedScrollingParent,
         NestedScrollingChild {
-
-    // Maps to ProgressBar.Large style
-    public static final int LARGE = MaterialProgressDrawable.LARGE;
-    // Maps to ProgressBar default style
-    public static final int DEFAULT = MaterialProgressDrawable.DEFAULT;
 
     @VisibleForTesting
     static final int CIRCLE_DIAMETER = 40;
     @VisibleForTesting
     static final int CIRCLE_DIAMETER_LARGE = 56;
 
-    private static final String LOG_TAG = ZHSwipeRefreshLayout.class.getSimpleName();
+    private static final String LOG_TAG = "ZHSwipeRefreshLayout";
 
     private static final int MAX_ALPHA = 255;
     private static final int STARTING_PROGRESS_ALPHA = (int) (.3f * MAX_ALPHA);
@@ -62,7 +61,7 @@ public class ZHSwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
     // Default background for the progress spinner
     private static final int CIRCLE_BG_LIGHT = 0xFFFAFAFA;
     // Default offset in dips from the top of the view to where the progress spinner should stop
-    private static final int DEFAULT_CIRCLE_TARGET = 64;
+    private int defaultCircleTarget = 64;
 
     private View mTarget; // the target of the gesture
     ZHSwipeRefreshLayout.OnRefreshListener mListener;
@@ -260,7 +259,7 @@ public class ZHSwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
     }
 
     /**
-     * Simple constructor to use when creating a SwipeRefreshLayout from code.
+     * Simple constructor to use when creating a ZHSwipeRefreshLayout from code.
      *
      * @param context
      */
@@ -269,7 +268,7 @@ public class ZHSwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
     }
 
     /**
-     * Constructor that is called when inflating SwipeRefreshLayout from XML.
+     * Constructor that is called when inflating ZHSwipeRefreshLayout from XML.
      *
      * @param context
      * @param attrs
@@ -291,7 +290,7 @@ public class ZHSwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
         createProgressView();
         ViewCompat.setChildrenDrawingOrderEnabled(this, true);
         // the absolute offset has to take into account that the circle starts at an offset
-        mSpinnerFinalOffset = DEFAULT_CIRCLE_TARGET * metrics.density;
+        mSpinnerFinalOffset = defaultCircleTarget * metrics.density;
         mTotalDragDistance = mSpinnerFinalOffset;
         mNestedScrollingParentHelper = new NestedScrollingParentHelper(this);
 
@@ -493,7 +492,7 @@ public class ZHSwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
      * @deprecated Use {@link #setColorSchemeResources(int...)}
      */
     @Deprecated
-    public void setColorScheme(@ColorInt int... colors) {
+    public void setColorScheme(@ColorRes int... colors) {
         setColorSchemeResources(colors);
     }
 
@@ -577,7 +576,7 @@ public class ZHSwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
         child.layout(childLeft, childTop, childLeft + childWidth, childTop + childHeight);
         int circleWidth = mCircleView.getMeasuredWidth();
         int circleHeight = mCircleView.getMeasuredHeight();
-        mCircleView.layout((width / 2 - circleWidth / 2), mCurrentTargetOffsetTop * 2,
+        mCircleView.layout((width / 2 - circleWidth / 2), mCurrentTargetOffsetTop,
                 (width / 2 + circleWidth / 2), mCurrentTargetOffsetTop + circleHeight);
     }
 
@@ -1167,10 +1166,29 @@ public class ZHSwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
          * Callback that will be called when {@link ZHSwipeRefreshLayout#canChildScrollUp()} method
          * is called to allow the implementer to override its behavior.
          *
-         * @param parent SwipeRefreshLayout that this callback is overriding.
-         * @param child  The child view of SwipeRefreshLayout.
+         * @param parent ZHSwipeRefreshLayout that this callback is overriding.
+         * @param child  The child view of ZHSwipeRefreshLayout.
          * @return Whether it is possible for the child view of parent layout to scroll up.
          */
         boolean canChildScrollUp(ZHSwipeRefreshLayout parent, @Nullable View child);
+    }
+
+    public int getDefaultCircleTarget() {
+        return defaultCircleTarget;
+    }
+
+    public void setDefaultCircleTarget(int dragMaxDistance) {
+        this.defaultCircleTarget = dragMaxDistance;
+        mSpinnerFinalOffset = mTotalDragDistance = dp2px(dragMaxDistance);
+    }
+
+    private int dp2px(int dp) {
+        int complexUnitDip = TypedValue.COMPLEX_UNIT_DIP;
+        DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
+        return (int) TypedValue.applyDimension(complexUnitDip, dp, displayMetrics);
+    }
+
+    public static int getCircleDiameter() {
+        return CIRCLE_DIAMETER;
     }
 }

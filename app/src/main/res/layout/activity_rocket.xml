@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickButton"
+        android:text="启动1" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="8dp"
+        android:layout_height="12dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:gravity="bottom"
         android:orientation="vertical">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickButton"
-            android:text="启动1" />
+        <View
+            android:id="@+id/v_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
 
-        <com.hunter.helloandroid.module.rocket.SpeechPanelView
-            android:id="@+id/hv_haul"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_mic" />
     </LinearLayout>
 
-</RelativeLayout>
+    <SeekBar
+        android:id="@+id/sb_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:max="30"
+        android:progress="0" />
+
+</LinearLayout>

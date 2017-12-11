@@ -37,7 +37,7 @@ import java.util.List;
  * <p>
  * ================================================================
  */
-public class MarqueeView extends ViewFlipper {
+public class ZHMarqueeView extends ViewFlipper {
 
     private Context mContext;
     private List<String> notices;
@@ -51,7 +51,7 @@ public class MarqueeView extends ViewFlipper {
     //点击事件
     private OnItemClickListener onItemClickListener;
 
-    public MarqueeView(Context context, AttributeSet attrs) {
+    public ZHMarqueeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs, 0);
     }
@@ -62,15 +62,15 @@ public class MarqueeView extends ViewFlipper {
             notices = new ArrayList<>();
         }
 
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.MarqueeView, defStyleAttr, 0);
-        interval = typedArray.getInteger(R.styleable.MarqueeView_mvInterval, interval);
-        isSetAnimDuration = typedArray.hasValue(R.styleable.MarqueeView_mvAnimDuration);
-        animDuration = typedArray.getInteger(R.styleable.MarqueeView_mvAnimDuration, animDuration);
-        if (typedArray.hasValue(R.styleable.MarqueeView_mvTextSize)) {
-            textSize = (int) typedArray.getDimension(R.styleable.MarqueeView_mvTextSize, textSize);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ZHMarqueeView, defStyleAttr, 0);
+        interval = typedArray.getInteger(R.styleable.ZHMarqueeView_mvInterval, interval);
+        isSetAnimDuration = typedArray.hasValue(R.styleable.ZHMarqueeView_mvAnimDuration);
+        animDuration = typedArray.getInteger(R.styleable.ZHMarqueeView_mvAnimDuration, animDuration);
+        if (typedArray.hasValue(R.styleable.ZHMarqueeView_mvTextSize)) {
+            textSize = (int) typedArray.getDimension(R.styleable.ZHMarqueeView_mvTextSize, textSize);
             textSize = DensityUtil.px2dip(textSize);
         }
-        textColor = typedArray.getColor(R.styleable.MarqueeView_mvTextColor, textColor);
+        textColor = typedArray.getColor(R.styleable.ZHMarqueeView_mvTextColor, textColor);
         typedArray.recycle();
 
         setFlipInterval(interval);
@@ -108,7 +108,7 @@ public class MarqueeView extends ViewFlipper {
         int dpW = DensityUtil.px2dip(width);
         int limit = dpW / textSize;
         if (dpW == 0) {
-            throw new RuntimeException("Please set MarqueeView width !");
+            throw new RuntimeException("Please set ZHMarqueeView width !");
         }
 
         if (noticeLength <= limit) {
