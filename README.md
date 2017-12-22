@@ -1,3 +1,8 @@
+
+
+HelloAndroid练手项目集锦。
+
+
 …or create a new repository on the command line
 
 echo "# HelloAndroid" >> README.md

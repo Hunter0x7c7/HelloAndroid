@@ -115,7 +115,7 @@ public class CheeseActivity extends BaseSearchActivity {
     private Observable<String> createButtonClickObservable() {
 
         // 2
-        Observable<String> stringObservable = Observable.create(new ObservableOnSubscribe<String>() {
+        return Observable.create(new ObservableOnSubscribe<String>() {
 
             // 3
             @Override
@@ -139,7 +139,6 @@ public class CheeseActivity extends BaseSearchActivity {
                 });
             }
         });
-        return stringObservable;
     }
 
     //1

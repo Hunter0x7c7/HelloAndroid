@@ -18,8 +18,36 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onClickFourView"
+            android:text="FourViewActivity"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="onClickRxAndroid"
             android:text="RxAndroid-CheeseFinder"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickRxAndroidTest"
+            android:text="RxAndroid-test"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickOperateLog"
+            android:text="onClickOperateLog"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickRotation"
+            android:text=" Rotation"
             android:textAllCaps="false" />
 
         <Button

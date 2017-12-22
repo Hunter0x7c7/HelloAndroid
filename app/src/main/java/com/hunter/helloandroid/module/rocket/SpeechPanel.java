@@ -6,6 +6,7 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -45,9 +46,9 @@ public class SpeechPanel extends RelativeLayout implements CompoundButton.OnChec
         , View.OnTouchListener, View.OnClickListener, SeekBar.OnSeekBarChangeListener {
     private Context mContext;
     private LinearLayout progressGroup;
-    private CheckBox cbSpeech;
+    private CheckBox cbMic  ;
     private SeekBar sbProgress;
-    private View progressView1, vMic, mDiscernView;
+    private View progressView1,vBackground , mDiscernView;
     private AnimatorSet mRotationAnimator;
 
     public SpeechPanel(Context context) {
@@ -76,7 +77,7 @@ public class SpeechPanel extends RelativeLayout implements CompoundButton.OnChec
         dip2 = dip2px(2);
 
         RelativeLayout groud = new RelativeLayout(context);
-        groud.setLayoutParams(new LayoutParams(dip2px(60), dip2px(60)));
+        groud.setLayoutParams(new LayoutParams(dip2px(40), dip2px(40)));
 
         //背景
         CircleView background = new CircleView(context);
@@ -89,37 +90,37 @@ public class SpeechPanel extends RelativeLayout implements CompoundButton.OnChec
         mDiscernView = new View(context);
         params = new LayoutParams(-1, -1);
         params.addRule(CENTER_IN_PARENT);
-        int dip4 = dip2px(4);
+        int dip4 = dip2px(2);
         params.setMargins(dip4, dip4, dip4, dip4);
         mDiscernView.setLayoutParams(params);
         mDiscernView.setBackgroundResource(R.mipmap.ic_discern);
 
-        //白色背景+开关状态
-        cbSpeech = new CheckBox(context);
-        cbSpeech.setId(R.id.cb_speech);
-        cbSpeech.setOnClickListener(this);
-        cbSpeech.setOnTouchListener(this);
-        cbSpeech.setOnCheckedChangeListener(this);
-        params = new LayoutParams(dip2px(45), dip2px(45));
+        //白色圆形背景
+        vBackground = new View(context);
+        vBackground.setId(R.id.v_background);
+        vBackground.setOnClickListener(this);
+        vBackground.setOnTouchListener(this);
+        params = new LayoutParams(dip2px(32), dip2px(32));
         params.addRule(CENTER_IN_PARENT);
-        cbSpeech.setLayoutParams(params);
-        cbSpeech.setBackgroundResource(R.drawable.btn_speech_switch_selector);
-        cbSpeech.setButtonDrawable(new ColorDrawable(Color.TRANSPARENT));
+        vBackground.setLayoutParams(params);
+        vBackground.setBackgroundResource(R.drawable.btn_speech_switch_selector);
 
-        //mic
-        vMic = new View(context);
-        vMic.setId(R.id.v_mic);
-        vMic.setOnClickListener(this);
-        vMic.setOnTouchListener(this);
-        params = new LayoutParams(dip2px(20), dip2px(25));
+        //mic+开关状态
+        cbMic = new CheckBox(context);
+        cbMic.setId(R.id.cb_mic);
+        cbMic.setOnClickListener(this);
+        cbMic.setOnTouchListener(this);
+        params = new LayoutParams(dip2px(25), dip2px(25));
         params.addRule(CENTER_IN_PARENT);
-        vMic.setLayoutParams(params);
-        vMic.setBackgroundResource(R.mipmap.ic_mic_normal);
+        cbMic.setLayoutParams(params);
+        cbMic.setBackgroundResource(R.drawable.btn_mic_selector);
+        cbMic.setButtonDrawable(new ColorDrawable(Color.TRANSPARENT));
+        cbMic.setOnCheckedChangeListener(this);
 
         groud.addView(background);
         groud.addView(mDiscernView);
-        groud.addView(cbSpeech);
-        groud.addView(vMic);
+        groud.addView(vBackground);
+        groud.addView(cbMic);
         addView(groud);
 
         /*
@@ -147,7 +148,7 @@ public class SpeechPanel extends RelativeLayout implements CompoundButton.OnChec
         progressGroup = new LinearLayout(context);
         LayoutParams layoutParams = new LayoutParams(dip2px(8), dip2px(12));
         layoutParams.addRule(CENTER_HORIZONTAL);
-        layoutParams.addRule(ALIGN_TOP, R.id.v_mic);
+        layoutParams.addRule(ALIGN_TOP, R.id.cb_mic);
         layoutParams.setMargins(dip2, dip2, 0, 0);
         progressGroup.setLayoutParams(layoutParams);
         progressGroup.setOrientation(LinearLayout.VERTICAL);
@@ -172,8 +173,8 @@ public class SpeechPanel extends RelativeLayout implements CompoundButton.OnChec
     }
 
     public void stopSpeech() {
-        if (cbSpeech.isChecked()) {
-            ClickUtil.simulateClick(cbSpeech);
+        if (cbMic.isChecked()) {
+            ClickUtil.simulateClick(cbMic);
         }
     }
 
@@ -284,8 +285,8 @@ public class SpeechPanel extends RelativeLayout implements CompoundButton.OnChec
     @Override
     public boolean onTouch(View view, MotionEvent event) {
         switch (view.getId()) {
-            case R.id.v_mic:
-            case R.id.cb_speech:
+            case R.id.cb_mic:
+            case R.id.v_background:
 
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
@@ -294,7 +295,7 @@ public class SpeechPanel extends RelativeLayout implements CompoundButton.OnChec
 
                         view.setTag(true);//标记是否是点击事件
                         view.setPressed(true);
-                        cbSpeech.setPressed(true);//如果是点击的mic 白色背景也显示按压效果
+                        cbMic.setPressed(true);//如果是点击的mic 白色背景也显示按压效果
                         break;
                     case MotionEvent.ACTION_MOVE:
 
@@ -314,7 +315,8 @@ public class SpeechPanel extends RelativeLayout implements CompoundButton.OnChec
 
                         view.setTag(false);//标记是否是点击事件
                         view.setPressed(false);
-                        cbSpeech.setPressed(false);//如果是点击的mic 白色背景也显示按压效果
+                        cbMic.setPressed(false);//如果是点击的mic 白色背景也显示按压效果
+
                         break;
                 }
                 if (onTouchListener != null) {
@@ -328,9 +330,9 @@ public class SpeechPanel extends RelativeLayout implements CompoundButton.OnChec
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.v_mic:
-            case R.id.cb_speech:
-                cbSpeech.setChecked(!cbSpeech.isChecked());
+            case R.id.cb_mic:
+            case R.id.v_background:
+                cbMic.setChecked(!cbMic.isChecked());
                 break;
         }
     }
@@ -385,9 +387,6 @@ public class SpeechPanel extends RelativeLayout implements CompoundButton.OnChec
 
         setCurrentStatus(isChecked ? PanelStatusEnum.OPEN : PanelStatusEnum.CLOSE);
 
-        int resource = isChecked ? R.mipmap.ic_mic_pressed : R.mipmap.ic_mic_normal;
-        vMic.setBackgroundResource(resource);
-
         if (onToggleChangeListener != null) {
             onToggleChangeListener.onToggleChanged(this, isChecked);
         }
@@ -397,5 +396,8 @@ public class SpeechPanel extends RelativeLayout implements CompoundButton.OnChec
         return DensityUtil.dip2px(mContext, dpValue);
     }
 
+    public void setPanelIcon(@DrawableRes int resid) {
+        cbMic.setBackgroundResource(resid);
+    }
 
 }
