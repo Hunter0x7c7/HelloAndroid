@@ -14,52 +14,38 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <include layout="@layout/item_multi_view_group" />
-
         <RelativeLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#3600ff00">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#86BC86">
 
-            <TextView
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="hello world!2"
                 android:textColor="@android:color/white" />
-
-            <SurfaceView
-                android:layout_width="120dp"
-                android:layout_height="80dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="2dp"
-                android:visibility="gone" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#630f00f0">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#6E68C5">
 
-            <TextView
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="hello world!3"
                 android:textAllCaps="false" />
 
-            <SurfaceView
-                android:layout_width="120dp"
-                android:layout_height="80dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="2dp"
-                android:visibility="gone" />
         </RelativeLayout>
+        <!--<include layout="@layout/item_multi_view_group" />-->
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#63000f0f">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#686E6E">
 
             <Button
                 android:layout_width="wrap_content"
@@ -69,30 +55,44 @@
                 android:text="hello world!4"
                 android:textAllCaps="false" />
 
-            <SurfaceView
-                android:layout_width="120dp"
-                android:layout_height="80dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="2dp"
-                android:visibility="gone" />
         </RelativeLayout>
 
     </com.hunter.helloandroid.module.four.MultiViewGroup>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickChange"
+        android:text="Change"
+        android:textAllCaps="false" />
+
     <LinearLayout
+        android:id="@+id/ll_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.design.widget.CoordinatorLayout
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="wrap_content"
+            android:text="1" />
 
-        </android.support.design.widget.CoordinatorLayout>
-
-        <android.support.constraint.ConstraintLayout
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="wrap_content"
+            android:text="2" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3" />
     </LinearLayout>
 
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <!--<android.support.constraint.ConstraintLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp" />-->
 </LinearLayout>

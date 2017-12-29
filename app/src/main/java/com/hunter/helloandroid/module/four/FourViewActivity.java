@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hunter.helloandroid.R;
@@ -30,6 +31,19 @@ public class FourViewActivity extends AppCompatActivity {
 
 
         initMultiViewGroup();
+
+
+        ViewGroup ll_test = (ViewGroup) findViewById(R.id.ll_test);
+        int childCount = ll_test.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View childAt = ll_test.getChildAt(i);
+            childAt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    childAt.bringToFront();
+                }
+            });
+        }
     }
 
     private void initMultiViewGroup() {
@@ -39,27 +53,42 @@ public class FourViewActivity extends AppCompatActivity {
         int width = SystemUtil.getWidth() / 2;
 
         mvgMulti = (MultiViewGroup) findViewById(R.id.mvg_multi);
-        mvgMulti.removeAllViews();
-        for (int i = 0; i < 4; i++) {
-//            View inflate = View.inflate(this, R.layout.item_multi_view_group, null);
-            View inflate = new MultiViewChild(this);
-            inflate.setBackgroundColor(clolr[i]);
+//        mvgMulti.removeAllViews();
+//        for (int i = 0; i < 4; i++) {
+////            View inflate = View.inflate(this, R.layout.item_multi_view_group, null);
+//            View inflate = new MultiViewChild(this);
+//            inflate.setBackgroundColor(clolr[i]);
+//
+//            TextView tv_title = (TextView) inflate.findViewById(R.id.tv_title);
+//            final SurfaceView sv_surface = (SurfaceView) inflate.findViewById(R.id.sv_surface);
+//
+////            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width, height);
+////            tv_title.setLayoutParams(params);
+//            tv_title.setText("hello:" + i);
+//
+////            params = new RelativeLayout.LayoutParams(width - dip3 * 10, height - dip3 * 2);
+////            params.setMargins(dip3 * 5, dip3, dip3 * 5, dip3);
+////            sv_surface.setLayoutParams(params);
+//
+//            SurfaceHolder holder = sv_surface.getHolder();
+//            holder.addCallback(new SurfaceCallback2());
+//
+//            mvgMulti.addView(inflate);
+//        }
 
-            TextView tv_title = (TextView) inflate.findViewById(R.id.tv_title);
-            final SurfaceView sv_surface = (SurfaceView) inflate.findViewById(R.id.sv_surface);
+        int childCount = mvgMulti.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            View childAt = mvgMulti.getChildAt(i);
+            TextView tv_title = (TextView) childAt.findViewById(R.id.tv_title);
+            final SurfaceView sv_surface = (SurfaceView) childAt.findViewById(R.id.sv_surface);
+            if (tv_title != null)
+                tv_title.setText("hello:" + i);
 
-//            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width, height);
-//            tv_title.setLayoutParams(params);
-            tv_title.setText("hello:" + i);
+            if (tv_title != null) {
+                SurfaceHolder holder = sv_surface.getHolder();
+                holder.addCallback(new SurfaceCallback2());
+            }
 
-//            params = new RelativeLayout.LayoutParams(width - dip3 * 10, height - dip3 * 2);
-//            params.setMargins(dip3 * 5, dip3, dip3 * 5, dip3);
-//            sv_surface.setLayoutParams(params);
-
-            SurfaceHolder holder = sv_surface.getHolder();
-            holder.addCallback(new SurfaceCallback2());
-
-            mvgMulti.addView(inflate);
         }
 
 
