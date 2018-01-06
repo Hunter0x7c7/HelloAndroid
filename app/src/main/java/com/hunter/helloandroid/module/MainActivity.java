@@ -35,6 +35,8 @@ import com.hunter.helloandroid.module.nest_item.NestItemActivity;
 import com.hunter.helloandroid.module.phont_number.PhontActivity;
 import com.hunter.helloandroid.module.rocket.RocketActivity;
 import com.hunter.helloandroid.module.rx_android.CheeseActivity;
+import com.hunter.helloandroid.module.scan.ScanActivity;
+import com.hunter.helloandroid.module.scan.android_zxinglibrary.MainZxingActivity;
 import com.hunter.helloandroid.module.sort.ContactActivity;
 import com.hunter.helloandroid.module.swipe_refresh.SwipeRefreshActivity;
 import com.hunter.helloandroid.util.PermissionUtil;
@@ -44,6 +46,7 @@ import com.squareup.timessquare.CalendarPickerView;
 
 import org.xutils.common.util.DensityUtil;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -51,7 +54,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener  {
+public class MainActivity extends AppCompatActivity
+        implements Serializable, View.OnTouchListener {
 
 
     @Override
@@ -66,12 +70,57 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         startActivity(new Intent(this, ViewActivity.class));
     }
 
-    public void onClickRocket(View view) {
-        startActivity(new Intent(this, RocketActivity.class));
+
+    public void onClickScan1(View view) {
+
+//        startActivity(new Intent(this, ScanActivity.class));
+
+        Intent intent = new Intent(this, ScanActivity.class);
+        intent.putExtra("Method", 1);
+        intent.putExtra("OnResultListener", new ScanResult());
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onClickScan2(View view) {
+//        ScanActivity.OnResultListener onResultListener = new ScanActivity.OnResultListener() {
+//            @Override
+//            public void onResult(String result) {
+//                ToastUtil.showPrompt("result:" + result);
+//            }
+//        };
+//        ScanActivity.setOnResultListener(onResultListener);
+        Intent intent = new Intent(this, ScanActivity.class);
+        intent.putExtra("Method", 2);
+        intent.putExtra("OnResultListener", new ScanResult());
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public class ScanResult implements Serializable, ScanActivity.OnResultListener {
+
+        @Override
+        public void onResult(String result) {
+            ToastUtil.showPrompt("result:" + result);
+        }
+    }
+
+    public void onClickScan3(View view) {
+        startActivity(new Intent(this, MainZxingActivity.class));
     }
 
     public void onClickRxAndroid(View view) {
         startActivity(new Intent(this, CheeseActivity.class));
+    }
+
+    public void onClickRocket(View view) {
+        startActivity(new Intent(this, RocketActivity.class));
     }
 
     public void onClickBeamMvp(View view) {
@@ -81,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void onClickViewGroup(View view) {
         startActivity(new Intent(this, AddViewAnimActivity.class));
     }
+
     public void onClickSwipeRefresh(View view) {
         startActivity(new Intent(this, SwipeRefreshActivity.class));
     }

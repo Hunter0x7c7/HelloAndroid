@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]//24
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]//"25.0.1"
     defaultConfig {
         applicationId "com.hunter.helloandroid"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]//24
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -26,54 +26,56 @@ android {
 }
 
 dependencies {
-//    compile fileTree(include: ['*.jar'], dir: 'libs')
-
-//    compile 'com.android.support:appcompat-v7:24.+'
+    //    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //    compile 'com.android.support:appcompat-v7:24.+'
     testCompile 'junit:junit:4.12'
     compile 'org.xutils:xutils:3.5.0'
     compile project(':FlowLayout')
     compile 'com.squareup:android-times-square:1.6.5@aar'
     //    compile 'com.wdullaer:materialdatetimepicker:3.2.2'
-
     //    compile(name: 'Snackbar', ext: 'aar')
     compile project(':Snackbar')
-
     compile(name: 'GifView', ext: 'aar')
-//    compile project(':GifView')
+    //    compile project(':GifView')
     //使用aar文件
     compile project(path: ':SimpleDialog')
-//    compile project(':PhotoViewLibrary')
+    //    compile project(':PhotoViewLibrary')
     compile project(':CoordinateView')
     compile 'com.gongwen:marqueelibrary:1.0.4'
     compile 'com.google.code.gson:gson:2.8.0'
     //    compile 'com.lovedise:permissiongen:0.0.6'//https://github.com/lovedise/PermissionGen
-//    compile project(':PermissionGen')
-//    compile project(':ZHImageView')
-//    compile(name: 'ZHImageView', ext: 'aar')
-
+    //    compile project(':PermissionGen')
+    //    compile project(':ZHImageView')
+    //    compile(name: 'ZHImageView', ext: 'aar')
     compile project(':Snackbar')
-//    compile(name: 'Snackbar', ext: 'aar')
-
-//    Beam——MVP快速开发框架 https://github.com/Jude95/Beam
+    //    compile(name: 'Snackbar', ext: 'aar')
+    //    Beam——MVP快速开发框架 https://github.com/Jude95/Beam
     compile 'com.jude:beam:3.0.1'
-
-//Retrofit2所需要的包  compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    //Retrofit2所需要的包  compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'//ConverterFactory的Gson依赖包
-    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'//ConverterFactory的String依赖包
-//    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    //ConverterFactory的Gson依赖包
+    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    //ConverterFactory的String依赖包
+    //    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-
-//    compile 'com.trello:rxlifecycle:1.0'
-//    compile 'com.trello:rxlifecycle-components:1.0'
-
+    //    compile 'com.trello:rxlifecycle:1.0'
+    //    compile 'com.trello:rxlifecycle-components:1.0'
     // Okhttp库
     compile 'com.squareup.okhttp3:okhttp:3.1.2'
     //rxjava
     compile 'io.reactivex.rxjava2:rxjava:2.+'
     compile 'io.reactivex.rxjava2:rxandroid:2.+'
-
     compile 'com.mcxiaoke.volley:library:1.0.+'
+    compile 'com.google.zxing:core:3.2.1'
+    compile 'com.journeyapps:zxing-android-embedded:3.3.0'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile files('libs/zxing.jar')
+
+    compile 'cn.yipianfengye.android:zxing-library:2.2'
+    compile 'pub.devrel:easypermissions:0.2.0'
+
 }
 
 

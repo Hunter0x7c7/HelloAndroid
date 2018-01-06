@@ -8,6 +8,7 @@ import com.jude.beam.Beam;
 import com.jude.beam.expansion.BeamBaseActivity;
 import com.jude.beam.expansion.overlay.ViewExpansionDelegate;
 import com.jude.beam.expansion.overlay.ViewExpansionDelegateProvider;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import org.xutils.BuildConfig;
 import org.xutils.x;
@@ -61,6 +62,8 @@ public class BaseApplication extends Application {
         });
 //        ListConfig config = new ListConfig().setRefreshAble(true).setContainerLayoutRes(R.layout.activity_recyclerview).setLoadmoreAble(true);
 //        ListConfig.setDefaultListConfig(config);
+
+        ZXingLibrary.initDisplayOpinion(this);
 
     }
 
