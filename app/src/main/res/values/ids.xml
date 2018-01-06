@@ -3,7 +3,7 @@
 
     <!-- SpeechPanel-->
     <!-- v_mic:麦克风id-->
-    <item name="v_mic" type="id"/>
+    <item name="cb_mic" type="id"/>
     <!-- cb_speech:白色背景+开关状态id-->
-    <item name="cb_speech" type="id"/>
+    <item name="v_background" type="id"/>
 </resources>

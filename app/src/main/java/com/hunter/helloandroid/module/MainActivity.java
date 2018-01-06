@@ -30,15 +30,20 @@ import com.hunter.dialog.SimpleDialog;
 import com.hunter.helloandroid.R;
 import com.hunter.helloandroid.module.add_view_anim.AddViewAnimActivity;
 import com.hunter.helloandroid.module.beam_mvp.ui.BeamMvpLoginActivity;
+import com.hunter.helloandroid.module.four.FourViewActivity;
 import com.hunter.helloandroid.module.matrix.MatrixActivity;
 import com.hunter.helloandroid.module.nest_item.NestItemActivity;
+import com.hunter.helloandroid.module.operate_log.OperateLogActivity;
 import com.hunter.helloandroid.module.phont_number.PhontActivity;
 import com.hunter.helloandroid.module.rocket.RocketActivity;
+import com.hunter.helloandroid.module.rotation.RotationActivity;
 import com.hunter.helloandroid.module.rx_android.CheeseActivity;
 import com.hunter.helloandroid.module.scan.ScanActivity;
 import com.hunter.helloandroid.module.scan.android_zxinglibrary.MainZxingActivity;
+import com.hunter.helloandroid.module.rx_android.RxAndroidTestActivity;
 import com.hunter.helloandroid.module.sort.ContactActivity;
 import com.hunter.helloandroid.module.swipe_refresh.SwipeRefreshActivity;
+import com.hunter.helloandroid.module.view.ViewActivity;
 import com.hunter.helloandroid.util.PermissionUtil;
 import com.hunter.helloandroid.util.ToastUtil;
 import com.hunter.helloandroid.viewgroup.CustomGroupActivity;
@@ -113,10 +118,28 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickScan3(View view) {
         startActivity(new Intent(this, MainZxingActivity.class));
+    public void onClickFourView (View view) {
+        startActivity(new Intent(this,FourViewActivity .class));
+    }
+
+    public void onClickOperateLog(View view) {
+        startActivity(new Intent(this,OperateLogActivity .class));
+    }
+
+    public void onClickRocket(View view) {
+        startActivity(new Intent(this, RocketActivity.class));
+    }
+
+    public void onClickRotation(View view) {
+        startActivity(new Intent(this, RotationActivity.class));
     }
 
     public void onClickRxAndroid(View view) {
         startActivity(new Intent(this, CheeseActivity.class));
+    }
+
+    public void onClickRxAndroidTest(View view) {
+        startActivity(new Intent(this, RxAndroidTestActivity.class));
     }
 
     public void onClickRocket(View view) {

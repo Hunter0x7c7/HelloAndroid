@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- 震动权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
@@ -66,11 +67,27 @@
             android:name=".module.rx_android.CheeseActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".module.ViewActivity"
+            android:name=".module.rx_android.RxAndroidTestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.view.ViewActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".module.swipe_refresh.SwipeRefreshActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.rotation.RotationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.operate_log.OperateLogActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.operate_log.MyDialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomDialogActivity" />
+        <activity
+            android:name=".module.four.FourViewActivity"
+            android:screenOrientation="portrait"  />
         <activity
             android:name=".module.scan.CustomScanActivity"
             android:screenOrientation="portrait" />
@@ -89,7 +106,6 @@
         <activity
             android:name=".module.scan.android_zxinglibrary.ThreeActivity"
             android:screenOrientation="portrait" />
-
     </application>
 
 </manifest>

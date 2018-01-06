@@ -1,4 +1,4 @@
-package com.hunter.helloandroid.module;
+package com.hunter.helloandroid.module.view;
 
 import android.content.Context;
 import android.os.Bundle;
