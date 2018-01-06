@@ -38,9 +38,9 @@ import com.hunter.helloandroid.module.phont_number.PhontActivity;
 import com.hunter.helloandroid.module.rocket.RocketActivity;
 import com.hunter.helloandroid.module.rotation.RotationActivity;
 import com.hunter.helloandroid.module.rx_android.CheeseActivity;
+import com.hunter.helloandroid.module.rx_android.RxAndroidTestActivity;
 import com.hunter.helloandroid.module.scan.ScanActivity;
 import com.hunter.helloandroid.module.scan.android_zxinglibrary.MainZxingActivity;
-import com.hunter.helloandroid.module.rx_android.RxAndroidTestActivity;
 import com.hunter.helloandroid.module.sort.ContactActivity;
 import com.hunter.helloandroid.module.swipe_refresh.SwipeRefreshActivity;
 import com.hunter.helloandroid.module.view.ViewActivity;
@@ -118,17 +118,16 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickScan3(View view) {
         startActivity(new Intent(this, MainZxingActivity.class));
-    public void onClickFourView (View view) {
-        startActivity(new Intent(this,FourViewActivity .class));
+    }
+
+    public void onClickFourView(View view) {
+        startActivity(new Intent(this, FourViewActivity.class));
     }
 
     public void onClickOperateLog(View view) {
-        startActivity(new Intent(this,OperateLogActivity .class));
+        startActivity(new Intent(this, OperateLogActivity.class));
     }
 
-    public void onClickRocket(View view) {
-        startActivity(new Intent(this, RocketActivity.class));
-    }
 
     public void onClickRotation(View view) {
         startActivity(new Intent(this, RotationActivity.class));
