@@ -33,14 +33,22 @@ public class FourViewActivity extends AppCompatActivity {
         initMultiViewGroup();
 
 
-        ViewGroup ll_test = (ViewGroup) findViewById(R.id.ll_test);
+        final ViewGroup ll_test = (ViewGroup) findViewById(R.id.ll_test);
         int childCount = ll_test.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View childAt = ll_test.getChildAt(i);
+            childAt.setId(i);
+
             childAt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     childAt.bringToFront();
+                    int childCount = ll_test.getChildCount();
+                    for (int i = 0; i < childCount; i++) {
+                        View childAt = ll_test.getChildAt(i);
+                        System.out.println(".......id:" + childAt.getId());
+                    }
+                    System.out.println("..*****....");
                 }
             });
         }

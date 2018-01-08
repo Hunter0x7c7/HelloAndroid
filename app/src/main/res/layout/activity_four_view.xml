@@ -7,7 +7,7 @@
     <com.hunter.helloandroid.module.four.MultiViewGroup
         android:id="@+id/mvg_multi"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="150dp"
         android:background="@android:color/darker_gray">
 
         <com.hunter.helloandroid.module.four.MultiViewChild
@@ -73,19 +73,34 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/btn_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/btn_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1" />
 
         <Button
+            android:id="@+id/btn_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2" />
 
         <Button
+            android:id="@+id/btn_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="3" />
+
+        <Button
+            android:id="@+id/btn_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4" />
     </LinearLayout>
 
     <android.support.design.widget.CoordinatorLayout
