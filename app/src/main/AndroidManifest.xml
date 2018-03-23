@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hunter.helloandroid">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -87,12 +89,12 @@
             android:theme="@style/CustomDialogActivity" />
         <activity
             android:name=".module.four.FourViewActivity"
-            android:screenOrientation="portrait"  />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".module.scan.CustomScanActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".module.scan.ScanActivity"
+            android:name="com.zxing.android.ScanActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.zxing.android.CaptureActivity"
@@ -105,6 +107,17 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".module.scan.android_zxinglibrary.ThreeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.multi.list.MultiListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.gradient.GradientActivity"
+            android:label="颜色渐变"
+            android:screenOrientation="portrait" />
+    <activity
+            android:name=".module.win_manager.WinManagerActivity"
+            android:label="win_manager"
             android:screenOrientation="portrait" />
     </application>
 

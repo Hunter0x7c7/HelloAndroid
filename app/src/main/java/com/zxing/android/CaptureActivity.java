@@ -156,7 +156,6 @@ public class CaptureActivity extends AppCompatActivity implements Callback {
 
 
     public View initLayout() {
-
         return View.inflate(BaseApplication.getContext(), R.layout.activity_capture, null);
     }
 

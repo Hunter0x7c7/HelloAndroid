@@ -13,6 +13,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.os.SystemClock;
 import android.provider.ContactsContract;
 import android.provider.Settings;
@@ -31,7 +33,11 @@ import com.hunter.helloandroid.R;
 import com.hunter.helloandroid.module.add_view_anim.AddViewAnimActivity;
 import com.hunter.helloandroid.module.beam_mvp.ui.BeamMvpLoginActivity;
 import com.hunter.helloandroid.module.four.FourViewActivity;
+import com.hunter.helloandroid.module.gradient.GradientActivity;
 import com.hunter.helloandroid.module.matrix.MatrixActivity;
+import com.hunter.helloandroid.module.multi.LongAsynctask;
+import com.hunter.helloandroid.module.multi.Paramer;
+import com.hunter.helloandroid.module.multi.list.MultiListActivity;
 import com.hunter.helloandroid.module.nest_item.NestItemActivity;
 import com.hunter.helloandroid.module.operate_log.OperateLogActivity;
 import com.hunter.helloandroid.module.phont_number.PhontActivity;
@@ -39,15 +45,16 @@ import com.hunter.helloandroid.module.rocket.RocketActivity;
 import com.hunter.helloandroid.module.rotation.RotationActivity;
 import com.hunter.helloandroid.module.rx_android.CheeseActivity;
 import com.hunter.helloandroid.module.rx_android.RxAndroidTestActivity;
-import com.hunter.helloandroid.module.scan.ScanActivity;
 import com.hunter.helloandroid.module.scan.android_zxinglibrary.MainZxingActivity;
 import com.hunter.helloandroid.module.sort.ContactActivity;
 import com.hunter.helloandroid.module.swipe_refresh.SwipeRefreshActivity;
 import com.hunter.helloandroid.module.view.ViewActivity;
+import com.hunter.helloandroid.module.win_manager.WinManagerActivity;
 import com.hunter.helloandroid.util.PermissionUtil;
 import com.hunter.helloandroid.util.ToastUtil;
 import com.hunter.helloandroid.viewgroup.CustomGroupActivity;
 import com.squareup.timessquare.CalendarPickerView;
+import com.zxing.android.ScanActivity;
 
 import org.xutils.common.util.DensityUtil;
 
@@ -71,6 +78,25 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.btn_on_touch).setOnTouchListener(this);
     }
 
+    public void onClickWinManager(View view) {
+        startActivity(new Intent(this, WinManagerActivity.class));
+    }
+
+    public void onClickGradient(View view) {
+        startActivity(new Intent(this, GradientActivity.class));
+    }
+
+    public void onClickMultiAsynctask(View view) {
+        int what = 0, value = 0;
+        for (int i = 0; i < 3; i++) {
+            what++;
+            value++;
+            new LongAsynctask().execute(new Paramer(what, value));
+        }
+
+        startActivity(new Intent(this, MultiListActivity.class));
+    }
+
     public void onClickView(View view) {
         startActivity(new Intent(this, ViewActivity.class));
     }
@@ -82,7 +108,7 @@ public class MainActivity extends AppCompatActivity
 
         Intent intent = new Intent(this, ScanActivity.class);
         intent.putExtra("Method", 1);
-        intent.putExtra("OnResultListener", new ScanResult());
+        intent.putExtra("OnResultListener", new ScanResult2());
         try {
             startActivity(intent);
         } catch (Exception e) {
@@ -91,16 +117,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onClickScan2(View view) {
-//        ScanActivity.OnResultListener onResultListener = new ScanActivity.OnResultListener() {
-//            @Override
-//            public void onResult(String result) {
-//                ToastUtil.showPrompt("result:" + result);
-//            }
-//        };
-//        ScanActivity.setOnResultListener(onResultListener);
         Intent intent = new Intent(this, ScanActivity.class);
         intent.putExtra("Method", 2);
-        intent.putExtra("OnResultListener", new ScanResult());
+        intent.putExtra("OnResultListener", new ScanResult2());
         try {
             startActivity(intent);
         } catch (Exception e) {
@@ -108,11 +127,46 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public class ScanResult implements Serializable, ScanActivity.OnResultListener {
+    public class ScanResult2 implements Serializable, ScanActivity.OnResultListener {
 
         @Override
         public void onResult(String result) {
-            ToastUtil.showPrompt("result:" + result);
+            ToastUtil.showPrompt("......2............扫描结果:" + result);
+        }
+    }
+
+    public static class ScanResult implements Parcelable, ScanActivity.OnResultListener {
+        public ScanResult() {
+        }
+
+        public ScanResult(Parcel in) {
+        }
+
+        @Override
+        public void onResult(String result) {
+            ToastUtil.showPrompt("扫描结果:" + result);
+        }
+
+        public static final Creator<ScanResult> CREATOR = new Creator<ScanResult>() {
+            @Override
+            public ScanResult createFromParcel(Parcel in) {
+                return new ScanResult(in);
+            }
+
+            @Override
+            public ScanResult[] newArray(int size) {
+                return new ScanResult[size];
+            }
+        };
+
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
         }
     }
 

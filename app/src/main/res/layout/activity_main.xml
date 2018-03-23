@@ -11,11 +11,32 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onClickWinManager"
+            android:text="WinManager"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGradient"
+            android:text="Gradient"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickMultiAsynctask"
+            android:text="MultiAsynctask"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="onClickView"
             android:text="View"
             android:textAllCaps="false" />
 
-          <Button
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClickScan1"

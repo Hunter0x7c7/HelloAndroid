@@ -28,6 +28,9 @@ android {
 dependencies {
     //    compile fileTree(include: ['*.jar'], dir: 'libs')
     //    compile 'com.android.support:appcompat-v7:24.+'
+    compile files('libs/zxing.jar')
+    compile files('libs/multi-asynctask.jar')
+
     testCompile 'junit:junit:4.12'
     compile 'org.xutils:xutils:3.5.0'
     compile project(':FlowLayout')
@@ -71,7 +74,6 @@ dependencies {
     compile 'com.journeyapps:zxing-android-embedded:3.3.0'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile files('libs/zxing.jar')
 
     compile 'cn.yipianfengye.android:zxing-library:2.2'
     compile 'pub.devrel:easypermissions:0.2.0'

@@ -1,4 +1,4 @@
-package com.hunter.helloandroid.module.scan;
+package com.zxing.android;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,9 +14,9 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.hunter.helloandroid.module.scan.CustomScanActivity;
 import com.hunter.helloandroid.util.ToastUtil;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-import com.zxing.android.CaptureActivity;
 
 import java.io.Serializable;
 

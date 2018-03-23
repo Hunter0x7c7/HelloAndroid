@@ -41,7 +41,7 @@ public class MyDialogActivity extends Activity {
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
 
-        setFinishOnTouchOutside(true);
+//        setFinishOnTouchOutside(true);
 
 
         Window window = getWindow();
@@ -57,7 +57,7 @@ public class MyDialogActivity extends Activity {
         //设置一个布局
         setContentView(R.layout.dialog_operate_log);
 
-        window.setGravity(Gravity.RIGHT);  //此处可以设置dialog显示的位置
+        window.setGravity(Gravity.END);  //此处可以设置dialog显示的位置
         window.setWindowAnimations(R.style.mystyle);  //添加动画
         //设置window背景，默认的背景会有Padding值，不能全屏。
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

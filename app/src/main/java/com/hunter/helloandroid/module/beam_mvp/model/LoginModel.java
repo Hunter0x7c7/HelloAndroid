@@ -30,6 +30,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
@@ -168,6 +169,10 @@ public class LoginModel extends AbsModel {
 
         @GET("/call/terminal.php")
         Call<ResponseBody> terminal(@Query("query") String query, @Query("salerid") String salerid, @Query("voucher") String voucher);
+
+        @GET("/unableape/url/{name}/get")
+        Call<ResponseBody> dlogin(@Path("name") String name);
+
     }
 
     public class LoginBean {
