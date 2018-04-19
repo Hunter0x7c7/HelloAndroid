@@ -6,12 +6,6 @@
     <color name="colorAccentDark">#11a348</color>
 
 
-    <!--<color name="custom_header_text">#85B100</color>-->
-    <!--<color name="custom_selected">#A8D324</color>-->
-    <!--<color name="custom_background">#F0F8DB</color>-->
-    <!--<color name="custom_background_today">#FF9105</color>-->
-    <!--<color name="custom_background_disabled">#F0F8DB</color>-->
-    <!--<color name="custom_text_selected">#FFFFFFFF</color>-->
     <color name="custom_text_inactive">#7f778088</color>
     <color name="def_text_color">#aa000000</color>
 
@@ -55,5 +49,15 @@
 
     <color name="blue_shallow">#57BDFF</color>
     <color name="blue_shallow55">#5557BDFF</color>
+
+    <color name="colorInitFloatBackground">#b0ffffff</color>
+    <color name="colorCollapsedFloatBackground">#e4e4e4</color>
+    <color name="colorpure">#303841</color>
+    <color name="colorpurple">#38da74</color>
+    <color name="colortab">#66CDAA</color>
+    <color name="colorcoltitle">#FFFFFF</color>
+    <color name="colorUsername">#5C5C5C</color>
+    <color name="colortsxtintro">#858585</color>
+    <color name="colortsxtintro2">#858583</color>
 
 </resources>

@@ -18,7 +18,7 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="100dp">
 
         <com.hunter.helloandroid.widget.CirclePromptView
             android:id="@+id/cpv_prompt"
@@ -31,4 +31,9 @@
             android:layout_height="12dp"
             android:layout_centerInParent="true" />
     </RelativeLayout>
+
+    <com.hunter.helloandroid.module.win_manager.StarrySkyView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_margin="10dp" />
 </LinearLayout>

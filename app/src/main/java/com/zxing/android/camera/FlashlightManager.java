@@ -23,7 +23,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * This class is used to activate the weak light on some camera phones (not flash)
+ * This class is used to activate the weak LightPrintActivity on some camera phones (not flash)
  * in order to illuminate surfaces for scanning. There is no official way to do this,
  * but, classes which allow access to this function still exist on some devices.
  * This therefore proceeds through a great deal of reflection.

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
+import com.hunter.helloandroid.handler.CrashHandler;
 import com.jude.beam.Beam;
 import com.jude.beam.expansion.BeamBaseActivity;
 import com.jude.beam.expansion.overlay.ViewExpansionDelegate;
@@ -19,9 +20,9 @@ import java.util.List;
 /**
  * ================================================================
  * <p>
- * 版    权： 上海田韵物联网科技有限公司(c)2017
+ * 版    权：  (c)2017
  * <p>
- * 作    者： 黄自航
+ * 作    者： Huang zihang
  * <p>
  * 版    本： V1.0
  * <p>
@@ -52,6 +53,10 @@ public class BaseApplication extends Application {
 
         x.Ext.init(this);
         x.Ext.setDebug(BuildConfig.DEBUG); // 开启debug会影响性能
+
+        //初始化全局异常捕获
+        CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(getApplicationContext());
 
         Beam.init(this);//Beam——便捷的MVP开发框架
         Beam.setViewExpansionDelegateProvider(new ViewExpansionDelegateProvider() {

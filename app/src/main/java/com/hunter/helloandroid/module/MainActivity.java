@@ -32,9 +32,13 @@ import com.hunter.dialog.SimpleDialog;
 import com.hunter.helloandroid.R;
 import com.hunter.helloandroid.module.add_view_anim.AddViewAnimActivity;
 import com.hunter.helloandroid.module.beam_mvp.ui.BeamMvpLoginActivity;
+import com.hunter.helloandroid.module.coordinator.main.CoordinatorMainActivity;
+import com.hunter.helloandroid.module.custom.CustomViewActivity;
 import com.hunter.helloandroid.module.four.FourViewActivity;
 import com.hunter.helloandroid.module.gradient.GradientActivity;
+import com.hunter.helloandroid.module.light.LightPrintActivity;
 import com.hunter.helloandroid.module.matrix.MatrixActivity;
+import com.hunter.helloandroid.module.md5.EncryptActivity;
 import com.hunter.helloandroid.module.multi.LongAsynctask;
 import com.hunter.helloandroid.module.multi.Paramer;
 import com.hunter.helloandroid.module.multi.list.MultiListActivity;
@@ -76,6 +80,20 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.btn_on_touch).setOnTouchListener(this);
+    }
+
+    public void onClickLightPrint(View view) {
+        startActivity(new Intent(this, LightPrintActivity.class));
+    }
+    public void onClickCustomView(View view) {
+        startActivity(new Intent(this, CustomViewActivity.class));
+    }
+    public void onClickCoordinator(View view) {
+        startActivity(new Intent(this, CoordinatorMainActivity.class));
+    }
+
+    public void onClickEncrypt(View view) {
+        startActivity(new Intent(this, EncryptActivity.class));
     }
 
     public void onClickWinManager(View view) {

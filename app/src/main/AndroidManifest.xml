@@ -17,8 +17,12 @@
     <uses-feature android:name="android.hardware.camera" /> <!-- 使用照相机权限 -->
     <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
 
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" /><!--指纹识别-->
+
     <!--创建悬浮窗口-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="true"
@@ -115,10 +119,46 @@
             android:name=".module.gradient.GradientActivity"
             android:label="颜色渐变"
             android:screenOrientation="portrait" />
-    <activity
+        <activity
             android:name=".module.win_manager.WinManagerActivity"
             android:label="win_manager"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.md5.EncryptActivity"
+            android:label="加解密"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.coordinator.main.CoordinatorMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".module.coordinator.alipay.AlipayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".module.coordinator.main.ScrollingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".module.coordinator.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".module.coordinator.userinfo.UserInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".module.custom.CustomViewActivity"
+            android:label="自定义View"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.custom.hexagon.HexgonActivity"
+            android:label="自定义Hexgon"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.light.LightPrintActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
