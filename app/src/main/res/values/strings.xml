@@ -8,5 +8,9 @@
 
     <string name="header_scrolling_behavior">com.hunter.helloandroid.module.coordinator.main.HeaderScrollingBehavior</string>
     <string name="header_float_behavior">com.hunter.helloandroid.module.coordinator.main.HeaderFloatBehavior</string>
+    <string name="scan">搜索</string>
+    <string name="paired">配对</string>
+    <string name="select_device">选择设备</string>
+    <string name="scanning">搜索中...</string>
 
 </resources>

@@ -72,8 +72,9 @@ public class LightPrintActivity extends AppCompatActivity {
             public void run() {
                 try {
 //                    InputStream is = getResources().getAssets().open("1.jpg");
-                    InputStream is = getResources().getAssets().open("2.jpg");
+//                    InputStream is = getResources().getAssets().open("2.jpg");
 //                    InputStream is = getResources().getAssets().open("hello_world.jpg");
+                    InputStream is = getResources().getAssets().open("hei_ha.png");
                     Bitmap bitmap = BitmapFactory.decodeStream(is);
 
                     List<int[]> target = getPixelListFromBitmap(bitmap);

@@ -57,12 +57,12 @@ public class CustomViewActivity extends AppCompatActivity {
         mMusicPlayerView.start();
 
 
-        int w = getResources().getDisplayMetrics().widthPixels;
-        int h = getResources().getDisplayMetrics().heightPixels;
-
-        int min = Math.min(w, h);
-        Path path = buildPath(w / 2 - 200, h / 2 - 200, min / 8);
-        mEarthPathView.setPath(path);
+//        int w = getResources().getDisplayMetrics().widthPixels;
+//        int h = getResources().getDisplayMetrics().heightPixels;
+//
+//        int min = Math.min(w, h);
+//        Path path = buildPath(w / 2 - 200, h / 2 - 200, min / 8);
+//        mEarthPathView.setPath(path);
         mEarthPathView.startAnim();
 
         setPath();

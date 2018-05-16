@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorAccent">#19b955</color>
-    <color name="colorAccentDark">#11a348</color>
-
-    <color name="colorItemText">#333333</color>
-    <color name="colorItemDark">#f2f2f2</color>
-
-</resources>

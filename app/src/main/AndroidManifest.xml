@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hunter.helloandroid">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -159,6 +161,23 @@
             android:name=".module.light.LightPrintActivity"
             android:screenOrientation="portrait" />
 
+        <!--蓝牙-->
+        <activity
+            android:name=".module.ble.DeviceListActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".module.ble.MainActivity"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".module.ble.UartService"
+            android:enabled="true" />
+
+        <activity
+            android:name=".module.update.UpdateActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

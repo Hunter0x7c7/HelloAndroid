@@ -31,6 +31,7 @@
             android:paddingTop="10dp" />
 
         <LinearLayout
+            android:id="@+id/ll_operate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -49,7 +50,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:text="@string/cancel"
-                android:textColor="@color/colorAccent"
+                android:textColor="@android:color/darker_gray"
                 android:textSize="16sp" />
 
             <TextView
@@ -63,7 +64,21 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:text="@string/enter"
-                android:textColor="@color/colorAccent"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dialog_btn_height"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/button_tran_gray_selector"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="@string/next"
+                android:textColor="@android:color/black"
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>

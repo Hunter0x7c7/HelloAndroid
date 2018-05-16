@@ -11,6 +11,20 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onClickUpdate"
+            android:text="Update"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickBle"
+            android:text="Bluetooth"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="onClickLightPrint"
             android:text="LightPrint"
             android:textAllCaps="false" />

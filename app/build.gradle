@@ -40,9 +40,12 @@ dependencies {
     //    compile 'com.wdullaer:materialdatetimepicker:3.2.2'
     //    compile(name: 'Snackbar', ext: 'aar')
     compile project(':Snackbar')
-    compile(name: 'GifView', ext: 'aar')
+    compile(name: 'GifView', ext: 'aar')//使用aar文件
     //    compile project(':GifView')
-    //使用aar文件
+
+    //Android6.0权限//    compile 'com.mylhyl:acp:1.1.7'
+    compile(name: 'PermissionACP', ext: 'aar')
+
     compile project(path: ':SimpleDialog')
     //    compile project(':PhotoViewLibrary')
     compile project(':CoordinateView')

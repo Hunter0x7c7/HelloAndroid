@@ -4,12 +4,15 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,7 +27,8 @@ public class SimpleDialog extends Dialog {
 
     private Context mContext;
     private View mDialogView;
-    private TextView mBtnNegative, mBtnPositive;
+    private ViewGroup llOperate;
+    private TextView mBtnNegative, mBtnPositive, mBtnNext;
     private FrameLayout mFlContent;
     private TextView mTvTitle;
     private boolean isSetNewView = false;
@@ -55,22 +59,29 @@ public class SimpleDialog extends Dialog {
         mDialogView = View.inflate(mContext, R.layout.dialog_simple_layout, null);
         mFlContent = (FrameLayout) mDialogView.findViewById(R.id.fl_content);
         mTvTitle = (TextView) mDialogView.findViewById(R.id.tv_title);
+        llOperate = (ViewGroup) mDialogView.findViewById(R.id.ll_operate);
         mBtnNegative = (TextView) mDialogView.findViewById(R.id.btn_cancel);
         mBtnPositive = (TextView) mDialogView.findViewById(R.id.btn_enter);
+        mBtnNext = (TextView) mDialogView.findViewById(R.id.btn_next);
 
         setContentView(mDialogView);
         setCanceledOnTouchOutside(false);
-        getWindow().setGravity(Gravity.CENTER);
-        int matchParent = LinearLayout.LayoutParams.MATCH_PARENT;
-        int wrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
-        getWindow().setLayout(matchParent, wrapContent);
+
+        Window window = getWindow();
+        if (window != null) {
+            int matchParent = LinearLayout.LayoutParams.MATCH_PARENT;
+            int wrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
+            window.setGravity(Gravity.CENTER);
+            window.setLayout(matchParent, wrapContent);
+        }
 
         mTvTitle.setVisibility(View.GONE);
         mFlContent.setVisibility(View.GONE);
         mBtnNegative.setVisibility(View.GONE);
         mBtnPositive.setVisibility(View.GONE);
+        mBtnNext.setVisibility(View.GONE);
 
-        ((ViewGroup) mBtnNegative.getParent()).setVisibility(View.GONE);
+        llOperate.setVisibility(View.GONE);
     }
 
     /**
@@ -150,14 +161,15 @@ public class SimpleDialog extends Dialog {
      * @return this
      */
     public SimpleDialog setLayoutParams(int width, int height) {
-        getWindow().setLayout(width, height);
+        Window window = getWindow();
+        if (window != null) {
+            window.setLayout(width, height);
+        }
         return this;
     }
 
     /**
      * 设置Dialog标题
-     *
-     * @param stringResID
      */
     public SimpleDialog setTitleName(@StringRes int stringResID) {
         setTitleName(mContext.getResources().getString(stringResID));
@@ -212,71 +224,80 @@ public class SimpleDialog extends Dialog {
     /**
      * 批量设置点击事件监听
      *
-     * @param listener listener
-     * @param ids      id数组
+     * @param onClickListener onClickListener
+     * @param ids             id数组
      * @return this
      */
-    public SimpleDialog setOnClickListener(View.OnClickListener listener, int... ids) {
+    public SimpleDialog setOnClickListener(View.OnClickListener onClickListener, int... ids) {
 
-        if (!isEmpty(ids) && listener != null) {
+        if (!isEmpty(ids) && onClickListener != null) {
             for (int id : ids) {
-                mDialogView.findViewById(id).setOnClickListener(listener);
+                mDialogView.findViewById(id).setOnClickListener(onClickListener);
             }
         }
         return this;
     }
 
     /**
-     * 否定的按钮点击事件
+     * 按钮点击事件：否定的
      *
      * @return this
      */
     public SimpleDialog setNegativeButton() {
-
         return setNegativeButton(null, null);
     }
 
     /**
-     * 否定的按钮点击事件
+     * 按钮点击事件：否定的
      *
-     * @param listener listener
+     * @param onClickListener onClickListener
      * @return this
      */
-    public SimpleDialog setNegativeButton(View.OnClickListener listener) {
-
-        return setNegativeButton(null, listener);
+    public SimpleDialog setNegativeButton(View.OnClickListener onClickListener) {
+        return setNegativeButton(null, onClickListener);
     }
 
     /**
-     * 否定的按钮点击事件
+     * 按钮点击事件：否定的
      *
-     * @param stringRes button name
-     * @param listener  listener
+     * @param stringRes       button name
+     * @param onClickListener onClickListener
      * @return this
      */
-    public SimpleDialog setNegativeButton(@StringRes int stringRes, View.OnClickListener listener) {
-
-        return setNegativeButton(mContext.getResources().getString(stringRes), listener);
+    public SimpleDialog setNegativeButton(@StringRes int stringRes, View.OnClickListener onClickListener) {
+        return setNegativeButton(mContext.getResources().getString(stringRes), onClickListener);
     }
 
     /**
-     * 否定的按钮点击事件
+     * 按钮点击事件：否定的
      *
-     * @param str      button name
-     * @param listener listener
+     * @param str             button name
+     * @param onClickListener onClickListener
      * @return this
      */
-    public SimpleDialog setNegativeButton(CharSequence str, View.OnClickListener listener) {
+    public SimpleDialog setNegativeButton(CharSequence str, View.OnClickListener onClickListener) {
+        return setNegativeButton(str, Color.GRAY, onClickListener);
+    }
+
+    /**
+     * 按钮点击事件：否定的
+     *
+     * @param str             button name
+     * @param onClickListener onClickListener
+     * @return this
+     */
+    public SimpleDialog setNegativeButton(CharSequence str, @ColorInt int color, View.OnClickListener onClickListener) {
         if (isSetNewView) {//已经不存在这个按钮
             throw new RuntimeException("Already there is no this button!");
         }
         if (!TextUtils.isEmpty(str)) {
             mBtnNegative.setText(str);
         }
+        mBtnNegative.setTextColor(color);
 
-        ((ViewGroup) mBtnNegative.getParent()).setVisibility(View.VISIBLE);
+        llOperate.setVisibility(View.VISIBLE);
         mBtnNegative.setVisibility(View.VISIBLE);
-        mBtnNegative.setOnClickListener(new MyOnClickListener(listener));
+        mBtnNegative.setOnClickListener(new MyOnClickListener(onClickListener));
         return this;
     }
 
@@ -289,83 +310,194 @@ public class SimpleDialog extends Dialog {
     }
 
     /**
-     * 肯定的积极的按钮点击事件
+     * 按钮点击事件：肯定的积极的
      *
      * @return this
      */
     public SimpleDialog setPositiveButton() {
-
         return setPositiveButton(null, null);
     }
 
     /**
-     * 肯定的积极的按钮点击事件
+     * 按钮点击事件：肯定的积极的
      *
-     * @param listener listener
+     * @param onClickListener onClickListener
      * @return this
      */
-    public SimpleDialog setPositiveButton(View.OnClickListener listener) {
-
-        return setPositiveButton(null, listener);
+    public SimpleDialog setPositiveButton(View.OnClickListener onClickListener) {
+        return setPositiveButton(null, onClickListener);
     }
 
     /**
-     * 肯定的积极的按钮点击事件
+     * 按钮点击事件：肯定的积极的
      *
-     * @param stringRes button name
-     * @param listener  listener
+     * @param stringRes       button name
+     * @param onClickListener onClickListener
      * @return this
      */
-    public SimpleDialog setPositiveButton(@StringRes int stringRes, View.OnClickListener listener) {
-        return setPositiveButton(stringRes, listener, false);
+    public SimpleDialog setPositiveButton(@StringRes int stringRes, View.OnClickListener onClickListener) {
+        return setPositiveButton(stringRes, onClickListener, false);
     }
 
     /**
-     * 肯定的积极的按钮点击事件
+     * 按钮点击事件：肯定的积极的
      *
-     * @param str      button name
-     * @param listener listener
+     * @param str             button name
+     * @param onClickListener onClickListener
      * @return this
      */
-    public SimpleDialog setPositiveButton(CharSequence str, View.OnClickListener listener) {
-        return setPositiveButton(str, listener, false);
+    public SimpleDialog setPositiveButton(CharSequence str, View.OnClickListener onClickListener) {
+        return setPositiveButton(str, onClickListener, false);
     }
 
     /**
-     * 肯定的积极的按钮点击事件
+     * 按钮点击事件：肯定的积极的
      *
-     * @param stringRes     button name
-     * @param listener      listener
-     * @param isNativeClick 原生的点击事件，不处理Dialog的关闭
+     * @param stringRes       button name
+     * @param onClickListener onClickListener
+     * @param isNativeClick   原生的点击事件，不处理Dialog的关闭
      * @return this
      */
-    public SimpleDialog setPositiveButton(@StringRes int stringRes, View.OnClickListener listener, boolean isNativeClick) {
-        return setPositiveButton(mContext.getResources().getString(stringRes), listener, isNativeClick);
+    public SimpleDialog setPositiveButton(@StringRes int stringRes, View.OnClickListener onClickListener
+            , boolean isNativeClick) {
+        return setPositiveButton(mContext.getResources().getString(stringRes), onClickListener, isNativeClick);
     }
 
     /**
-     * 肯定的积极的按钮点击事件
+     * 按钮点击事件：肯定的积极的
      *
-     * @param str           button name
-     * @param listener      listener
-     * @param isNativeClick 原生的点击事件，不处理Dialog的关闭
+     * @param str             button name
+     * @param onClickListener onClickListener
+     * @param isNativeClick   原生的点击事件，不处理Dialog的关闭
      * @return this
      */
-    public SimpleDialog setPositiveButton(CharSequence str, View.OnClickListener listener, boolean isNativeClick) {
+    public SimpleDialog setPositiveButton(CharSequence str, View.OnClickListener onClickListener
+            , boolean isNativeClick) {
+        return setPositiveButton(str, Color.BLACK, onClickListener, isNativeClick);
+    }
+
+    /**
+     * 按钮点击事件：肯定的积极的
+     *
+     * @param str             button name
+     * @param onClickListener onClickListener
+     * @param isNativeClick   原生的点击事件，不处理Dialog的关闭
+     * @return this
+     */
+    public SimpleDialog setPositiveButton(CharSequence str, @ColorInt int color, View.OnClickListener onClickListener
+            , boolean isNativeClick) {
         if (isSetNewView) {//已经不存在这个按钮
             throw new RuntimeException("Already there is no this button!");
         }
         if (!TextUtils.isEmpty(str)) {
             mBtnPositive.setText(str);
         }
-        ((ViewGroup) mBtnPositive.getParent()).setVisibility(View.VISIBLE);
+        mBtnPositive.setTextColor(color);
         mBtnPositive.setVisibility(View.VISIBLE);
+        llOperate.setVisibility(View.VISIBLE);
         if (isNativeClick) {//原生的点击事件，不处理Dialog的关闭
-            if (listener != null) {
-                mBtnPositive.setOnClickListener(listener);
+            if (onClickListener != null) {
+                mBtnPositive.setOnClickListener(onClickListener);
             }
         } else {
-            mBtnPositive.setOnClickListener(new MyOnClickListener(listener));
+            mBtnPositive.setOnClickListener(new MyOnClickListener(onClickListener));
+        }
+        return this;
+    }
+
+    /**
+     * 按钮点击事件：下一步
+     *
+     * @return this
+     */
+    public SimpleDialog setNextButton() {
+        return setNextButton(null, null);
+    }
+
+    /**
+     * 按钮点击事件：下一步
+     *
+     * @param onClickListener onClickListener
+     * @return this
+     */
+    public SimpleDialog setNextButton(View.OnClickListener onClickListener) {
+        return setNextButton(null, onClickListener);
+    }
+
+    /**
+     * 按钮点击事件：下一步
+     *
+     * @param stringRes       button name
+     * @param onClickListener onClickListener
+     * @return this
+     */
+    public SimpleDialog setNextButton(@StringRes int stringRes, View.OnClickListener onClickListener) {
+        return setNextButton(stringRes, onClickListener, false);
+    }
+
+    /**
+     * 按钮点击事件：下一步
+     *
+     * @param str             button name
+     * @param onClickListener onClickListener
+     * @return this
+     */
+    public SimpleDialog setNextButton(CharSequence str, View.OnClickListener onClickListener) {
+        return setNextButton(str, onClickListener, false);
+    }
+
+    /**
+     * 按钮点击事件：下一步
+     *
+     * @param stringRes       button name
+     * @param onClickListener onClickListener
+     * @return this
+     */
+    public SimpleDialog setNextButton(@StringRes int stringRes, View.OnClickListener onClickListener
+            , boolean isNativeClick) {
+        return setNextButton(getContext().getResources().getString(stringRes), onClickListener, isNativeClick);
+    }
+
+    /**
+     * 按钮点击事件：下一步
+     *
+     * @param str             button name
+     * @param onClickListener onClickListener
+     * @param isNativeClick   原生的点击事件，不处理Dialog的关闭
+     * @return this
+     */
+    public SimpleDialog setNextButton(CharSequence str, View.OnClickListener onClickListener
+            , boolean isNativeClick) {
+        return setNextButton(str, Color.BLACK, onClickListener, isNativeClick);
+    }
+
+    /**
+     * 按钮点击事件：下一步
+     *
+     * @param str             button name
+     * @param onClickListener onClickListener
+     * @param isNativeClick   原生的点击事件，不处理Dialog的关闭
+     * @return this
+     */
+    public SimpleDialog setNextButton(CharSequence str, @ColorInt int color, View.OnClickListener onClickListener
+            , boolean isNativeClick) {
+        if (isSetNewView) {//已经不存在这个按钮
+            throw new RuntimeException("Already there is no this button!");
+        }
+        if (!TextUtils.isEmpty(str)) {
+            mBtnNext.setText(str);
+        }
+        mBtnNext.setTextColor(color);
+
+        llOperate.setVisibility(View.VISIBLE);
+        mBtnNext.setVisibility(View.VISIBLE);
+
+        if (isNativeClick) {//原生的点击事件，不处理Dialog的关闭
+            if (onClickListener != null) {
+                mBtnNext.setOnClickListener(onClickListener);
+            }
+        } else {
+            mBtnNext.setOnClickListener(new MyOnClickListener(onClickListener));
         }
         return this;
     }
@@ -416,7 +548,10 @@ public class SimpleDialog extends Dialog {
      * @return this
      */
     public SimpleDialog setGravity(int gravity) {
-        getWindow().setGravity(gravity);
+        Window window = getWindow();
+        if (window != null) {
+            window.setGravity(gravity);
+        }
         return this;
     }
 
@@ -427,20 +562,23 @@ public class SimpleDialog extends Dialog {
      * @return this
      */
     public SimpleDialog setAnimations(int animations) {
-        getWindow().setWindowAnimations(animations);
+        Window window = getWindow();
+        if (window != null) {
+            window.setWindowAnimations(animations);
+        }
         return this;
     }
 
     /**
      * 加载数据的对话框关闭回调接口
      *
-     * @param listener   回调接口
-     * @param noOverride 为了不重写父类的方法
+     * @param onClickListener 回调接口
+     * @param noOverride      为了不重写父类的方法
      * @return this
      */
-    public SimpleDialog setOnDismissListener(OnDismissListener listener, int noOverride) {
-        if (listener != null) {
-            setOnDismissListener(listener);
+    public SimpleDialog setOnDismissListener(OnDismissListener onClickListener, int noOverride) {
+        if (onClickListener != null) {
+            setOnDismissListener(onClickListener);
         }
         return this;
     }
@@ -466,18 +604,18 @@ public class SimpleDialog extends Dialog {
     /**
      * 点击事件监听器
      */
-    class MyOnClickListener implements View.OnClickListener {
-        View.OnClickListener listener;
+    private class MyOnClickListener implements View.OnClickListener {
+        View.OnClickListener onClickListener;
 
-        public MyOnClickListener(View.OnClickListener listener) {
-            this.listener = listener;
+        public MyOnClickListener(View.OnClickListener onClickListener) {
+            this.onClickListener = onClickListener;
         }
 
         @Override
         public void onClick(View view) {
             SimpleDialog.this.dismiss();
-            if (listener != null) {
-                listener.onClick(view);
+            if (onClickListener != null) {
+                onClickListener.onClick(view);
             }
         }
     }
@@ -556,11 +694,7 @@ public class SimpleDialog extends Dialog {
     public static boolean isEmpty(int[] obj) {
         boolean isEmpty = true;
         if (obj != null) {
-            if (obj.length > 0) {
-                isEmpty = false;
-            } else {
-                isEmpty = true;
-            }
+            isEmpty = obj.length <= 0;
         }
         return isEmpty;
     }

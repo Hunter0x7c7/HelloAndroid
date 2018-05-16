@@ -52,6 +52,7 @@ import com.hunter.helloandroid.module.rx_android.RxAndroidTestActivity;
 import com.hunter.helloandroid.module.scan.android_zxinglibrary.MainZxingActivity;
 import com.hunter.helloandroid.module.sort.ContactActivity;
 import com.hunter.helloandroid.module.swipe_refresh.SwipeRefreshActivity;
+import com.hunter.helloandroid.module.update.UpdateActivity;
 import com.hunter.helloandroid.module.view.ViewActivity;
 import com.hunter.helloandroid.module.win_manager.WinManagerActivity;
 import com.hunter.helloandroid.util.PermissionUtil;
@@ -82,12 +83,22 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.btn_on_touch).setOnTouchListener(this);
     }
 
+    public void onClickUpdate(View view) {
+        startActivity(new Intent(this, UpdateActivity.class));
+    }
+
+    public void onClickBle(View view) {
+        startActivity(new Intent(this, com.hunter.helloandroid.module.ble.MainActivity.class));
+    }
+
     public void onClickLightPrint(View view) {
         startActivity(new Intent(this, LightPrintActivity.class));
     }
+
     public void onClickCustomView(View view) {
         startActivity(new Intent(this, CustomViewActivity.class));
     }
+
     public void onClickCoordinator(View view) {
         startActivity(new Intent(this, CoordinatorMainActivity.class));
     }
