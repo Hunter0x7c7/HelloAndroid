@@ -198,8 +198,14 @@ public class CustomViewActivity extends AppCompatActivity {
         return path;
     }
 
-
     public void onClickHexagon(View view) {
         startActivity(new Intent(this, HexgonActivity.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+
 }

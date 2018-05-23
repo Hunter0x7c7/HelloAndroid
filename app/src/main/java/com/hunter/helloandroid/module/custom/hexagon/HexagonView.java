@@ -142,7 +142,8 @@ public class HexagonView extends View {
             case MotionEvent.ACTION_DOWN: {
                 if (isInHexagon(mPath, point)) {
                     mAlpha = 150;
-                    listener.onClick(getMX(), getMY());
+                    if (listener != null)
+                        listener.onClick(getMX(), getMY());
                     invalidate();
                 }
                 break;

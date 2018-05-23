@@ -102,27 +102,41 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_rotate" />
 
-    <com.hunter.helloandroid.module.custom.group.PathGroup
+    <com.hunter.helloandroid.module.custom.group.PathMotionParent
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp">
 
-        <TextView
+        <com.hunter.helloandroid.module.custom.group.PathCircle
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="按钮4"
-            android:textColor="#000fff"
-            android:textSize="14sp" />
+            android:background="#f0548f" />
 
-        <Button
+        <com.hunter.helloandroid.module.custom.group.PathCircleLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="按钮1"
-            android:textColor="#000fff"
-            android:textSize="14sp" />
+            android:background="#f058f4">
 
-    </com.hunter.helloandroid.module.custom.group.PathGroup>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123" />
+        </com.hunter.helloandroid.module.custom.group.PathCircleLayout>
+
+        <com.hunter.helloandroid.module.custom.group.PathCircleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#f058f4">
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:background="#f48f05"
+                android:text="456" />
+        </com.hunter.helloandroid.module.custom.group.PathCircleLayout>
+
+    </com.hunter.helloandroid.module.custom.group.PathMotionParent>
 
     <com.hunter.helloandroid.module.custom.path_matrix.PathMatrixView
         android:layout_width="100dp"

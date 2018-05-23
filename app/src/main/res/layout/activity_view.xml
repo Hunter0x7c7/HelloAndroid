@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.hunter.helloandroid.module.view.RotateButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="RotateButton" />
-
     <com.hunter.helloandroid.view.TimerShaftView
         android:id="@+id/tsv_timershaft"
         android:layout_width="match_parent"
@@ -57,6 +52,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <com.hunter.helloandroid.module.view.RotateButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RotateButton" />
 
             <LinearLayout
                 android:layout_width="match_parent"

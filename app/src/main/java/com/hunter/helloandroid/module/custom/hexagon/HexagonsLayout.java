@@ -143,6 +143,7 @@ public class HexagonsLayout extends ViewGroup implements HexagonView.onClickHVLi
 
     @Override
     public void onClick(int x, int y) {
-        listener.onClickItem(x, y);
+        if (listener != null)
+            listener.onClickItem(x, y);
     }
 }
