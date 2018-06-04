@@ -54,6 +54,7 @@ import com.hunter.helloandroid.module.sort.ContactActivity;
 import com.hunter.helloandroid.module.swipe_refresh.SwipeRefreshActivity;
 import com.hunter.helloandroid.module.update.UpdateActivity;
 import com.hunter.helloandroid.module.view.ViewActivity;
+import com.hunter.helloandroid.module.web_js.WebActivity;
 import com.hunter.helloandroid.module.win_manager.WinManagerActivity;
 import com.hunter.helloandroid.util.PermissionUtil;
 import com.hunter.helloandroid.util.ToastUtil;
@@ -81,6 +82,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.btn_on_touch).setOnTouchListener(this);
+    }
+
+    public void onClickWebJs(View view) {
+        startActivity(new Intent(this, WebActivity.class));
     }
 
     public void onClickUpdate(View view) {

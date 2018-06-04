@@ -44,7 +44,7 @@
 
     <!--旋转的圆形图片-->
     <declare-styleable name="MusicPlayerView">
-        <attr name="cover" format="integer"/>
+        <attr name="cover" format="integer" />
     </declare-styleable>
     <!--旋转的圆形图片-->
     <declare-styleable name="RotateCircleImageView">
@@ -57,11 +57,29 @@
     </declare-styleable>
 
     <declare-styleable name="HexagonView">
-        <attr name="x" format="integer"/>
-        <attr name="y" format="integer"/>
-        <attr name="viewColor" format="color"/>
-        <attr name="hvtext" format="string"/>
-        <attr name="hvtextSize" format="dimension"/>
-        <attr name="hvtextColor" format="color"/>
+        <attr name="x" format="integer" />
+        <attr name="y" format="integer" />
+        <attr name="viewColor" format="color" />
+        <attr name="hvtext" format="string" />
+        <attr name="hvtextSize" format="dimension" />
+        <attr name="hvtextColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="FlyLine">
+        <attr name="startX" format="dimension" />
+        <attr name="startY" format="dimension" />
+        <attr name="stopX" format="dimension" />
+        <attr name="stopY" format="dimension" />
+        <!-- 50%,20%-->
+        <attr name="startPoint" format="string" />
+        <attr name="stopPoint" format="string" />
+        <!--color-->
+        <attr name="lineColor" format="color" />
+        <attr name="pointColor" format="color" />
+        <!--Name-->
+        <attr name="pointName" format="string|reference" />
+        <attr name="nameSize" format="dimension" />
+    </declare-styleable>
+
+
 </resources>

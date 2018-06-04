@@ -11,6 +11,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onClickWebJs"
+            android:text="WebJs"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="onClickUpdate"
             android:text="Update"
             android:textAllCaps="false" />

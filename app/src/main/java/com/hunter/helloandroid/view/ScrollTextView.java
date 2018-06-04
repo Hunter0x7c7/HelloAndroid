@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -80,7 +81,7 @@ public class ScrollTextView extends ViewGroup {
         mIndex = -1;
         mPosition = -1;
         mPackedViews = -1;
-        mViews = new HashMap< >();
+        mViews = new HashMap<>();
 
         setFocusable(true);
         setFocusableInTouchMode(true);
@@ -125,12 +126,7 @@ public class ScrollTextView extends ViewGroup {
         public void run() {
 
             while (enabled) {
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                SystemClock.sleep(2000);
                 setNextView();
                 enabled = mIndex + 1 < mAdapter.getCount();
             }
@@ -161,7 +157,7 @@ public class ScrollTextView extends ViewGroup {
                 data = new String[]{text};
             }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter< >(getContext(), R.layout.scroll_text_view, data);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.scroll_text_view, data);
             setAdapter(adapter);
             flag = false;
         }

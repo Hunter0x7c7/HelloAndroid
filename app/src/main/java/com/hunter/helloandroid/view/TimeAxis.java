@@ -412,7 +412,6 @@ public class TimeAxis extends View {
         private String mTime;
 
         public TimeAlgorithm(String _mTime) {
-            // TODO Auto-generated constructor stub
             mTime = _mTime;
         }
 

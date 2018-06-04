@@ -133,7 +133,7 @@ public class BlurredLayout extends FrameLayout {
         ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(mRenderScript, Element.U8_4(mRenderScript));
         script.setRadius(radius);
         script.setInput(input);
-        script.forEach(output); // FIXME: the most expensive command
+        script.forEach(output);
         output.copyTo(blurred);
 
         canvas.drawBitmap(blurred, rect.left, rect.top, BITMAP_PAINT);

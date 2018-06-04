@@ -17,6 +17,9 @@ import com.hunter.helloandroid.module.custom.path.AnimatorPath.AnimatorPath;
 import com.hunter.helloandroid.module.custom.path.AnimatorPath.PathEvaluator;
 import com.hunter.helloandroid.module.custom.path.AnimatorPath.PathPoint;
 import com.hunter.helloandroid.module.custom.path.PathView;
+import com.hunter.helloandroid.module.custom.path.SvgPathParser;
+
+import java.text.ParseException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -200,6 +203,33 @@ public class CustomViewActivity extends AppCompatActivity {
 
     public void onClickHexagon(View view) {
         startActivity(new Intent(this, HexgonActivity.class));
+    }
+
+    public void onClickSVG(View view) throws ParseException {
+        SvgPathParser svgPathParser = new SvgPathParser();
+        String pathStr = "M 495.00,0.00\n" +
+                "           C 495.00,0.00 495.00,417.00 495.00,417.00\n" +
+                "             495.00,417.00 0.00,417.00 0.00,417.00\n" +
+                "             0.00,417.00 0.00,0.00 0.00,0.00\n" +
+                "             0.00,0.00 495.00,0.00 495.00,0.00 Z\n" +
+                "           M 81.18,219.39\n" +
+                "           C 75.28,224.66 73.26,233.55 71.61,241.00\n" +
+                "             68.81,256.26 68.66,271.70 71.61,287.00\n" +
+                "             72.76,294.37 74.47,301.98 79.68,307.70\n" +
+                "             85.29,313.85 91.52,314.81 99.00,316.73\n" +
+                "             99.00,316.73 126.00,321.96 126.00,321.96\n" +
+                "             126.00,321.96 134.00,321.96 134.00,321.96\n" +
+                "             134.00,321.96 144.00,323.00 144.00,323.00\n" +
+                "             156.04,323.14 168.13,322.58 180.00,320.39\n" +
+                "             187.27,319.04 193.58,317.17 198.20,310.91\n" +
+                "             202.27,305.40 200.54,300.30 201.28,294.00\n" +
+                "             201.28,294.00 202.00,244.00 202.00,244.00\n" +
+                "             201.98,234.15 201.61,228.06 192.91,221.85\n" +
+                "             187.58,218.04 176.56,216.51 170.00,215.41\n" +
+                "             153.07,212.57 126.99,210.70 110.00,212.28\n" +
+                "             101.11,213.56 88.05,213.25 81.18,219.39 Z";
+        Path parsePath = svgPathParser.parsePath(pathStr);
+        System.out.println(".........parsePath:" + parsePath);
     }
 
     @Override

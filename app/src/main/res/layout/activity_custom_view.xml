@@ -100,13 +100,15 @@
     <com.hunter.helloandroid.module.custom.path.DynamicHeartView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll_rotate" />
+        android:layout_below="@id/ll_rotate"
+        android:layout_marginTop="-100dp" />
 
     <com.hunter.helloandroid.module.custom.group.PathMotionParent
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp">
+        android:layout_marginTop="200dp"
+        android:visibility="gone">
 
         <com.hunter.helloandroid.module.custom.group.PathCircle
             android:layout_width="wrap_content"
@@ -139,15 +141,134 @@
     </com.hunter.helloandroid.module.custom.group.PathMotionParent>
 
     <com.hunter.helloandroid.module.custom.path_matrix.PathMatrixView
+        android:id="@+id/pmv_path"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerInParent="true" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/pmv_path"
+        android:visibility="gone">
+
+        <com.hunter.helloandroid.module.custom.BezierView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            app:startPoint="15%,88.5%"
+            app:stopPoint="95%,13%" />
+
+        <com.hunter.helloandroid.module.custom.BezierView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            app:startPoint="95%,88.5%"
+            app:stopPoint="15%,13%" />
+
+        <com.hunter.helloandroid.module.custom.BezierView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:startPoint="15%,18.5%"
+            app:stopPoint="95%,83%" />
+
+        <com.hunter.helloandroid.module.custom.BezierView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:lineColor="#ff00ddff"
+            app:pointColor="#4ACC68"
+            app:pointName="长春"
+            app:startPoint="95%,18.5%"
+            app:stopPoint="15%,83%" />
+
+    </RelativeLayout>
+
+    <com.hunter.helloandroid.module.custom.FlyLineLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/pmv_path"
+        app:startPoint="44.5%,28.5%">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123"
+            app:startPoint="44.5%,28.5%"
+            app:stopPoint="28%,40%" />
+
+        <com.hunter.helloandroid.module.custom.FlyLineView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:lineColor="#ff00ddff"
+            app:pointColor="@color/colorAccent"
+            app:pointName="新疆"
+            app:startPoint="24.5%,28.5%"
+            app:stopPoint="2%,4%" />
+
+        <com.hunter.helloandroid.module.custom.FlyLineView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:lineColor="#ff00ddff"
+            app:pointColor="@color/colorAccent"
+            app:pointName="长春"
+            app:startPoint="24.5%,28.5%"
+            app:stopPoint="38%,8%" />
+
+        <com.hunter.helloandroid.module.custom.FlyLineView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:lineColor="#ff00ddff"
+            app:pointColor="@color/colorAccent"
+            app:pointName="广州"
+            app:startPoint="24.5%,28.5%"
+            app:stopPoint="2%,37%" />
+
+        <com.hunter.helloandroid.module.custom.FlyLineView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lineColor="#ff00ddff"
+            app:pointColor="#4ACC68"
+            app:pointName="台湾"
+            app:startPoint="24.5%,28.5%"
+            app:stopPoint="64.5%,68.5%">
+
+
+        </com.hunter.helloandroid.module.custom.FlyLineView>
+    </com.hunter.helloandroid.module.custom.FlyLineLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/ll_rotate"
+        android:layout_marginTop="-130dp"
         android:onClick="onClickHexagon"
         android:text="Hexagon"
         android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_rotate"
+        android:onClick="onClickSVG"
+        android:text="svg" />
+
+    <com.hunter.helloandroid.module.custom.path.PathStringView
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="match_parent" />
+
+    <com.hunter.helloandroid.module.custom.path.PathCopy
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
