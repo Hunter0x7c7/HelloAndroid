@@ -1,17 +1,15 @@
 package com.hunter.helloandroid.module.custom.path;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import com.hunter.helloandroid.view.CircleView;
+import com.hunter.panorama.util.DensityUtil;
 
 
 /**
@@ -49,30 +47,22 @@ public class PathCopy extends ViewGroup {
         init();
     }
 
+
+    private Path mPath = new Path();
+    private PathMeasure mPathMeasure;
+    private int mDipSize, mInterval;
+    private float[] mPosition = new float[2];
+
+    private void init() {
+        mInterval = DensityUtil.dip2px(getContext(), 6);
+        mDipSize = DensityUtil.dip2px(getContext(), 4);
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
 
-        if (getChildCount() <= 0) {
-            return;
-        }
-        View child = getChildAt(0);
-//        removeAllViews();
-        float length = mPathMeasure.getLength();
-        int width = child.getWidth();
-        float count = length / (width + mInterval);
-
-        if (child instanceof Serializable) {
-
-            Serializable serializable = deepCopy((Serializable) child);
-            System.out.println(".............serializable:" + serializable);
-        }
-
-    }
-
-    private void init() {
-        mPath = new Path();
-        mPathMeasure = new PathMeasure(mPath, false);
+//        setPath(initPath());
     }
 
     @Override
@@ -81,33 +71,63 @@ public class PathCopy extends ViewGroup {
         if (count <= 0) {
             return;
         }
-        View child = getChildAt(0);
-        child.layout(l, t, r, b);
+        float length = mPathMeasure.getLength();
+        for (int i = 0; i < count; i++) {
 
-    }
+            float distance = length * (i * 100f / count) / 100f;
+            mPathMeasure.getPosTan(distance, mPosition, null);
 
-    private Path mPath;
-    private PathMeasure mPathMeasure;
-    private int mInterval;
-
-    /**
-     * 深度复制集合
-     */
-    public static <T extends Serializable> T deepCopy(T obj) {
-        T result = null;
-        try {
-            ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-            ObjectOutputStream out = new ObjectOutputStream(byteOut);
-            out.writeObject(obj);
-
-            ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
-            ObjectInputStream in = new ObjectInputStream(byteIn);
-            result = (T) in.readObject();
-        } catch (Exception e) {
-            e.printStackTrace();
+            View child = getChildAt(i);
+            int left = (int) mPosition[0];
+            int top = (int) mPosition[1];
+            int right = left + mDipSize;
+            int bottom = top + mDipSize;
+            child.layout(left, top, right, bottom);
         }
-        return result;
+
     }
 
+
+    private void initChildView() {
+        float length = mPathMeasure.getLength();
+        float count = length / (mDipSize + mInterval);
+
+        removeAllViews();
+        CircleView circleView;
+        for (int i = 0; i < count; i++) {
+            circleView = new CircleView(getContext());
+            circleView.setColor(Color.BLUE);
+            circleView.setLayoutParams(new LayoutParams(mDipSize, mDipSize));
+            addView(circleView);
+        }
+    }
+
+    public int getInterval() {
+        return mInterval;
+    }
+
+    public void setInterval(int mInterval) {
+        this.mInterval = mInterval;
+    }
+
+    public int getDipSize() {
+        return mDipSize;
+    }
+
+    public void setDipSize(int mDipSize) {
+        this.mDipSize = mDipSize;
+    }
+
+    public Path getPath() {
+        return mPath;
+    }
+
+    public void setPath(Path mPath) {
+        this.mPath = mPath;
+        mPathMeasure = new PathMeasure(mPath, false);
+        initChildView();
+    }
+
+//    public   Path initPath();
 
 }

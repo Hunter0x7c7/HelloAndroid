@@ -321,6 +321,11 @@ public class BezierView extends View {
         return path;
     }
 
+    public Path getPath() {
+        return mPath;
+    }
+
+
     private PointF getContorlPoint(PointF startPoint, PointF stopPoint) {
         PointF result = new PointF();
         if (startPoint != null && stopPoint != null) {

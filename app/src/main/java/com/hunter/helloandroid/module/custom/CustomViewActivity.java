@@ -16,6 +16,7 @@ import com.hunter.helloandroid.module.custom.hexagon.HexgonActivity;
 import com.hunter.helloandroid.module.custom.path.AnimatorPath.AnimatorPath;
 import com.hunter.helloandroid.module.custom.path.AnimatorPath.PathEvaluator;
 import com.hunter.helloandroid.module.custom.path.AnimatorPath.PathPoint;
+import com.hunter.helloandroid.module.custom.path.PathCopy;
 import com.hunter.helloandroid.module.custom.path.PathView;
 import com.hunter.helloandroid.module.custom.path.SvgPathParser;
 
@@ -76,7 +77,7 @@ public class CustomViewActivity extends AppCompatActivity {
                 startAnimator(fab, mPathView.getPath());
             }
         });
-
+        initPathCopy();
     }
 
 
@@ -144,6 +145,7 @@ public class CustomViewActivity extends AppCompatActivity {
     /**
      * 给个路径（path）我送你个动画
      */
+    @SuppressWarnings("all")
     private void startAnimator(View mView, Path path) {
         //mView 用来执行动画的View
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mView, View.X, View.Y, path);
@@ -235,6 +237,15 @@ public class CustomViewActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @BindView(R.id.flv_fly_line)
+    FlyLineView mFlyLineView;
+    @BindView(R.id.pc_path_copy)
+    PathCopy mPathCopy;
+
+    private void initPathCopy() {
+        mPathCopy.setPath(mPathView.getPath());
     }
 
 

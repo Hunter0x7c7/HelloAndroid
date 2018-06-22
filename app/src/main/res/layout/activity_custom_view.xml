@@ -231,6 +231,7 @@
             app:stopPoint="2%,37%" />
 
         <com.hunter.helloandroid.module.custom.FlyLineView
+            android:id="@+id/flv_fly_line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:lineColor="#ff00ddff"
@@ -238,8 +239,6 @@
             app:pointName="台湾"
             app:startPoint="24.5%,28.5%"
             app:stopPoint="64.5%,68.5%">
-
-
         </com.hunter.helloandroid.module.custom.FlyLineView>
     </com.hunter.helloandroid.module.custom.FlyLineLayout>
 
@@ -261,14 +260,15 @@
 
     <com.hunter.helloandroid.module.custom.path.PathStringView
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="match_parent" />
+        android:layout_marginRight="10dp" />
 
     <com.hunter.helloandroid.module.custom.path.PathCopy
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/pc_path_copy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.hunter.helloandroid.module.custom;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Path;
 import android.graphics.PointF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -127,7 +128,6 @@ public class FlyLineView extends ViewGroup implements FlyLineLayout.FlyLine {
 //            } else {
 //            }
             setMeasuredDimension(widthSize, heightSize);
-            System.out.println("............minWidth:" + getMinimumWidth() + " minHeight:" + getMinimumHeight());
         }
     }
 
@@ -143,11 +143,12 @@ public class FlyLineView extends ViewGroup implements FlyLineLayout.FlyLine {
         float left = Math.min(startPoint.x, stopPoint.x);
         float top = Math.min(startPoint.y, stopPoint.y);
 
-        System.out.println("...........onSizeChanged....left:" + left + " top:" + top
-                + " parentWidth:" + parentWidth + " parentHeight:" + parentHeight);
-
         mBezierView.setStartPoint(new PointF(startPoint.x - left, startPoint.y - top));
         mBezierView.setStopPoint(new PointF(stopPoint.x - left, stopPoint.y - top));
+    }
+
+    public Path getPath() {
+        return mBezierView.getPath();
     }
 
     public PointF getBezierSize(PointF point1, PointF point2) {
