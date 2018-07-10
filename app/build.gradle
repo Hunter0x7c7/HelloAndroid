@@ -97,7 +97,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
-//    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 //    compile 'com.google.android.gms:play-services-maps:9.6.1'
 //    compile 'com.android.support:cardview-v7:24.+'
 //    compile 'com.android.support:gridlayout-v7:24.+'
@@ -106,6 +106,9 @@ dependencies {
 
 //    compile 'com.squareup.picasso:picasso:2.71828'//图片加载工具
 //    compile 'com.squareup.okhttp3:okhttp:3.10.0'
+
+    //NineOldAndroids动画兼容库
+    compile 'com.nineoldandroids:library:2.4.0'
 
 }
 

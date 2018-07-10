@@ -32,8 +32,10 @@ import com.hunter.dialog.SimpleDialog;
 import com.hunter.helloandroid.R;
 import com.hunter.helloandroid.module.add_view_anim.AddViewAnimActivity;
 import com.hunter.helloandroid.module.beam_mvp.ui.BeamMvpLoginActivity;
-import com.hunter.helloandroid.module.coordinator.main.CoordinatorMainActivity;
+import com.hunter.helloandroid.module.ble.BleActivity;
+import com.hunter.helloandroid.module.coordinator.main.CoordinatorActivity;
 import com.hunter.helloandroid.module.custom.CustomViewActivity;
+import com.hunter.helloandroid.module.drawable.DrawableActivity;
 import com.hunter.helloandroid.module.four.FourViewActivity;
 import com.hunter.helloandroid.module.gradient.GradientActivity;
 import com.hunter.helloandroid.module.light.LightPrintActivity;
@@ -84,6 +86,10 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.btn_on_touch).setOnTouchListener(this);
     }
 
+    public void onClickDrawable(View view) {
+        startActivity(new Intent(this, DrawableActivity.class));
+    }
+
     public void onClickWebJs(View view) {
         startActivity(new Intent(this, WebActivity.class));
     }
@@ -93,7 +99,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onClickBle(View view) {
-        startActivity(new Intent(this, com.hunter.helloandroid.module.ble.MainActivity.class));
+        startActivity(new Intent(this, BleActivity.class));
     }
 
     public void onClickLightPrint(View view) {
@@ -105,7 +111,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onClickCoordinator(View view) {
-        startActivity(new Intent(this, CoordinatorMainActivity.class));
+        startActivity(new Intent(this, CoordinatorActivity.class));
     }
 
     public void onClickEncrypt(View view) {

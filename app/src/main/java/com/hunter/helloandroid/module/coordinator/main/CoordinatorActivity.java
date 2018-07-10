@@ -15,6 +15,7 @@ import com.hunter.helloandroid.R;
 import com.hunter.helloandroid.module.coordinator.alipay.AlipayActivity;
 import com.hunter.helloandroid.module.coordinator.splash.SplashActivity;
 import com.hunter.helloandroid.module.coordinator.userinfo.UserInfoActivity;
+import com.hunter.helloandroid.module.drawer.DrawerActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,7 +39,7 @@ import butterknife.OnClick;
  * <p>
  * ================================================================
  */
-public class CoordinatorMainActivity extends AppCompatActivity {
+public class CoordinatorActivity extends AppCompatActivity {
 
 
     @BindView(R.id.main_tb_toolbar)
@@ -51,7 +52,7 @@ public class CoordinatorMainActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coordinator_main);
+        setContentView(R.layout.activity_coordinator);
 
         initView();
     }
@@ -69,6 +70,11 @@ public class CoordinatorMainActivity extends AppCompatActivity {
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    @OnClick(R.id.btn_drawer)
+    void onClickDrawer() {
+        startActivity(new Intent(this, DrawerActivity.class));
     }
 
     @OnClick(R.id.btn_alipay_activity)

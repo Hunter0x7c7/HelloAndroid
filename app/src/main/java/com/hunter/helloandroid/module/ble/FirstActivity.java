@@ -33,7 +33,7 @@ public class FirstActivity extends Activity {
 		buttonBLETransimit.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(FirstActivity.this, MainActivity.class);
+				Intent intent = new Intent(FirstActivity.this, BleActivity.class);
 				startActivity(intent);
 			}
 		});

@@ -34,7 +34,7 @@ import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.util.Date;
 
-public class MainActivity extends Activity {
+public class BleActivity extends Activity {
     private Handler handler = new Handler();// 创建一个handler对象
 
     private static final int REQUEST_ENABLE_BT = 2;
@@ -163,7 +163,7 @@ public class MainActivity extends Activity {
                          * 当"scan"按钮点击后，进入DeviceListActivity.class类，弹出该类对应的窗口
                          * ，并自动在窗口内搜索周围的蓝牙设备
                          */
-                        Intent newIntent = new Intent(MainActivity.this, DeviceListActivity.class);
+                        Intent newIntent = new Intent(BleActivity.this, DeviceListActivity.class);
                         startActivityForResult(newIntent, REQUEST_SELECT_DEVICE);
                     } else {
                         /**

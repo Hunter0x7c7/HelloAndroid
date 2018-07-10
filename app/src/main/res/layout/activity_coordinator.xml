@@ -54,6 +54,14 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btn_drawer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="DrawerActivity"
+                android:textAllCaps="false" />
+
+            <Button
                 android:id="@+id/btn_alipay_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

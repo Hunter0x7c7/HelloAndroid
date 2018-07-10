@@ -13,4 +13,7 @@
     <string name="select_device">选择设备</string>
     <string name="scanning">搜索中...</string>
 
+    <string name="drawer_open" translatable="false">open</string>
+    <string name="drawer_close" translatable="false">close</string>
+
 </resources>

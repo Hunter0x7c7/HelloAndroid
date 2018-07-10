@@ -130,7 +130,7 @@
             android:label="加解密"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".module.coordinator.main.CoordinatorMainActivity"
+            android:name=".module.coordinator.main.CoordinatorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
@@ -168,7 +168,7 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" />
         <activity
-            android:name=".module.ble.MainActivity"
+            android:name=".module.ble.BleActivity"
             android:screenOrientation="portrait" />
 
         <service
@@ -181,6 +181,14 @@
         <activity
             android:name=".module.web_js.WebActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.drawable.DrawableActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.drawer.DrawerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
+
     </application>
 
 </manifest>

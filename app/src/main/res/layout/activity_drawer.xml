@@ -1,0 +1,33 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dl_drawerlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 主布局 -->
+    <LinearLayout
+        android:id="@+id/ll_content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- toolbar -->
+        <include layout="@layout/main_toolbar" />
+        <!-- 内容界面 -->
+        <include layout="@layout/main_content" />
+    </LinearLayout>
+
+    <!-- 侧滑菜单内容 -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nv_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:tag="LEFT">
+        <!--app:menu="@menu/menu_drawer"-->
+        <!--app:headerLayout="@layout/drawer_header"-->
+
+        <include layout="@layout/main_drawer" />
+    </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>
