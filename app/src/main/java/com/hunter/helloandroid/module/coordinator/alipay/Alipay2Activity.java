@@ -95,7 +95,6 @@ public class Alipay2Activity extends AppCompatActivity implements AppBarLayout.O
     }
 
 
-
     @OnClick({R.id.ll_scan, R.id.iv_scan})
     void onClickScan() {
         ToastUtil.showPrompt("........scan........");
