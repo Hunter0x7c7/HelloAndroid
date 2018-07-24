@@ -59,6 +59,5 @@
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@+id/iv_plus"
             android:src="@mipmap/ic_contact" />
-
     </RelativeLayout>
 </RelativeLayout>

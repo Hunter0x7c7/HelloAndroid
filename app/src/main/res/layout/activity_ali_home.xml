@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <!--<com.hunter.helloandroid.module.coordinator.alipay.MyAppBarLayoutt-->
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"

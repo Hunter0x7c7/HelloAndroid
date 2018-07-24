@@ -124,7 +124,4 @@ public class Alipay2Activity extends AppCompatActivity implements AppBarLayout.O
         ToastUtil.showPrompt("........plus........");
     }
 
-
-
-
 }

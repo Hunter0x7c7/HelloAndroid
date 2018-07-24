@@ -103,6 +103,7 @@
                 android:text="卡包"
                 android:textColor="@android:color/white" />
         </LinearLayout>
+
     </LinearLayout>
 </FrameLayout>
 
