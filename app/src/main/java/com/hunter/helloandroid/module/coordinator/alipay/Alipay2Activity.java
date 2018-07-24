@@ -81,18 +81,20 @@ public class Alipay2Activity extends AppCompatActivity implements AppBarLayout.O
             toolbarOpen.setVisibility(View.VISIBLE);
             toolbarClose.setVisibility(View.GONE);
             //根据偏移百分比 计算透明值
-            float scale2 = (float) offset / topOffset;
-            bgToolbarOpen.setAlpha(1 - scale2);
+            float scale = (float) offset / topOffset;
+            bgToolbarOpen.setAlpha(1 - scale);
         } else {//当滑动超过一半，收缩状态下toolbar显示内容，根据收缩位置，改变透明值
             toolbarClose.setVisibility(View.VISIBLE);
             toolbarOpen.setVisibility(View.GONE);
-            float scale3 = (float) (maxOffset - offset) / (maxOffset - topOffset);
-            bgToolbarClose.setAlpha(1 - scale3);
+            float scale = (float) (maxOffset - offset) / (maxOffset - topOffset);
+            bgToolbarClose.setAlpha(1 - scale);
         }
         //根据偏移百分比计算扫一扫布局的透明度值
         float scale = (float) offset / maxOffset;
         bgContent.setAlpha(1 - scale);
     }
+
+
 
     @OnClick({R.id.ll_scan, R.id.iv_scan})
     void onClickScan() {
