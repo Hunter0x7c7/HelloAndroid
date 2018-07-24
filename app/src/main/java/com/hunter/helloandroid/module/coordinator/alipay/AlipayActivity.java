@@ -94,7 +94,6 @@ public class AlipayActivity extends AppCompatActivity {
         }
     }
 
-
     private void setToolbar1Alpha(int alpha) {
         try {
             mImgZhangdan.getDrawable().setAlpha(alpha);

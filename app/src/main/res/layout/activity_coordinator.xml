@@ -70,6 +70,14 @@
                 android:textAllCaps="false" />
 
             <Button
+                android:id="@+id/btn_alipay2_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Alipay2Activity"
+                android:textAllCaps="false" />
+
+            <Button
                 android:id="@+id/btn_scrolling_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

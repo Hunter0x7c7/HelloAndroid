@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.widget.LinearLayout;
 
 import com.hunter.helloandroid.R;
+import com.hunter.helloandroid.module.coordinator.alipay.Alipay2Activity;
 import com.hunter.helloandroid.module.coordinator.alipay.AlipayActivity;
 import com.hunter.helloandroid.module.coordinator.splash.SplashActivity;
 import com.hunter.helloandroid.module.coordinator.userinfo.UserInfoActivity;
@@ -80,6 +81,11 @@ public class CoordinatorActivity extends AppCompatActivity {
     @OnClick(R.id.btn_alipay_activity)
     void onClickAlipay() {
         startActivity(new Intent(this, AlipayActivity.class));
+    }
+
+    @OnClick(R.id.btn_alipay2_activity)
+    void onClickAlipay2() {
+        startActivity(new Intent(this, Alipay2Activity.class));
     }
 
     @OnClick(R.id.btn_scrolling_activity)
