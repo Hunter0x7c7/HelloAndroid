@@ -9,12 +9,12 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.hunter.acp.Acp;
+import com.hunter.acp.AcpOptions;
+import com.hunter.acp.interfaces.AcpListener;
 import com.hunter.dialog.SimpleDialog;
 import com.hunter.helloandroid.base.BaseApplication;
 import com.hunter.helloandroid.module.update.interfaces.OnPermissionListener;
-import com.mylhyl.acp.Acp;
-import com.mylhyl.acp.AcpListener;
-import com.mylhyl.acp.AcpOptions;
 
 import java.util.List;
 

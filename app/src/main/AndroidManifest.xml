@@ -192,6 +192,10 @@
             android:name=".module.drawer.DrawerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".module.coordinator.bottom_sheet.SheetActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBar" />
 
     </application>
 

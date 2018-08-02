@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!--请输入-->
+    <EditText
+        android:id="@+id/et_input"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text|textVisiblePassword"
+        android:maxLines="1"
+        android:minHeight="38dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="60dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/iv_drawable_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/et_input"
+        android:layout_alignLeft="@id/et_input"
+        android:layout_alignTop="@id/et_input"
+        android:layout_margin="8dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:id="@+id/ll_operate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/et_input"
+        android:layout_alignRight="@id/et_input"
+        android:layout_alignTop="@id/et_input"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ib_delete_input"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/btn_close_selector" />
+
+        <CheckBox
+            android:id="@+id/cb_input_visible"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1.5dp"
+            android:layout_marginLeft="-10dp"
+            android:background="@android:color/transparent"
+            android:button="@android:color/transparent"
+            android:drawableBottom="@drawable/btn_visible_selector"
+            android:paddingBottom="6dp" />
+    </LinearLayout>
+</RelativeLayout>

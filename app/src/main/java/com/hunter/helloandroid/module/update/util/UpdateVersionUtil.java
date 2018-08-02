@@ -268,8 +268,8 @@ public class UpdateVersionUtil {
 
     }
 
-    class ReturnCode {
-        public static final String SUCCESS_STR = "200";
+    private class ReturnCode {
+        static final String SUCCESS_STR = "200";
     }
 
 }

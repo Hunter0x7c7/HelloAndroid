@@ -1,0 +1,63 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_operate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="-20dp"
+                android:layout_gravity="center"
+                android:text="打开" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:paddingBottom="20dp"
+                android:paddingTop="45dp"
+                android:text="Android Support Library 23.2 推出之后，增加了几个功能，例如支持Vector Drawables 和Animated Vector Drawables；增加AppCompat DayNight 主题；Design 库中增加Bottom Sheets，RecyclerView 支持 auto-measurement，之前的wrap_content ,match_parent 都将可以发挥作用等等
+公司的App 之前使用过第三方的[BottomSheet] （https://github.com/soarcn/BottomSheet ），现在Android 有自己的BottomSheet 那还不赶紧换成原生的。然而好事多磨，Android 原生BottomSheet 资料太少，深研下去发现BottomSheet 就是个大坑！
+BottomSheet 的使用：
+BottomSheet 使用需要CoordinatorLayout作为父布局，BottomSheet 的布局作为CoordinatorLayout 的子布局，并且BottomSheetBehavior（比如加上app:layout_behavior=”android.support.design.widget.BottomSheetBehavior”）"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:paddingBottom="100dp"
+                android:paddingTop="100dp"
+                android:text="bottomSheet"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:paddingBottom="20dp"
+                android:paddingTop="45dp"
+                android:text="Android Support Library 23.2 推出之后，增加了几个功能，例如支持Vector Drawables 和Animated Vector Drawables；增加AppCompat DayNight 主题；Design 库中增加Bottom Sheets，RecyclerView 支持 auto-measurement，之前的wrap_content ,match_parent 都将可以发挥作用等等
+公司的App 之前使用过第三方的[BottomSheet] （https://github.com/soarcn/BottomSheet ），现在Android 有自己的BottomSheet 那还不赶紧换成原生的。然而好事多磨，Android 原生BottomSheet 资料太少，深研下去发现BottomSheet 就是个大坑！
+BottomSheet 的使用：
+BottomSheet 使用需要CoordinatorLayout作为父布局，BottomSheet 的布局作为CoordinatorLayout 的子布局，并且BottomSheetBehavior（比如加上app:layout_behavior=”android.support.design.widget.BottomSheetBehavior”）"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
