@@ -41,8 +41,6 @@ import com.hunter.helloandroid.module.gradient.GradientActivity;
 import com.hunter.helloandroid.module.light.LightPrintActivity;
 import com.hunter.helloandroid.module.matrix.MatrixActivity;
 import com.hunter.helloandroid.module.md5.EncryptActivity;
-import com.hunter.helloandroid.module.multi.LongAsynctask;
-import com.hunter.helloandroid.module.multi.Paramer;
 import com.hunter.helloandroid.module.multi.list.MultiListActivity;
 import com.hunter.helloandroid.module.nest_item.NestItemActivity;
 import com.hunter.helloandroid.module.operate_log.OperateLogActivity;
@@ -127,12 +125,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onClickMultiAsynctask(View view) {
-        int what = 0, value = 0;
-        for (int i = 0; i < 3; i++) {
-            what++;
-            value++;
-            new LongAsynctask().execute(new Paramer(what, value));
-        }
+//        int what = 0, value = 0;
+//        for (int i = 0; i < 3; i++) {
+//            what++;
+//            value++;
+//            new LongAsynctask().execute(new Paramer(what, value));
+//        }
 
         startActivity(new Intent(this, MultiListActivity.class));
     }

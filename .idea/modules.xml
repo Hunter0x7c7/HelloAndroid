@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CoordinateView/CoordinateView.iml" filepath="$PROJECT_DIR$/CoordinateView/CoordinateView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FlowLayout/FlowLayout.iml" filepath="$PROJECT_DIR$/FlowLayout/FlowLayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GifView/GifView.iml" filepath="$PROJECT_DIR$/GifView/GifView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HelloAndroid.iml" filepath="$PROJECT_DIR$/HelloAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PermissionACP/PermissionACP.iml" filepath="$PROJECT_DIR$/PermissionACP/PermissionACP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhotoView/PhotoView.iml" filepath="$PROJECT_DIR$/PhotoView/PhotoView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RippleLibrary/RippleLibrary.iml" filepath="$PROJECT_DIR$/RippleLibrary/RippleLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SimpleDialog/SimpleDialog.iml" filepath="$PROJECT_DIR$/SimpleDialog/SimpleDialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Snackbar/Snackbar.iml" filepath="$PROJECT_DIR$/Snackbar/Snackbar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TextLibrary/TextLibrary.iml" filepath="$PROJECT_DIR$/TextLibrary/TextLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZHImageView/ZHImageView.iml" filepath="$PROJECT_DIR$/ZHImageView/ZHImageView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>

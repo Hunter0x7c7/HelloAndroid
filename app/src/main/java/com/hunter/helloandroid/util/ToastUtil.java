@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 import com.hunter.helloandroid.base.BaseApplication;
 
-import org.xutils.common.util.DensityUtil;
 
 /**
  * ================================================================
