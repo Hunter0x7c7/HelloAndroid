@@ -2,8 +2,11 @@ package com.hunter.ripple;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
@@ -34,33 +37,47 @@ public class RippleLinearLayout extends LinearLayout {
 
     public RippleLinearLayout(Context context) {
         super(context);
-        this.initView();
+        init(null);
     }
 
     public RippleLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.initView();
+        init(attrs);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     public RippleLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.initView();
+        init(attrs);
     }
 
-    private void initView() {
-        this.setClickable(true);
-        this.mRevealPaint.setColor(268435456);
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public RippleLinearLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        init(attrs);
+    }
+
+    private void init(AttributeSet attrs) {
+        boolean clickable = true;
+        if (attrs != null) {
+            clickable = attrs.getAttributeBooleanValue("http://schemas.android.com/apk/res/android", "clickable", true);
+        }
+        this.setClickable(clickable);
+        setBackgroundColor(Color.WHITE);
+
+        this.mRevealPaint.setColor(0x10000000);
         this.mCycle = 22.0F;
         float density = this.getResources().getDisplayMetrics().density;
         this.mCycle = density * this.mCycle;
         this.mDrawFinish = true;
     }
 
+    @Override
     protected void onDraw(Canvas canvas) {
         if (this.mDrawFinish) {
             super.onDraw(canvas);
         } else {
-            canvas.drawColor(134217728);
+            canvas.drawColor(0x08000000);
             super.onDraw(canvas);
             if (this.mStepRadius != 0.0F) {
                 this.mDrawRadius += this.mStepRadius;
@@ -82,6 +99,7 @@ public class RippleLinearLayout extends LinearLayout {
         }
     }
 
+    @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         this.mRect.set(0, 0, this.getMeasuredWidth(), this.getMeasuredHeight());
@@ -96,6 +114,7 @@ public class RippleLinearLayout extends LinearLayout {
         this.mCurrentY = (float) this.mInitY;
     }
 
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
         int action = MotionEventCompat.getActionMasked(event);
         switch (action) {
@@ -134,6 +153,7 @@ public class RippleLinearLayout extends LinearLayout {
         this.invalidate();
     }
 
+    @Override
     public boolean performClick() {
         this.postDelayed(new Runnable() {
             public void run() {

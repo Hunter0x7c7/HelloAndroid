@@ -1,10 +1,11 @@
 package com.hunter.ripple;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
@@ -35,38 +36,39 @@ public class RippleRadioButton extends RadioButton {
 
     public RippleRadioButton(Context context) {
         super(context);
-        this.initView();
+        initView();
     }
 
     public RippleRadioButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.initView();
+        initView();
     }
 
     public RippleRadioButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.initView();
+        initView();
     }
 
-    @TargetApi(21)
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public RippleRadioButton(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        this.initView();
+        initView();
     }
 
     private void initView() {
-        this.mRevealPaint.setColor(268435456);
+        this.mRevealPaint.setColor(0x10000000);
         this.mCycle = 10.0F;
         float density = this.getResources().getDisplayMetrics().density;
         this.mCycle = density * this.mCycle;
         this.mDrawFinish = true;
     }
 
+    @Override
     protected void onDraw(Canvas canvas) {
         if (this.mDrawFinish) {
             super.onDraw(canvas);
         } else {
-            canvas.drawColor(134217728);
+            canvas.drawColor(0x08000000);
             super.onDraw(canvas);
             if (this.mStepRadius != 0.0F) {
                 this.mDrawRadius += this.mStepRadius;
@@ -88,6 +90,7 @@ public class RippleRadioButton extends RadioButton {
         }
     }
 
+    @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         this.mRect.set(0, 0, this.getMeasuredWidth(), this.getMeasuredHeight());
@@ -102,6 +105,7 @@ public class RippleRadioButton extends RadioButton {
         this.mCurrentY = (float) this.mInitY;
     }
 
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
         int action = MotionEventCompat.getActionMasked(event);
         switch (action) {
@@ -140,6 +144,7 @@ public class RippleRadioButton extends RadioButton {
         this.invalidate();
     }
 
+    @Override
     public boolean performClick() {
         this.postDelayed(new Runnable() {
             public void run() {

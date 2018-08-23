@@ -111,6 +111,7 @@ public class Alipay2Activity extends AppCompatActivity implements AppBarLayout.O
         float scale = (float) offset / maxOffset;
         bgContent.setAlpha(1 - scale);
     }
+//todo
     @OnClick({R.id.ll_scan, R.id.iv_scan})
     void onClickScan() {
         ToastUtil.showPrompt("........onClickScan........");
@@ -119,6 +120,7 @@ public class Alipay2Activity extends AppCompatActivity implements AppBarLayout.O
         OnPermissionListener onPermissionListener = new OnPermissionListener() {
             @Override
             public void onGranted() {
+
                 System.out.println(".......onGranted.....");
             }
 
@@ -128,6 +130,7 @@ public class Alipay2Activity extends AppCompatActivity implements AppBarLayout.O
             }
         };
         PermissionUtil.request(onPermissionListener, permissions);
+
     }
 
     @OnClick({R.id.ll_pay, R.id.iv_pay})
