@@ -46,6 +46,7 @@ dependencies {
     compile project(':RippleLibrary')
     compile project(':PermissionACP')
     compile project(':TextLibrary')
+    compile project(':WidgetLibrary')
 //    compile rootProject.ext.dependencies["appcompat-v7"]
     compile rootProject.ext.dependencies["cardview-v7"]//CardView
     compile rootProject.ext.dependencies["xutils"]//xUtils3

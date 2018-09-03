@@ -1,4 +1,4 @@
-package com.hunter.text;
+package com.hunter.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

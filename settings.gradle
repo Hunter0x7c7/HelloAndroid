@@ -1,1 +1,1 @@
-include ':app', ':PhotoView', ':SimpleDialog', ':FlowLayout', ':GifView', ':Snackbar', ':CoordinateView', ':ZHImageView', ':RippleLibrary', ':PermissionACP', ':TextLibrary'
+include ':app', ':PhotoView', ':SimpleDialog', ':FlowLayout', ':GifView', ':Snackbar', ':CoordinateView', ':ZHImageView', ':RippleLibrary', ':PermissionACP', ':TextLibrary', ':WidgetLibrary'
