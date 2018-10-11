@@ -27,8 +27,8 @@ import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.hunter.helloandroid.R;
-import com.hunter.helloandroid.base.BaseApplication;
+import com.hunter.zxingdemo.R;
+import com.hunter.zxingdemo.base.BaseApplication;
 import com.zxing.android.camera.CameraManager;
 import com.zxing.android.decoding.CaptureActivityHandler;
 import com.zxing.android.decoding.InactivityTimer;

@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 25
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]//24
         versionCode 1
         versionName "1.0"
 
@@ -28,5 +28,6 @@ dependencies {
     //    })
     //    compile 'com.android.support:appcompat-v7:25.+'
     //    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:support-v4:25.+'
+//    compile 'com.android.support:support-v4:24.+'
+    compile rootProject.ext.dependencies["appcompat-v7"]//appcompat-v7
 }

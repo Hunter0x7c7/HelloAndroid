@@ -3,7 +3,6 @@
     <string name="add_photo">添加图片</string>
     <string name="search">search</string>
     <string name="nothing_found">No cheeses found</string>
-    <string name="scan_life_msg">请将条码置于取景框内扫描。</string>
 
 
     <string name="header_scrolling_behavior">com.hunter.helloandroid.module.coordinator.main.HeaderScrollingBehavior</string>

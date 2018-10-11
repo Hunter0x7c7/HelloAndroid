@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -37,8 +38,7 @@
                         android:background="@drawable/btn_tran_gray_selector" />
                 </RelativeLayout>
 
-                <com.hunter.helloandroid.view.ZHMarqueeView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <com.hunter.helloandroid.view.ZHMarqueeView xmlns:app="http://schemas.android.com/apk/res-auto"
                     xmlns:tools="http://schemas.android.com/tools"
                     android:id="@+id/vertical_switch_textview1"
                     android:layout_width="match_parent"
@@ -56,10 +56,9 @@
                     app:mvTextSize="14sp"
                     tools:text="弘生活APP改版了" />
 
-                <com.gongwen.marqueen.MarqueeView
-                    android:id="@+id/marqueeView2"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <com.gongwen.marqueen.MarqueeView xmlns:app="http://schemas.android.com/apk/res-auto"
                     xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/marqueeView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -100,19 +99,70 @@
                 <com.hunter.helloandroid.view.StrokeTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="string/app_name" />
+                    android:text="@string/app_name" />
 
                 <WebView
                     android:id="@+id/wv_web"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <com.hunter.widget.GifView xmlns:android_gif="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="300dp"
-                    android:layout_height="182dp"
-                    android_gif:gif="@raw/timg" />
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
 
-                <include layout="@layout/item_flowlayout" />
+                    <!--<com.hunter.widget.GifView-->
+                        <!--android:id="@+id/iv_device_gif1"-->
+                        <!--android:layout_width="100dp"-->
+                        <!--android:layout_height="60dp"-->
+                        <!--android:layout_margin="10dp"-->
+                        <!--android:background="@android:color/darker_gray"-->
+                        <!--app:src_gif="@raw/gif_android" />-->
+
+                    <!--<com.hunter.widget.GifView-->
+                        <!--android:id="@+id/iv_device_gif2"-->
+                        <!--android:layout_width="100dp"-->
+                        <!--android:layout_height="60dp"-->
+                        <!--app:src_gif="@mipmap/bg_monitor" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+
+                    <!--<com.hunter.widget.GifView-->
+                        <!--android:id="@+id/iv_device_gif3"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_margin="10dp"-->
+                        <!--android:background="@android:color/darker_gray"-->
+                        <!--app:src_gif="@raw/gif_android" />-->
+
+                    <!--<com.hunter.widget.GifView-->
+                        <!--android:id="@+id/iv_device_gif4"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--app:src_gif="@mipmap/bg_monitor" />-->
+                <!--</LinearLayout>-->
+
+                <!--<com.hunter.widget.GifView-->
+                    <!--android:id="@+id/iv_device_gif5"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:src_gif="@mipmap/bg_monitor" />-->
+
+                <!--<com.hunter.widget.GifView-->
+                    <!--android:id="@+id/iv_device_gif6"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--app:src_gif="@raw/gif_android" />-->
+                <com.hunter.widget.GifView
+                    android:id="@+id/iv_device_gif3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:src_gif="@raw/gif_android" />
+
+                <include layout="@layout/item_flow_layout" />
             </LinearLayout>
 
         </ScrollView>

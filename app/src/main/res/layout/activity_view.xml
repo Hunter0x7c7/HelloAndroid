@@ -164,12 +164,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <com.hunter.widget.GifView xmlns:android_gif="http://schemas.android.com/apk/res-auto"
-                android:layout_width="300dp"
-                android:layout_height="182dp"
-                android_gif:gif="@raw/timg" />
+            <com.hunter.widget.GifView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:src_gif="@raw/gif_android" />
 
-            <include layout="@layout/item_flowlayout" />
+            <include layout="@layout/item_flow_layout" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -97,15 +97,6 @@
             android:name=".module.four.FourViewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".module.scan.CustomScanActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.zxing.android.ScanActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.zxing.android.CaptureActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".module.scan.android_zxinglibrary.MainZxingActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -114,6 +105,7 @@
         <activity
             android:name=".module.scan.android_zxinglibrary.ThreeActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".module.multi.list.MultiListActivity"
             android:screenOrientation="portrait" />
@@ -194,8 +186,7 @@
             android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".module.coordinator.bottom_sheet.SheetActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionBar" />
+            android:screenOrientation="portrait" />
 
     </application>
 

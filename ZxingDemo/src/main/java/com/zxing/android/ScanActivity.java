@@ -14,17 +14,13 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.hunter.helloandroid.module.scan.CustomScanActivity;
-import com.hunter.helloandroid.util.ToastUtil;
+import com.hunter.zxingdemo.CustomScanActivity;
+import com.hunter.zxingdemo.util.ToastUtil;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.io.Serializable;
 
 import static com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE;
-
-/**
- * Created by hunter on 17/12/16.
- */
 
 public class ScanActivity extends AppCompatActivity {
 
@@ -40,7 +36,7 @@ public class ScanActivity extends AppCompatActivity {
         setOnResultListener(listener);
 
         switch (method) {
-             case 1:
+            case 1:
                 onClickScan(this);
                 break;
             case 2:
@@ -50,7 +46,6 @@ public class ScanActivity extends AppCompatActivity {
 
 
     }
-
 
 
     public interface OnResultListener extends Serializable {
@@ -79,8 +74,8 @@ public class ScanActivity extends AppCompatActivity {
 //        Intent intent = new Intent(context, CaptureActivity.class);
         startActivityForResult(intent, REQUEST_CODE);
 
-    // 你也可以使用简单的扫描功能，但是一般扫描的样式和行为都是
-    // 可以自定义的，这里就写关于自定义的代码了
+        // 你也可以使用简单的扫描功能，但是一般扫描的样式和行为都是
+        // 可以自定义的，这里就写关于自定义的代码了
 
 //        new IntentIntegrator(this)
 //                .setOrientationLocked(false)

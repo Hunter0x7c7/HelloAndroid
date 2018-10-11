@@ -13,8 +13,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.os.SystemClock;
 import android.provider.ContactsContract;
 import android.provider.Settings;
@@ -60,7 +58,6 @@ import com.hunter.helloandroid.util.PermissionUtil;
 import com.hunter.helloandroid.util.ToastUtil;
 import com.hunter.helloandroid.viewgroup.CustomGroupActivity;
 import com.squareup.timessquare.CalendarPickerView;
-import com.zxing.android.ScanActivity;
 
 import org.xutils.common.util.DensityUtil;
 
@@ -137,75 +134,6 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickView(View view) {
         startActivity(new Intent(this, ViewActivity.class));
-    }
-
-
-    public void onClickScan1(View view) {
-
-//        startActivity(new Intent(this, ScanActivity.class));
-
-        Intent intent = new Intent(this, ScanActivity.class);
-        intent.putExtra("Method", 1);
-        intent.putExtra("OnResultListener", new ScanResult2());
-        try {
-            startActivity(intent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void onClickScan2(View view) {
-        Intent intent = new Intent(this, ScanActivity.class);
-        intent.putExtra("Method", 2);
-        intent.putExtra("OnResultListener", new ScanResult2());
-        try {
-            startActivity(intent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public class ScanResult2 implements Serializable, ScanActivity.OnResultListener {
-
-        @Override
-        public void onResult(String result) {
-            ToastUtil.showPrompt("......2............扫描结果:" + result);
-        }
-    }
-
-    public static class ScanResult implements Parcelable, ScanActivity.OnResultListener {
-        public ScanResult() {
-        }
-
-        public ScanResult(Parcel in) {
-        }
-
-        @Override
-        public void onResult(String result) {
-            ToastUtil.showPrompt("扫描结果:" + result);
-        }
-
-        public static final Creator<ScanResult> CREATOR = new Creator<ScanResult>() {
-            @Override
-            public ScanResult createFromParcel(Parcel in) {
-                return new ScanResult(in);
-            }
-
-            @Override
-            public ScanResult[] newArray(int size) {
-                return new ScanResult[size];
-            }
-        };
-
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel parcel, int i) {
-        }
     }
 
     public void onClickScan3(View view) {

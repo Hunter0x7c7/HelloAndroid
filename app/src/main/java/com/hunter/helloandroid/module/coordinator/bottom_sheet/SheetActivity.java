@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.hunter.helloandroid.R;
+import com.hunter.helloandroid.util.ToastUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,10 +50,10 @@ public class SheetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bottom_sheet);
         ButterKnife.bind(this);
 
-        initData();
+        initBottomSheet();
     }
 
-    private void initData() {
+    private void initBottomSheet() {
 
         //通过在xml中配置的string/bottom_sheet_behavior，拿到BottomSheetBehavior 实例
         behavior = BottomSheetBehavior.from(bottomSheet);
@@ -63,7 +64,7 @@ public class SheetActivity extends AppCompatActivity {
         //是否开启STATE_HIDDEN状态
         behavior.setHideable(false);
         //设置STATE_COLLAPSED状态的高度
-        behavior.setPeekHeight(200);
+        behavior.setPeekHeight(0);//100
         //设置状态改变时的回调
         behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
@@ -78,10 +79,19 @@ public class SheetActivity extends AppCompatActivity {
     }
 
 
-    @OnClick(R.id.btn_operate)
+    @OnClick({R.id.btn_operate, R.id.btn_operate0})
     void onClickBn() {
         showBottomSheet(behavior);
     }
+
+    @OnClick({R.id.btn_click1, R.id.btn_click4})
+    void onClick1(Button button) {
+        ToastUtil.showPrompt("click:" + button.getText());
+
+        BottomSheetFragment bottomSheetFragment = BottomSheetFragment.getInstance( this );
+        bottomSheetFragment.show(getSupportFragmentManager(), BottomSheetFragment.class.getSimpleName());
+
+   }
 
     private void showBottomSheet(BottomSheetBehavior behavior) {
         if (behavior.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
