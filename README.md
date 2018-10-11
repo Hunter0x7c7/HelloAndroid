@@ -1,11 +1,11 @@
 
 
-HelloAndroid练手项目集锦。
+## HelloAndroid练手项目集锦。
 
 
-…or create a new repository on the command line
+- …or create a new repository on the command line
 
-echo "# HelloAndroid" >> README.md
+- echo "# HelloAndroid" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
@@ -18,4 +18,4 @@ git push -u origin master
 …or import code from another repository
 You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
 
-https://github.com/HunterHuang0X7C7/HelloAndroid.git
+> https://github.com/HunterHuang0X7C7/HelloAndroid.git
