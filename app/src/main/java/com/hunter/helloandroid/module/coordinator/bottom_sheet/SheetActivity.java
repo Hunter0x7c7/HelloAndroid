@@ -6,11 +6,19 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SimpleAdapter;
 
 import com.hunter.helloandroid.R;
+import com.hunter.helloandroid.adapter.ParentAdapter;
+import com.hunter.helloandroid.bean.CommentsBean;
 import com.hunter.helloandroid.util.ToastUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +49,8 @@ public class SheetActivity extends AppCompatActivity {
     @BindView(R.id.bottomSheet)
     NestedScrollView bottomSheet;
 
+    @BindView(R.id.rv_recycler)
+    RecyclerView mRecyclerView;
     private BottomSheetBehavior behavior;
 
 
@@ -76,6 +86,13 @@ public class SheetActivity extends AppCompatActivity {
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
             }
         });
+        List<CommentsBean> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add(new CommentsBean(i, "msg:" + i, i * i+""));
+        }
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(new ParentAdapter(list));
     }
 
 
@@ -88,10 +105,10 @@ public class SheetActivity extends AppCompatActivity {
     void onClick1(Button button) {
         ToastUtil.showPrompt("click:" + button.getText());
 
-        BottomSheetFragment bottomSheetFragment = BottomSheetFragment.getInstance( this );
+        BottomSheetFragment bottomSheetFragment = BottomSheetFragment.getInstance(this);
         bottomSheetFragment.show(getSupportFragmentManager(), BottomSheetFragment.class.getSimpleName());
 
-   }
+    }
 
     private void showBottomSheet(BottomSheetBehavior behavior) {
         if (behavior.getState() == BottomSheetBehavior.STATE_COLLAPSED) {

@@ -35,6 +35,14 @@ public class CommentsBean {
      */
     private List<ImgInfoBean> PathModel;
 
+    public CommentsBean( ) {
+    }
+    public CommentsBean(int COM_ID, String COM_Message, String COM_User) {
+        this.COM_ID = COM_ID;
+        this.COM_Message = COM_Message;
+        this.COM_User = COM_User;
+    }
+
     public int getCOM_ID() {
         return COM_ID;
     }

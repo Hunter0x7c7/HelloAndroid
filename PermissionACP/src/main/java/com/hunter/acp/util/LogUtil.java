@@ -23,7 +23,7 @@ import android.util.Log;
  */
 public class LogUtil {
 
-    public static boolean isDebug = false;
+    private static boolean isDebug = false;
 
     public LogUtil() {
     }

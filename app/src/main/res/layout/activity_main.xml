@@ -11,10 +11,18 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onClickADB"
+            android:text="adb"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="onClickDrawable"
             android:text="Drawable"
             android:textAllCaps="false" />
-    <Button
+
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClickWebJs"
@@ -81,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClickMultiAsynctask"
-            android:text="MultiAsynctask"
+            android:text="MultiAsyncTask"
             android:textAllCaps="false" />
 
         <Button
@@ -94,22 +102,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickScan1"
-            android:text="Scan1"
-            android:textAllCaps="false" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClickScan2"
-            android:text="Scan2"
-            android:textAllCaps="false" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClickScan3"
-            android:text="Scan3"
+            android:onClick="onClickScan"
+            android:text="Scan"
             android:textAllCaps="false" />
 
 

@@ -116,13 +116,13 @@
                         <!--android:layout_height="60dp"-->
                         <!--android:layout_margin="10dp"-->
                         <!--android:background="@android:color/darker_gray"-->
-                        <!--app:src_gif="@raw/gif_android" />-->
+                        <!--app:gif_src="@raw/gif_android" />-->
 
                     <!--<com.hunter.widget.GifView-->
                         <!--android:id="@+id/iv_device_gif2"-->
                         <!--android:layout_width="100dp"-->
                         <!--android:layout_height="60dp"-->
-                        <!--app:src_gif="@mipmap/bg_monitor" />-->
+                        <!--app:gif_src="@mipmap/bg_monitor" />-->
                 <!--</LinearLayout>-->
 
                 <!--<LinearLayout-->
@@ -135,32 +135,32 @@
                         <!--android:layout_height="wrap_content"-->
                         <!--android:layout_margin="10dp"-->
                         <!--android:background="@android:color/darker_gray"-->
-                        <!--app:src_gif="@raw/gif_android" />-->
+                        <!--app:gif_src="@raw/gif_android" />-->
 
                     <!--<com.hunter.widget.GifView-->
                         <!--android:id="@+id/iv_device_gif4"-->
                         <!--android:layout_width="match_parent"-->
                         <!--android:layout_height="match_parent"-->
-                        <!--app:src_gif="@mipmap/bg_monitor" />-->
+                        <!--app:gif_src="@mipmap/bg_monitor" />-->
                 <!--</LinearLayout>-->
 
                 <!--<com.hunter.widget.GifView-->
                     <!--android:id="@+id/iv_device_gif5"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
-                    <!--app:src_gif="@mipmap/bg_monitor" />-->
+                    <!--app:gif_src="@mipmap/bg_monitor" />-->
 
                 <!--<com.hunter.widget.GifView-->
                     <!--android:id="@+id/iv_device_gif6"-->
                     <!--android:layout_width="match_parent"-->
                     <!--android:layout_height="match_parent"-->
-                    <!--app:src_gif="@raw/gif_android" />-->
+                    <!--app:gif_src="@raw/gif_android" />-->
                 <com.hunter.widget.GifView
                     android:id="@+id/iv_device_gif3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    app:src_gif="@raw/gif_android" />
+                    app:gif_src="@raw/gif_android" />
 
                 <include layout="@layout/item_flow_layout" />
             </LinearLayout>

@@ -22,8 +22,8 @@ public class InputUtil {
         if (editText == null || TextUtils.isEmpty(hint) || size <= 0) {
             return;
         }
-        SpannableString ss = new SpannableString(hint);//定义hint的值
         AbsoluteSizeSpan ass = new AbsoluteSizeSpan(size, dip);//设置字体大小 true表示单位是dp
+        SpannableString ss = new SpannableString(hint);//定义hint的值
         ss.setSpan(ass, 0, ss.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         editText.setHint(new SpannedString(ss));
     }

@@ -77,7 +77,7 @@ public class UnilineInput extends RelativeLayout implements Serializable, View.O
     private void init(AttributeSet attrs) {
         mContext = getContext();
 
-        addView(View.inflate(mContext, R.layout.input_layout, null));
+        addView(View.inflate(mContext, R.layout.layout_uniline_input, null));
         initView();
 
         mInputHintSize = DensityUtil.dip2px(mContext, mInputHintSize);

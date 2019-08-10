@@ -30,7 +30,7 @@ import java.io.InputStream;
  */
 public class GifView extends View {
     /**
-     * 默认为1秒
+     * 动画时长：默认为1秒
      */
     private static final int DEFAULT_MOVIE_DURATION = 1000;
     //最小宽度
@@ -81,7 +81,7 @@ public class GifView extends View {
         // 从描述文件中读出gif的值，创建出Movie实例
         if (attrs != null) {
             final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.GifView, defStyle, defStyle);
-            mMovieResourceId = array.getResourceId(R.styleable.GifView_src_gif, -1);
+            mMovieResourceId = array.getResourceId(R.styleable.GifView_gif_src, -1);
             mPaused = array.getBoolean(R.styleable.GifView_gif_paused, false);
             array.recycle();
         }

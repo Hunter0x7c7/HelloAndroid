@@ -167,7 +167,7 @@
             <com.hunter.widget.GifView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:src_gif="@raw/gif_android" />
+                app:gif_src="@raw/gif_android" />
 
             <include layout="@layout/item_flow_layout" />
         </LinearLayout>

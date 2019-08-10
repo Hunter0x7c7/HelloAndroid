@@ -11,8 +11,10 @@
         android:inputType="text|textVisiblePassword"
         android:maxLines="1"
         android:minHeight="38dp"
+        android:paddingStart="30dp"
         android:paddingLeft="30dp"
         android:paddingRight="60dp"
+        android:paddingEnd="60dp"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="14sp" />
@@ -21,19 +23,21 @@
         android:id="@+id/iv_drawable_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/et_input"
+        android:layout_alignStart="@id/et_input"
         android:layout_alignLeft="@id/et_input"
         android:layout_alignTop="@id/et_input"
+        android:layout_alignBottom="@id/et_input"
         android:layout_margin="8dp"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@android:drawable/sym_def_app_icon" />
 
     <LinearLayout
         android:id="@+id/ll_operate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/et_input"
-        android:layout_alignRight="@id/et_input"
         android:layout_alignTop="@id/et_input"
+        android:layout_alignEnd="@id/et_input"
+        android:layout_alignRight="@id/et_input"
+        android:layout_alignBottom="@id/et_input"
         android:orientation="horizontal">
 
         <ImageView
@@ -48,8 +52,9 @@
             android:id="@+id/cb_input_visible"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:layout_marginBottom="1.5dp"
+            android:layout_marginStart="-10dp"
             android:layout_marginLeft="-10dp"
+            android:layout_marginBottom="1.5dp"
             android:background="@android:color/transparent"
             android:button="@android:color/transparent"
             android:drawableBottom="@drawable/btn_visible_selector"

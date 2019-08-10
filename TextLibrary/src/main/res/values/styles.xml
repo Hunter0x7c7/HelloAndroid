@@ -4,7 +4,7 @@
     <!--UnilineInput-->
     <!-- 自定义EditText背景 灰白-->
     <style name="EditTextStyle" parent="@android:style/Widget.EditText">
-        <item name="android:background">@drawable/edittext_bg_selector</item>
+        <item name="android:background">@drawable/bg_edit_text_selector</item>
         <item name="android:textCursorDrawable">@null</item>
         <!--<item name="android:textCursorDrawable">@drawable/text_cursor</item>-->
     </style>

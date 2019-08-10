@@ -47,6 +47,7 @@ dependencies {
     compile project(':PermissionACP')
     compile project(':TextLibrary')
     compile project(':WidgetLibrary')
+    compile "com.android.support:support-annotations:25.3.1"
 //    compile rootProject.ext.dependencies["appcompat-v7"]
     compile rootProject.ext.dependencies["cardview-v7"]//CardView
     compile rootProject.ext.dependencies["xutils"]//xUtils3
@@ -60,7 +61,7 @@ dependencies {
     //    compile(name: 'Snackbar', ext: 'aar')
     compile project(':Snackbar')
 //    compile(name: 'GifView', ext: 'aar')//使用aar文件
-        compile project(':GifView')
+    compile project(':GifView')
 
     //Android6.0权限//    compile 'com.mylhyl:acp:1.1.7'
     compile(name: 'PermissionACP', ext: 'aar')
@@ -127,7 +128,8 @@ dependencies {
 
     //NineOldAndroids动画兼容库
     compile 'com.nineoldandroids:library:2.4.0'
-
+    //EventBus事件发布-订阅总线
+    compile 'org.greenrobot:eventbus:3.1.1'
 }
 
 //configurations.all {

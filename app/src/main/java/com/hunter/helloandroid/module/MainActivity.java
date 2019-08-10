@@ -28,12 +28,12 @@ import android.widget.TextView;
 
 import com.hunter.dialog.SimpleDialog;
 import com.hunter.helloandroid.R;
+import com.hunter.helloandroid.module.adb.RootCmd;
 import com.hunter.helloandroid.module.add_view_anim.AddViewAnimActivity;
 import com.hunter.helloandroid.module.beam_mvp.ui.BeamMvpLoginActivity;
 import com.hunter.helloandroid.module.ble.BleActivity;
 import com.hunter.helloandroid.module.coordinator.main.CoordinatorActivity;
 import com.hunter.helloandroid.module.custom.CustomViewActivity;
-import com.hunter.helloandroid.module.drawable.DrawableActivity;
 import com.hunter.helloandroid.module.four.FourViewActivity;
 import com.hunter.helloandroid.module.gradient.GradientActivity;
 import com.hunter.helloandroid.module.light.LightPrintActivity;
@@ -59,8 +59,16 @@ import com.hunter.helloandroid.util.ToastUtil;
 import com.hunter.helloandroid.viewgroup.CustomGroupActivity;
 import com.squareup.timessquare.CalendarPickerView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.xutils.common.util.DensityUtil;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -79,10 +87,128 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.btn_on_touch).setOnTouchListener(this);
+
+        //EventBus事件总线，注册
+        EventBus.getDefault().register(this);
+
+        EventBus.getDefault().post(new MessageBean("Hello EventBus!"));
     }
 
-    public void onClickDrawable(View view) {
-        startActivity(new Intent(this, DrawableActivity.class));
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void main(MessageBean msg) {
+        System.out.println("....................MAIN...msg:" + msg);
+    }
+
+    @Subscribe(threadMode = ThreadMode.ASYNC)
+    public void async(MessageBean msg) {
+        System.out.println("....................ASYNC...msg:" + msg);
+    }
+
+    class MessageBean {
+        public MessageBean() {
+        }
+
+        public MessageBean(String msg) {
+            this.msg = msg;
+        }
+
+        public MessageBean(int id, String msg) {
+            this.id = id;
+            this.msg = msg;
+        }
+
+        private int id;
+        private String msg;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getMsg() {
+            return msg;
+        }
+
+        public void setMsg(String msg) {
+            this.msg = msg;
+        }
+
+        @Override
+        public String toString() {
+            return "MessageBean{" +
+                    "id=" + id +
+                    ", msg='" + msg + '\'' +
+                    '}';
+        }
+    }
+
+
+    public void onClickADB(View view) {
+//        System.out.println(".............adb:" + clickADB("adb tcpip 5555"));
+
+        //修改/dev/bus/usb/文件夹的权限，注意添加\n
+//        String commend = "chmod 777 /dev/bus/usb/ -R \n";
+        String commend = "adb tcpip 5555 \n";
+        String result;
+        if (RootCmd.haveRoot()) {
+            result = RootCmd.execRootCmd(commend);
+        } else {
+            RootCmd.execRootCmdSilent(commend);
+            result = "no root";
+        }
+        System.out.println(".............adb:" + result);
+//        System.out.println(".............adb:" + getResult(ARGS));
+//        System.out.println(".............adb:" + getResult(new String[]{"adb", "tcpip", "5555"}));
+    }
+
+    private final static String[] ARGS = {"ls", "-l"};
+
+    public String getResult(String[] commend) {
+        ShellExecute cmdexe = new ShellExecute();
+        String result = "";
+        try {
+            result = cmdexe.execute(commend, "/");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private class ShellExecute {
+        /*
+         * args[0] : shell 命令 如"ls" 或"ls -1";
+         * args[1] : 命令执行路径 如"/" ;
+         */
+        public String execute(String[] cmmend, String directory) {
+            StringBuilder result = new StringBuilder();
+            try {
+                ProcessBuilder builder = new ProcessBuilder(cmmend);
+                if (directory != null)
+                    builder.directory(new File(directory));
+                builder.redirectErrorStream(true);
+                Process process = builder.start();
+                //得到命令执行后的结果
+                InputStream is = process.getInputStream();
+                byte[] buffer = new byte[1024];
+                while (is.read(buffer) != -1) {
+                    result.append(new String(buffer));
+                }
+                is.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result.toString();
+        }
     }
 
     public void onClickWebJs(View view) {
@@ -121,12 +247,12 @@ public class MainActivity extends AppCompatActivity
         startActivity(new Intent(this, GradientActivity.class));
     }
 
-    public void onClickMultiAsynctask(View view) {
+    public void onClickMultiAsyncTask(View view) {
 //        int what = 0, value = 0;
 //        for (int i = 0; i < 3; i++) {
 //            what++;
 //            value++;
-//            new LongAsynctask().execute(new Paramer(what, value));
+//            new LongAsyncTask().execute(new Paramer(what, value));
 //        }
 
         startActivity(new Intent(this, MultiListActivity.class));
@@ -136,7 +262,7 @@ public class MainActivity extends AppCompatActivity
         startActivity(new Intent(this, ViewActivity.class));
     }
 
-    public void onClickScan3(View view) {
+    public void onClickScan(View view) {
         startActivity(new Intent(this, MainZxingActivity.class));
     }
 
@@ -486,6 +612,31 @@ public class MainActivity extends AppCompatActivity
         view.onTouchEvent(upEvent);
         downEvent.recycle();
         upEvent.recycle();
+    }
+
+    private String clickADB(String cmd) {
+        BufferedReader reader = null;
+        String content = "";
+        try {
+            //("ps -P|grep bg")执行失败，PC端adb shell ps -P|grep bg执行成功
+            //Process process = Runtime.getRuntime().exec("ps -P|grep tv");
+            //-P 显示程序调度状态，通常是bg或fg，获取失败返回un和er
+            // Process process = Runtime.getRuntime().exec("ps -P");
+            //打印进程信息，不过滤任何条件
+            Process process = Runtime.getRuntime().exec(cmd);
+            reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            StringBuilder output = new StringBuilder();
+            int read;
+            char[] buffer = new char[4096];
+            while ((read = reader.read(buffer)) > 0) {
+                output.append(buffer, 0, read);
+            }
+            reader.close();
+            content = output.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return content;
     }
 
     private int mAction;

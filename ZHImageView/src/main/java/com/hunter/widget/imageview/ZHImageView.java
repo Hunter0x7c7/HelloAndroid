@@ -19,18 +19,16 @@ import android.util.AttributeSet;
  * 图片圆角实现
  *
  * @author Zihang Huang
- *         create date 2017/11/27 12:18
+ * create date 2017/11/27 12:18
  */
 public class ZHImageView extends AppCompatImageView {
 
-    private Paint paint;
-    private Paint paintBorder;
     private Bitmap mSrcBitmap;
     /**
      * 圆角的弧度
      */
     private float mRadius;
-    private boolean mIsCircle;
+    private boolean isCircle;
 
     public ZHImageView(final Context context) {
         super(context);
@@ -51,33 +49,31 @@ public class ZHImageView extends AppCompatImageView {
         if (attrs != null) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ZHImageView, defStyle, 0);
             mRadius = ta.getDimension(R.styleable.ZHImageView_radius, 0);
-            mIsCircle = ta.getBoolean(R.styleable.ZHImageView_circle, false);
+            isCircle = ta.getBoolean(R.styleable.ZHImageView_circle, false);
             String namespace = "http://schemas.android.com/apk/res/android";
             int srcResource = attrs.getAttributeResourceValue(namespace, "src", 0);
             if (srcResource != 0)
                 mSrcBitmap = BitmapFactory.decodeResource(getResources(), srcResource);
             ta.recycle();
         }
-
-        paint = new Paint();
-        paint.setAntiAlias(true);
-        paintBorder = new Paint();
-        paintBorder.setAntiAlias(true);
     }
 
     @Override
     public void onDraw(Canvas canvas) {
-        int width = canvas.getWidth() - getPaddingLeft() - getPaddingRight();
-        int height = canvas.getHeight() - getPaddingTop() - getPaddingBottom();
+        int width = getWidth() - getPaddingLeft() - getPaddingRight();
+        int height = getHeight() - getPaddingTop() - getPaddingBottom();
         Bitmap image = drawableToBitmap(getDrawable());
-        if (mIsCircle) {
-            Bitmap reSizeImage = reSizeImageC(image, width, height);
-            canvas.drawBitmap(createCircleImage(reSizeImage, width, height), getPaddingLeft(), getPaddingTop(), null);
 
+        Bitmap reSizeBitmap;
+        if (isCircle) {
+            Bitmap bitmap = reSizeImageC(image, width, height);
+            reSizeBitmap = createCircleImage(bitmap, width, height);
         } else {
-
-            Bitmap reSizeImage = reSizeImage(image, width, height);
-            canvas.drawBitmap(createRoundImage(reSizeImage, width, height), getPaddingLeft(), getPaddingTop(), null);
+            Bitmap bitmap = reSizeImage(image, width, height);
+            reSizeBitmap = createRoundImage(bitmap, width, height);
+        }
+        if (canvas != null) {
+            canvas.drawBitmap(reSizeBitmap, getPaddingLeft(), getPaddingTop(), null);
         }
     }
 
@@ -145,6 +141,9 @@ public class ZHImageView extends AppCompatImageView {
      * 重设Bitmap的宽高
      */
     private Bitmap reSizeImage(Bitmap bitmap, int newWidth, int newHeight) {
+        if (bitmap == null) {
+            return null;
+        }
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         // 计算出缩放比
@@ -161,6 +160,9 @@ public class ZHImageView extends AppCompatImageView {
      * 重设Bitmap的宽高
      */
     private Bitmap reSizeImageC(Bitmap bitmap, int newWidth, int newHeight) {
+        if (bitmap == null) {
+            return null;
+        }
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         int x = (newWidth - width) / 2;

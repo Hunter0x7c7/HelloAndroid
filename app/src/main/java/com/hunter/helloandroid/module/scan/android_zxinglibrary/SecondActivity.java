@@ -3,6 +3,7 @@ package com.hunter.helloandroid.module.scan.android_zxinglibrary;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -13,19 +14,21 @@ import com.uuzuche.lib_zxing.activity.CodeUtils;
 /**
  * 定制化显示扫描界面
  */
-public class SecondActivity extends BaseZxingActivity {
-
-    private CaptureFragment captureFragment;
+public class SecondActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        captureFragment = new CaptureFragment();
-        // 为二维码扫描界面设置定制化界面
-        CodeUtils.setFragmentArgs(captureFragment, R.layout.my_camera);
+
+        CaptureFragment captureFragment = new CaptureFragment();
         captureFragment.setAnalyzeCallback(analyzeCallback);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_my_container, captureFragment).commit();
+        // 为二维码扫描界面设置定制化界面
+        CodeUtils.setFragmentArgs(captureFragment, R.layout.layout_customize_viewfinder);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fl_container, captureFragment)
+                .commit();
 
         initView();
     }

@@ -78,11 +78,8 @@ public class MainZxingActivity extends BaseZxingActivity
         button4 = (Button) findViewById(R.id.button4);
         /**
          * 打开默认二维码扫描界面
-         *
          * 打开系统图片选择界面
-         *
          * 定制化显示扫描界面
-         *
          * 测试生成二维码图片
          */
         button1.setOnClickListener(new ButtonOnClickListener(button1.getId()));
@@ -226,8 +223,6 @@ public class MainZxingActivity extends BaseZxingActivity
 
     /**
      * 按钮点击事件处理逻辑
-     *
-     * @param buttonId
      */
     private void onClick(int buttonId) {
         switch (buttonId) {
