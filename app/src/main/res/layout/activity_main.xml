@@ -11,6 +11,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onClickHttp"
+            android:text="http"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="onClickADB"
             android:text="adb"
             android:textAllCaps="false" />

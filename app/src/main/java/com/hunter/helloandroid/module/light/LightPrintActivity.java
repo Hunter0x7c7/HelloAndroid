@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 作    者： 黄自航
+ * 作    者： Hunter_1125607007@QQ.COM
  * 创建日期： 2018/4/19 20:47
  */
 public class LightPrintActivity extends AppCompatActivity {

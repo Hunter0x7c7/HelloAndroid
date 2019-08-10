@@ -38,6 +38,7 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -186,6 +187,9 @@
             android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".module.coordinator.bottom_sheet.SheetActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.http.HttpActivity"
             android:screenOrientation="portrait" />
 
     </application>

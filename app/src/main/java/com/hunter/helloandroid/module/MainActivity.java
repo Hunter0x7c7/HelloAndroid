@@ -36,6 +36,7 @@ import com.hunter.helloandroid.module.coordinator.main.CoordinatorActivity;
 import com.hunter.helloandroid.module.custom.CustomViewActivity;
 import com.hunter.helloandroid.module.four.FourViewActivity;
 import com.hunter.helloandroid.module.gradient.GradientActivity;
+import com.hunter.helloandroid.module.http.HttpActivity;
 import com.hunter.helloandroid.module.light.LightPrintActivity;
 import com.hunter.helloandroid.module.matrix.MatrixActivity;
 import com.hunter.helloandroid.module.md5.EncryptActivity;
@@ -152,6 +153,10 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
+    public void onClickHttp(View view) {
+        startActivity(new Intent(this, HttpActivity.class));
+    }
 
     public void onClickADB(View view) {
 //        System.out.println(".............adb:" + clickADB("adb tcpip 5555"));

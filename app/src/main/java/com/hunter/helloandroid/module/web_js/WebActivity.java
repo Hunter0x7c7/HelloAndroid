@@ -19,9 +19,9 @@ import butterknife.ButterKnife;
 /**
  * ================================================================
  * <p>
- * 版    权： 上海田韵物联网科技有限公司(c)2018
+ * 版    权： HunterHuang(c)2018
  * <p>
- * 作    者： 黄自航
+ * 作    者： Hunter_1125607007@QQ.COM
  * <p>
  * 版    本： V1.0
  * <p>
@@ -43,11 +43,8 @@ public class WebActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_js);
-
         ButterKnife.bind(this);
-
         loadWebView();
-
     }
 
     /**

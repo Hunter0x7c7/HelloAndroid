@@ -10,9 +10,9 @@ import com.hunter.helloandroid.module.update.interfaces.OnDownloadListener;
 /**
  * ================================================================
  * <p>
- * 版    权： 上海田韵物联网科技有限公司(c)2017
+ * 版    权： HunterHuang(c)2017
  * <p>
- * 作    者： 黄自航
+ * 作    者： Hunter_1125607007@QQ.COM
  * <p>
  * 版    本： V1.0
  * <p>
