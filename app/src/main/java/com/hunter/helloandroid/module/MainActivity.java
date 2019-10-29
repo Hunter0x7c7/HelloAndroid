@@ -51,6 +51,7 @@ import com.hunter.helloandroid.module.rx_android.RxAndroidTestActivity;
 import com.hunter.helloandroid.module.scan.android_zxinglibrary.MainZxingActivity;
 import com.hunter.helloandroid.module.sort.ContactActivity;
 import com.hunter.helloandroid.module.swipe_refresh.SwipeRefreshActivity;
+import com.hunter.helloandroid.module.tab.VerticalTabActivity;
 import com.hunter.helloandroid.module.update.UpdateActivity;
 import com.hunter.helloandroid.module.view.ViewActivity;
 import com.hunter.helloandroid.module.web_js.WebActivity;
@@ -110,6 +111,10 @@ public class MainActivity extends AppCompatActivity
     @Subscribe(threadMode = ThreadMode.ASYNC)
     public void async(MessageBean msg) {
         System.out.println("....................ASYNC...msg:" + msg);
+    }
+
+    public void onClickVerticalTabLayout(View view) {
+        startActivity(new Intent(this, VerticalTabActivity.class));
     }
 
     class MessageBean {

@@ -191,6 +191,9 @@
         <activity
             android:name=".module.http.HttpActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.tab.VerticalTabActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 

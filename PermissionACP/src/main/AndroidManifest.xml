@@ -5,7 +5,6 @@
         <activity
             android:name=".AcpActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent" />
     </application>
 </manifest>
