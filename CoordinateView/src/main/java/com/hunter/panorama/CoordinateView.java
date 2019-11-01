@@ -22,7 +22,7 @@ import java.util.List;
  * 一堆子View按左上角百分比坐标显示位置，并支持缩放
  *
  * @author Zihang Huang
- *         create date 2017/11/17 18:08
+ * create date 2017/11/17 18:08
  */
 public class CoordinateView<T extends View> extends FrameLayout {
     private Context mContext;
@@ -75,7 +75,7 @@ public class CoordinateView<T extends View> extends FrameLayout {
 
 
     public void setup(List<PointF> mPointList, List<T> viewList) {
-        setup(mPointList,  viewList, null, null);
+        setup(mPointList, viewList, null, null);
     }
 
     public void setup(final List<PointF> mPointList, final List<T> viewList
@@ -141,6 +141,10 @@ public class CoordinateView<T extends View> extends FrameLayout {
             }
         }
         return childAt;
+    }
+
+    public void setZoomable(boolean zoomable) {
+        mPhotoView.setZoomable(zoomable);
     }
 
     @Override

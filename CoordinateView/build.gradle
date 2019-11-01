@@ -23,10 +23,11 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation fileTree(include: ['*.jar'], dir: 'libs')
     //    implementation 'com.android.support:appcompat-v7:25.3.1'
 //    implementation 'org.xutils:xutils:3.3.42'
 //    implementation rootProject.ext.dependencies["xutils"]//xUtils3
-    api deps.xutils
+    implementation deps.xutils
+    implementation project(':PhotoView')
 
 }

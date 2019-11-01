@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.chrisbanes.photoview.OnCoordinateChangeListener;
+import com.github.chrisbanes.photoview.OnLocationChangeListener;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.hunter.panorama.util.DensityUtil;
 
@@ -14,10 +14,11 @@ import java.util.List;
 
 /**
  * 一堆子View按左上角百分比坐标点显示位置，PhotoView缩放时实时改变子View位置
+ *
  * @author Zihang Huang
- *         create date 2017/11/17 16:54
+ * create date 2017/11/17 16:54
  */
-public class PointGroup extends ViewGroup implements OnCoordinateChangeListener {
+public class PointGroup extends ViewGroup implements OnLocationChangeListener {
     private List<PointF> mPointFList;
     private float oldLeft, oldTop, oldRight, oldBottom;
     private int yoff;
@@ -47,7 +48,7 @@ public class PointGroup extends ViewGroup implements OnCoordinateChangeListener 
 
     public void setPhotoView(PhotoView photoView) {
         if (photoView != null)
-            photoView.setOnCoordinateChangeListener(this);
+            photoView.setOnLocationChangeListener(this);
     }
 
     @Override
@@ -83,7 +84,7 @@ public class PointGroup extends ViewGroup implements OnCoordinateChangeListener 
     }
 
     @Override
-    public void onCoordinateChange(float width, float height, float left, float top, float right, float bottom) {
+    public void onLocationChange(float width, float height, float left, float top, float right, float bottom) {
         if (mPointFList == null) {
             return;
         }

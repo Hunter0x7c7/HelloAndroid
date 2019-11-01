@@ -55,7 +55,7 @@ import java.util.List;
 public class AddViewAnimActivity extends AppCompatActivity implements View.OnTouchListener {
 
     private LinearLayout llViewgroup;
-    private CoordinateView mCoordinateView;
+    private CoordinateView<PointButton>  mCoordinateView;
     private Context mContext;
 
     @Override
@@ -281,7 +281,7 @@ public class AddViewAnimActivity extends AppCompatActivity implements View.OnTou
         }
         List<PointButton> buttonList = getPointButtons(mPointList);
 
-        String url = "http://www.nongtt.com/ntt_proj_img/zj-cxmm-view.jpg";
+        String url = "http://jx.uplism.com/Uploads/Editor/2016-04-22/5719c1a7416d0.jpg";
 //        mCoordinateView.setup(pointFs, buttonList );
         ImageUtil.CommonCallback commonCallback = new ImageUtil.CommonCallback() {
             @Override
@@ -291,6 +291,8 @@ public class AddViewAnimActivity extends AppCompatActivity implements View.OnTou
 //   ImageUtil.display(ivBackground, url);
             }
         };
+        //设置手势缩放
+        mCoordinateView.setZoomable(false);
         mCoordinateView.setup(pointFs,  buttonList, url, commonCallback);
         mCoordinateView.setOnTouchListener(this);
     }
