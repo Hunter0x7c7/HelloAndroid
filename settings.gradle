@@ -1,1 +1,4 @@
-include ':app', ':PhotoView', ':SimpleDialog', ':FlowLayout', ':GifView', ':Snackbar', ':CoordinateView', ':ZHImageView', ':RippleLibrary', ':PermissionACP', ':TextLibrary', ':WidgetLibrary', ':ZxingDemo'
+include ':app', ':ZxingDemo'
+include ':PhotoView', ':SimpleDialog', ':FlowLayout', ':GifView'
+include ':Snackbar', ':CoordinateView', ':ZHImageView', ':RippleLibrary'
+include ':PermissionACP', ':TextLibrary', ':WidgetLibrary'

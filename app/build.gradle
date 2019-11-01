@@ -1,14 +1,17 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.android["compileSdkVersion"]//24
-    buildToolsVersion rootProject.ext.android["buildToolsVersion"]//"25.0.1"
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
     defaultConfig {
         applicationId "com.hunter.helloandroid"
-        minSdkVersion 15
-        targetSdkVersion rootProject.ext.android["targetSdkVersion"]//24
+        minSdkVersion 15//build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
+
+        // Enabling multiDex support.
+        multiDexEnabled true
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -34,104 +37,147 @@ repositories {
 }
 
 dependencies {
-    //    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:24.+'
-//    compile files('libs/zxing.jar')
-    compile files('libs/multi-asynctask.jar')
-    compile files('libs/RenderScript-v8.jar')
-    compile files('libs/picasso-2.5.2.jar')//图片加载工具
+    //    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation 'com.android.support:appcompat-v7:24.+'
+//    implementation files('libs/zxing.jar')
+    implementation files('libs/multi-asynctask.jar')
+    implementation files('libs/RenderScript-v8.jar')
+    implementation files('libs/picasso-2.5.2.jar')//图片加载工具
+//    implementation files('libs/PhotoView.jar')
 
-    testCompile 'junit:junit:4.12'
-    compile project(':FlowLayout')
-    compile project(':RippleLibrary')
-    compile project(':PermissionACP')
-    compile project(':TextLibrary')
-    compile project(':WidgetLibrary')
-    compile "com.android.support:support-annotations:25.3.1"
-//    compile rootProject.ext.dependencies["appcompat-v7"]
-    compile rootProject.ext.dependencies["cardview-v7"]//CardView
-    compile rootProject.ext.dependencies["xutils"]//xUtils3
-//    compile 'org.xutils:xutils:3.5.0'
+    testImplementation 'junit:junit:4.12'
+    implementation project(':FlowLayout')
+    implementation project(':RippleLibrary')
+    implementation project(':PermissionACP')
+    implementation project(':TextLibrary')
+    implementation project(':WidgetLibrary')
+
+    // Support libraries
+    api deps.support.annotations
+    api deps.support.app_compat_v4
+    api deps.support.app_compat_v7
+    api deps.support.app_compat_v13
+    api deps.support.design
+    api deps.support.cardview
+    api deps.support.percent
+    api deps.support.recyclerview
+    api deps.support.multidex
+    api deps.constraint_layout
+
+    // RxJava and retrofit
+    api deps.rx_android
+    api deps.rxjava2
+    api deps.retrofit.runtime
+    api deps.retrofit.adapter
+    api deps.retrofit.gson
+    api deps.persistent_cookie
+
+    //Dagger
+    api deps.dagger.runtime
+    api deps.dagger.android
+    api deps.dagger.android_support
+
+    // other
+    api deps.kotlin.stdlib
+    api deps.event_bus
+    api deps.gson
+    api deps.permission
+    api deps.utils
+    api deps.xutils
+    api deps.glide
+
+    //view
+//    api deps.photo_view
+    api deps.easy_recycler
+    api deps.material_dialog
+    api deps.logger
+    api deps.toasty
+
+//    implementation "com.android.support:support-annotations:25.3.1"
+////    implementation deps.support.app_compat_v7
+//    implementation rootProject.ext.dependencies["cardview-v7"]//CardView
+//    implementation rootProject.ext.dependencies["xutils"]//xUtils3
+////    implementation 'org.xutils:xutils:3.5.0'
 
     //单行输入、固定宽度TextView
-//    compile(name: 'TextLibrary', ext: 'aar')
+//    implementation(name: 'TextLibrary', ext: 'aar')
 
-    compile 'com.squareup:android-times-square:1.6.5@aar'
-    //    compile 'com.wdullaer:materialdatetimepicker:3.2.2'
-    //    compile(name: 'Snackbar', ext: 'aar')
-    compile project(':Snackbar')
-//    compile(name: 'GifView', ext: 'aar')//使用aar文件
-    compile project(':GifView')
+    implementation 'com.squareup:android-times-square:1.6.5@aar'
+    //    implementation 'com.wdullaer:materialdatetimepicker:3.2.2'
+    //    implementation(name: 'Snackbar', ext: 'aar')
+    implementation project(':Snackbar')
+//    implementation(name: 'GifView', ext: 'aar')//使用aar文件
+    implementation project(':GifView')
 
-    //Android6.0权限//    compile 'com.mylhyl:acp:1.1.7'
-    compile(name: 'PermissionACP', ext: 'aar')
+    //Android6.0权限//    implementation 'com.mylhyl:acp:1.1.7'
+    implementation(name: 'PermissionACP', ext: 'aar')
 
-    compile project(path: ':SimpleDialog')
-    //    compile project(':PhotoViewLibrary')
-    compile project(':CoordinateView')
+    implementation project(path: ':SimpleDialog')
+    implementation project(':PhotoView')
+    implementation project(':CoordinateView')
 
-    compile 'com.gongwen:marqueelibrary:1.0.4'
-    compile 'com.google.code.gson:gson:2.8.0'
-    //    compile 'com.lovedise:permissiongen:0.0.6'//https://github.com/lovedise/PermissionGen
-    //    compile project(':PermissionGen')
-    //    compile project(':ZHImageView')
-    //    compile(name: 'ZHImageView', ext: 'aar')
-    compile project(':Snackbar')
-    //    compile(name: 'Snackbar', ext: 'aar')
+    implementation 'com.gongwen:marqueelibrary:1.0.4'
+//    implementation 'com.google.code.gson:gson:2.8.0'
+    //    implementation 'com.lovedise:permissiongen:0.0.6'//https://github.com/lovedise/PermissionGen
+    //    implementation project(':PermissionGen')
+    //    implementation project(':ZHImageView')
+    //    implementation(name: 'ZHImageView', ext: 'aar')
+    implementation project(':Snackbar')
+    //    implementation(name: 'Snackbar', ext: 'aar')
     //    Beam——MVP快速开发框架 https://github.com/Jude95/Beam
-    compile 'com.jude:beam:3.0.1'
-    //Retrofit2所需要的包  compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.jude:beam:3.0.1'
+    //Retrofit2所需要的包  implementation 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+//    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+//    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     //ConverterFactory的Gson依赖包
-    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
-    //ConverterFactory的String依赖包
-    //    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    //    compile 'com.trello:rxlifecycle:1.0'
-    //    compile 'com.trello:rxlifecycle-components:1.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+//    //ConverterFactory的String依赖包
+//    //    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+//    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+//    //    implementation 'com.trello:rxlifecycle:1.0'
+//    //    implementation 'com.trello:rxlifecycle-components:1.0'
     // Okhttp库
-    compile 'com.squareup.okhttp3:okhttp:3.1.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.1.2'
     //rxjava
-    compile 'io.reactivex.rxjava2:rxjava:2.+'
-    compile 'io.reactivex.rxjava2:rxandroid:2.+'
-    compile 'com.mcxiaoke.volley:library:1.0.+'
-//    compile 'com.google.zxing:core:3.0.1'
-//    compile 'com.journeyapps:zxing-android-embedded:3.3.0'
-    compile 'com.jakewharton:butterknife:8.8.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.+'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.+'
+    implementation 'com.mcxiaoke.volley:library:1.0.+'
+//    implementation 'com.google.zxing:core:3.0.1'
+//    implementation 'com.journeyapps:zxing-android-embedded:3.3.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    compile 'cn.yipianfengye.android:zxing-library:2.2'
-    compile 'pub.devrel:easypermissions:0.2.0'
+    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    implementation 'pub.devrel:easypermissions:0.2.0'
 
-    compile 'io.reactivex.rxjava2:rxjava:2.1.8'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.8'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
 
     //volley
-    compile 'com.mcxiaoke.volley:library:1.+'
+    implementation 'com.mcxiaoke.volley:library:1.+'
     //打造真正的下拉刷新上拉加载recyclerview http://blog.csdn.net/anyfive/article/details/53020321
-    compile 'com.jimi_wu:PTLRecyclerView:1.1.1'
+    implementation 'com.jimi_wu:PTLRecyclerView:1.1.1'
 
     //ButterKnife 框架-最好用的View注入
-    compile 'com.jakewharton:butterknife:8.5.1'
+    implementation 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'//约束
-//    compile 'com.google.android.gms:play-services-maps:9.6.1'
-//    compile 'com.android.support:cardview-v7:24.+'
-//    compile 'com.android.support:gridlayout-v7:24.+'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'//约束
+//    implementation 'com.google.android.gms:play-services-maps:9.6.1'
+//    implementation 'com.android.support:cardview-v7:24.+'
+//    implementation 'com.android.support:gridlayout-v7:24.+'
 
-    compile 'de.hdodenhof:circleimageview:2.1.0'//圆形图片
+    implementation 'de.hdodenhof:circleimageview:2.1.0'//圆形图片
 
-//    compile 'com.squareup.picasso:picasso:2.71828'//图片加载工具
-//    compile 'com.squareup.okhttp3:okhttp:3.10.0'
+//    implementation 'com.squareup.picasso:picasso:2.71828'//图片加载工具
+//    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
     //NineOldAndroids动画兼容库
-    compile 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.nineoldandroids:library:2.4.0'
     //EventBus事件发布-订阅总线
-    compile 'org.greenrobot:eventbus:3.1.1'
+    implementation 'org.greenrobot:eventbus:3.1.1'
     //竖向TabLayout
-    compile 'q.rorbin:VerticalTabLayout:1.2.5'
+    implementation 'q.rorbin:VerticalTabLayout:1.2.5'
 }
 
 //configurations.all {

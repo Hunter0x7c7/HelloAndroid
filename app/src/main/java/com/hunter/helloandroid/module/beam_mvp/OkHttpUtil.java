@@ -18,7 +18,7 @@ import okhttp3.ResponseBody;
 
 /**
  * // Okhttp库Util
- * compile 'com.squareup.okhttp3:okhttp:3.1.2'
+ * implementation 'com.squareup.okhttp3:okhttp:3.1.2'
  */
 public class OkHttpUtil {
 

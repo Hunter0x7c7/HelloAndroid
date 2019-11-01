@@ -11,9 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.github.chrisbanes.photoview.OnCoordinateChangeListener;
+import com.github.chrisbanes.photoview.OnLocationChangeListener;
 import com.github.chrisbanes.photoview.PhotoView;
-
 import com.hunter.helloandroid.R;
 import com.hunter.helloandroid.util.ToastUtil;
 
@@ -38,7 +37,7 @@ import java.util.List;
  * <p>
  * ================================================================
  */
-public class MatrixActivity extends AppCompatActivity implements OnCoordinateChangeListener {
+public class MatrixActivity extends AppCompatActivity implements OnLocationChangeListener {
 
     private PhotoView mImageView;
     private ViewGroup rlRoot;
@@ -51,12 +50,15 @@ public class MatrixActivity extends AppCompatActivity implements OnCoordinateCha
 
         setContentView(R.layout.activity_matrix);
 
+        // TODO: 2019/11/1
+//        com.github.chrisbanes.photoview.CustomGestureDetector a;
+
         rlRoot = (ViewGroup) findViewById(R.id.rl_root);
         mImageView = (PhotoView) findViewById(R.id.iv_image);
         mImageView.setImageResource(R.mipmap.bg_huayu);
         mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-        mImageView.setOnCoordinateChangeListener(this);
+        mImageView.setOnLocationChangeListener(this);
 
         mPointList.add(new PointF(29.39f, 33.00f));
         mPointList.add(new PointF(37.09f, 38.34f));
@@ -94,8 +96,7 @@ public class MatrixActivity extends AppCompatActivity implements OnCoordinateCha
     private OnItemClickListener onItemClickListener;
 
     @Override
-    public void onCoordinateChange(float width, float height, float left, float top, float right, float bottom) {
-
+    public void onLocationChange(float width, float height, float left, float top, float right, float bottom) {
         rlRoot.removeAllViews();
 
         int size = mButtonList.size();
@@ -113,7 +114,7 @@ public class MatrixActivity extends AppCompatActivity implements OnCoordinateCha
         }
     }
 
-private     class MyClickListener implements View.OnClickListener {
+    private class MyClickListener implements View.OnClickListener {
 
         int position;
 

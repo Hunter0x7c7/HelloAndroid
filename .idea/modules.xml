@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/CoordinateView/CoordinateView.iml" filepath="$PROJECT_DIR$/CoordinateView/CoordinateView.iml" />
       <module fileurl="file://$PROJECT_DIR$/FlowLayout/FlowLayout.iml" filepath="$PROJECT_DIR$/FlowLayout/FlowLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/GifView/GifView.iml" filepath="$PROJECT_DIR$/GifView/GifView.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/HelloAndroid.iml" filepath="$PROJECT_DIR$/.idea/HelloAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HelloAndroid.iml" filepath="$PROJECT_DIR$/HelloAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/PermissionACP/PermissionACP.iml" filepath="$PROJECT_DIR$/PermissionACP/PermissionACP.iml" />
       <module fileurl="file://$PROJECT_DIR$/PhotoView/PhotoView.iml" filepath="$PROJECT_DIR$/PhotoView/PhotoView.iml" />
       <module fileurl="file://$PROJECT_DIR$/RippleLibrary/RippleLibrary.iml" filepath="$PROJECT_DIR$/RippleLibrary/RippleLibrary.iml" />
