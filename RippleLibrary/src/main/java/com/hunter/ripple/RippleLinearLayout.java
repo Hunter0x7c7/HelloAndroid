@@ -63,7 +63,7 @@ public class RippleLinearLayout extends LinearLayout {
             clickable = attrs.getAttributeBooleanValue("http://schemas.android.com/apk/res/android", "clickable", true);
         }
         this.setClickable(clickable);
-        setBackgroundColor(Color.WHITE);
+//        setBackgroundColor(Color.WHITE);
 
         this.mRevealPaint.setColor(0x10000000);
         this.mCycle = 22.0F;
